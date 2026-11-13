@@ -168,6 +168,25 @@ tfoot td{font-weight:700;background:var(--sunk)}
 }
 @media (max-width:380px){.fgrid{grid-template-columns:1fr}.kpi .v{font-size:1.1rem}}
 @media (min-width:700px){.kpis{grid-template-columns:repeat(4,1fr)}.kpi.hero{grid-column:span 2}}
+
+/* trip tracking timeline */
+.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.tl li{position:relative;padding:0 22px 14px 0;display:flex;flex-direction:column;gap:1px}
+[dir="ltr"] .tl li{padding:0 0 14px 22px}
+.tl li:before{content:"";position:absolute;inset-inline-start:0;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.tl li:after{content:"";position:absolute;inset-inline-start:4px;top:18px;bottom:0;width:2px;background:var(--line)}
+.tl li:last-child{padding-bottom:0}.tl li:last-child:after{display:none}
+.tl li.bad:before{background:var(--bad)}
+/* photos */
+.ph{position:relative;display:inline-block}
+.phx{position:absolute;top:-6px;inset-inline-end:-6px;width:22px;height:22px;border-radius:50%;border:0;background:var(--bad);color:#fff;font-size:15px;line-height:1;cursor:pointer}
+.addph{display:grid;place-items:center;color:var(--accent);cursor:pointer;border-style:dashed}
+.addph svg{width:24px;height:24px}
+.fld.err .addph{border-color:var(--bad);color:var(--bad)}
+.lb{align-items:center;background:rgba(5,10,16,.88)}
+.lb img{max-width:96vw;max-height:86vh;border-radius:10px}
+.lb .xbtn{position:absolute;top:calc(14px + env(safe-area-inset-top));inset-inline-end:14px}
+img[data-act="photo-view"]{cursor:zoom-in}
 </style></head><body><div id="app"></div><div id="sheet"></div><div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
 <script>// Languages: code, native name, direction
 const LANGS=[['ar','العربية','rtl'],['en','English','ltr'],['ur','اردو','rtl'],['hi','हिन्दी','ltr'],['bn','বাংলা','ltr']];
@@ -187,7 +206,7 @@ choose_user|اختر المستخدم|Choose user|صارف منتخب کریں|�
 pin|رمز الدخول|PIN|پن کوڈ|पिन|পিন
 enter|دخول|Enter|داخل ہوں|प्रवेश करें|প্রবেশ
 wrong_pin|رمز الدخول غير صحيح|Wrong PIN|غلط پن کوڈ|गलत पिन|ভুল পিন
-demo_pins|نسخة تجريبية: رمز الدخول لكل المستخدمين 1234|Demo: the PIN for every user is 1234|ڈیمو: ہر صارف کا پن 1234 ہے|डेमो: हर उपयोगकर्ता का पिन 1234 है|ডেমো: সব ব্যবহারকারীর পিন 1234
+demo_pins|رمز الدخول لكل الحسابات التجريبية 1234|The PIN for every demo account is 1234|تمام ڈیمو اکاؤنٹس کا پن 1234|सभी डेमो खातों का पिन 1234|সব ডেমো অ্যাকাউন্টের পিন 1234
 language|اللغة|Language|زبان|भाषा|ভাষা
 save|حفظ|Save|محفوظ کریں|सहेजें|সংরক্ষণ
 cancel|إلغاء|Cancel|منسوخ|रद्द करें|বাতিল
@@ -238,7 +257,7 @@ view_all|عرض الكل|View all|سب دیکھیں|सभी देखें|�
 st_new|جديدة|New|نیا|नया|নতুন
 st_scheduled|مجدولة|Scheduled|طے شدہ|निर्धारित|নির্ধারিত
 st_onroad|في الطريق|On the road|راستے میں|रास्ते में|পথে
-st_delivered|تم التسليم|Delivered|پہنچا دیا|डिलीवर|ডেলিভারি হয়েছে
+st_delivered|تم التنزيل|Unloaded|ان لوڈ ہو گیا|अनलोड हुआ|আনলোড হয়েছে
 st_cancelled|ملغاة|Cancelled|منسوخ|रद्द|বাতিল
 pay_unpaid|غير مدفوعة|Unpaid|غیر ادا شدہ|अदत्त|অপরিশোধিত
 pay_partial|مدفوعة جزئياً|Partly paid|جزوی ادا|आंशिक भुगतान|আংশিক পরিশোধিত
@@ -476,6 +495,56 @@ lock_unlocked|تم فك القفل|Unlocked|ان لاک ہو گیا|अनलॉ
 tyre_replaced_note|تم تسجيل الكفر كـ«اتبدّل». أضف الكفر الجديد من صفحة الكفرات.|Tyre marked as replaced. Add the new tyre from the Tyres page.|ٹائر تبدیل شدہ درج۔ نیا ٹائر ٹائر صفحے سے شامل کریں۔|टायर बदला गया दर्ज। नया टायर टायर पेज से जोड़ें।|টায়ার বদলানো হিসেবে লেখা হয়েছে। নতুন টায়ার টায়ার পাতায় যোগ করুন।
 activity|سجل العمليات|Activity log|سرگرمی لاگ|गतिविधि लॉग|কার্যকলাপ লগ
 trip_counts|عدد الرحلات حسب الشاحنة|Trips by truck|ٹرک کے لحاظ سے سفر|ट्रक के अनुसार ट्रिप|ট্রাক অনুযায়ী ট্রিপ
+id_or_iqama|رقم الهوية أو الإقامة|ID or Iqama number|شناختی کارڈ یا اقامہ نمبر|आईडी या इकामा नंबर|আইডি বা ইকামা নম্বর
+national_id|هوية وطنية (سعودي)|National ID (Saudi)|قومی شناخت (سعودی)|राष्ट्रीय पहचान (सऊदी)|জাতীয় পরিচয়পত্র (সৌদি)
+iqama|إقامة (مقيم)|Iqama (resident)|اقامہ (مقیم)|इकामा (निवासी)|ইকামা (প্রবাসী)
+id_invalid|رقم الهوية أو الإقامة لازم يكون 10 أرقام ويبدأ بـ 1 أو 2|ID or Iqama must be 10 digits starting with 1 or 2|شناختی یا اقامہ نمبر 10 ہندسوں کا ہو اور 1 یا 2 سے شروع ہو|आईडी या इकामा 10 अंकों का हो और 1 या 2 से शुरू हो|আইডি বা ইকামা ১০ অঙ্কের এবং ১ বা ২ দিয়ে শুরু হতে হবে
+id_taken|رقم الهوية هذا مسجّل لشخص ثاني|This ID is already registered to someone else|یہ نمبر کسی اور کے نام درج ہے|यह नंबर किसी और के नाम दर्ज है|এই নম্বর অন্য কারও নামে নিবন্ধিত
+login_bad|رقم الهوية أو رمز الدخول غير صحيح|Wrong ID or PIN|غلط نمبر یا پن|गलत नंबर या पिन|ভুল নম্বর বা পিন
+demo_accounts|حسابات تجريبية (اضغط عشان يتعبّى الرقم)|Demo accounts (tap to fill the number)|ڈیمو اکاؤنٹس (نمبر بھرنے کے لیے دبائیں)|डेमो खाते (नंबर भरने के लिए दबाएं)|ডেমো অ্যাকাউন্ট (নম্বর পূরণ করতে চাপুন)
+phone_title|سجّل رقم جوالك|Add your mobile number|اپنا موبائل نمبر درج کریں|अपना मोबाइल नंबर दर्ज करें|আপনার মোবাইল নম্বর দিন
+phone_note|نحتاج رقم جوالك للتواصل معك بخصوص الرحلات. تسجّله مرة وحدة بس.|We need your mobile number to reach you about trips. You only enter it once.|سفر کے بارے میں رابطے کے لیے آپ کا موبائل نمبر چاہیے۔ صرف ایک بار درج کریں۔|ट्रिप के बारे में संपर्क के लिए आपका मोबाइल नंबर चाहिए। सिर्फ एक बार दर्ज करें।|ট্রিপ নিয়ে যোগাযোগের জন্য আপনার মোবাইল নম্বর দরকার। শুধু একবার দিন।
+phone_invalid|رقم الجوال لازم يكون 10 أرقام ويبدأ بـ 05|Mobile must be 10 digits starting with 05|موبائل نمبر 05 سے شروع ہو کر 10 ہندسوں کا ہو|मोबाइल 05 से शुरू होकर 10 अंकों का हो|মোবাইল ০৫ দিয়ে শুরু হয়ে ১০ অঙ্কের হতে হবে
+phone_saved|تم حفظ رقم الجوال|Mobile number saved|موبائل نمبر محفوظ ہو گیا|मोबाइल नंबर सहेजा गया|মোবাইল নম্বর সংরক্ষিত
+continue|متابعة|Continue|جاری رکھیں|जारी रखें|চালিয়ে যান
+role_driver|السائق|Driver|ڈرائیور|ड्राइवर|চালক
+users_note|كل مستخدم يدخل برقم هويته أو إقامته ورمز الدخول. السائقين تضيفهم من الأسطول ← السائقين.|Each user signs in with their ID or Iqama number and PIN. Add drivers under Fleet → Drivers.|ہر صارف اپنے شناختی یا اقامہ نمبر اور پن سے داخل ہوتا ہے۔ ڈرائیور بیڑا ← ڈرائیور سے شامل کریں۔|हर उपयोगकर्ता अपने आईडी या इकामा नंबर और पिन से लॉग इन करता है। ड्राइवर बेड़ा → ड्राइवर से जोड़ें।|প্রত্যেকে আইডি বা ইকামা নম্বর ও পিন দিয়ে ঢোকে। চালক যোগ করুন বহর → চালক থেকে।
+st_sent|أُرسلت للسائق|Sent to driver|ڈرائیور کو بھیجا|ड्राइवर को भेजा|চালককে পাঠানো
+st_accepted|قبلها السائق|Accepted|ڈرائیور نے قبول کیا|ड्राइवर ने स्वीकार किया|চালক গ্রহণ করেছে
+act_send|إرسال للسائق|Send to driver|ڈرائیور کو بھیجیں|ड्राइवर को भेजें|চালককে পাঠান
+change_driver|تغيير السائق|Change driver|ڈرائیور بدلیں|ड्राइवर बदलें|চালক বদলান
+send_hint|إذا اخترت السائق، توصله الحمولة مباشرة ويقدر يقبلها أو يرفضها.|If you pick a driver, the load is sent to them right away to accept or reject.|اگر ڈرائیور چنیں تو لوڈ فوراً اسے بھیج دیا جائے گا۔|ड्राइवर चुनने पर लोड तुरंत उसे भेज दिया जाएगा।|চালক বাছলে লোডটি সঙ্গে সঙ্গে তার কাছে যাবে।
+act_accept|قبول الحمولة|Accept load|لوڈ قبول کریں|लोड स्वीकार करें|লোড গ্রহণ
+act_reject|رفض|Reject|مسترد کریں|अस्वीकार करें|প্রত্যাখ্যান
+act_loaded|وصلت وتم التحميل|Arrived & loaded|پہنچ کر لوڈ ہو گیا|पहुँचा और लोड हुआ|পৌঁছেছি ও লোড হয়েছে
+act_unloaded|تم التنزيل|Unloaded|ان لوڈ ہو گیا|अनलोड हुआ|আনলোড হয়েছে
+docs_photos|صور المستندات (البوليصة، سند الاستلام)|Document photos (waybill, receipt)|دستاویزات کی تصاویر (بلٹی، رسید)|दस्तावेज़ों की फोटो (बिल्टी, रसीद)|নথির ছবি (চালান, রসিদ)
+cargo_photos|صور الحمولة|Cargo photos|سامان کی تصاویر|माल की फोटो|মালামালের ছবি
+unload_photos|صورة مستند التنزيل|Unloading document photo|ان لوڈنگ دستاویز کی تصویر|अनलोडिंग दस्तावेज़ की फोटो|আনলোডিং নথির ছবি
+photo_required|لازم ترفق صورة وحدة على الأقل|Attach at least one photo|کم از کم ایک تصویر لگائیں|कम से कम एक फोटो लगाएं|অন্তত একটি ছবি যুক্ত করুন
+reject_reason|سبب الرفض|Reason for rejecting|مسترد کرنے کی وجہ|अस्वीकार करने का कारण|প্রত্যাখ্যানের কারণ
+new_requests|طلبات تحميل جديدة|New load requests|نئی لوڈ درخواستیں|नए लोड अनुरोध|নতুন লোড অনুরোধ
+current_trip|رحلتي الحالية|My current trip|میرا موجودہ سفر|मेरी वर्तमान ट्रिप|আমার বর্তমান ট্রিপ
+no_requests|ما فيه طلبات جديدة الحين|No new requests right now|ابھی کوئی نئی درخواست نہیں|अभी कोई नया अनुरोध नहीं|এখন নতুন কোনো অনুরোধ নেই
+my_trips|رحلاتي|My trips|میرے سفر|मेरी ट्रिप|আমার ট্রিপ
+requests|طلباتي|My requests|میری درخواستیں|मेरे अनुरोध|আমার অনুরোধ
+my_month|رحلاتي هذا الشهر|My trips this month|اس مہینے میرے سفر|इस महीने मेरी ट्रिप|এই মাসে আমার ট্রিপ
+details|التفاصيل|Details|تفصیل|विवरण|বিস্তারিত
+tracking|متابعة الحمولة|Load tracking|لوڈ کی ٹریکنگ|लोड ट्रैकिंग|লোড ট্র্যাকিং
+ev_created|أُنشئت الحمولة|Load created|لوڈ بنایا گیا|लोड बनाया गया|লোড তৈরি হয়েছে
+ev_sent|أُرسلت إلى {n}|Sent to {n}|{n} کو بھیجا|{n} को भेजा|{n}-কে পাঠানো হয়েছে
+ev_accepted|قبلها السائق|Driver accepted|ڈرائیور نے قبول کیا|ड्राइवर ने स्वीकार किया|চালক গ্রহণ করেছে
+ev_rejected|رفضها السائق: {r}|Driver rejected: {r}|ڈرائیور نے مسترد کیا: {r}|ड्राइवर ने अस्वीकार किया: {r}|চালক প্রত্যাখ্যান করেছে: {r}
+ev_loaded|تم التحميل وانطلق|Loaded and on the way|لوڈ ہو کر روانہ|लोड होकर रवाना|লোড হয়ে রওনা
+ev_unloaded|تم التنزيل|Unloaded|ان لوڈ ہو گیا|अनलोड हुआ|আনলোড হয়েছে
+ev_cancelled|أُلغيت|Cancelled|منسوخ|रद्द|বাতিল
+ev_status|تغيّرت الحالة إلى {s}|Status changed to {s}|حالت {s} ہو گئی|स्थिति {s} हुई|অবস্থা {s} হয়েছে
+al_rejected|الحمولة {n}: رفضها السائق، أرسلها لسائق ثاني|Load {n}: rejected by the driver, send it to another|لوڈ {n}: ڈرائیور نے مسترد کیا|लोड {n}: ड्राइवर ने अस्वीकार किया|লোড {n}: চালক প্রত্যাখ্যান করেছে
+al_waiting|الحمولة {n}: بانتظار قبول السائق من أكثر من ساعتين|Load {n}: waiting over 2 hours for the driver|لوڈ {n}: 2 گھنٹے سے ڈرائیور کا انتظار|लोड {n}: 2 घंटे से ड्राइवर का इंतज़ार|লোড {n}: ২ ঘণ্টার বেশি চালকের অপেক্ষায়
+set_status|تغيير الحالة|Change status|حالت بدلیں|स्थिति बदलें|অবস্থা বদলান
+delete_trip|حذف الرحلة|Delete trip|سفر حذف کریں|ट्रिप हटाएं|ট্রিপ মুছুন
+waiting_accept|بانتظار القبول|Awaiting driver|ڈرائیور کا انتظار|ड्राइवर की प्रतीक्षा|চালকের অপেক্ষায়
+available_drivers|سائقين متاحين|Free drivers|فارغ ڈرائیور|खाली ड्राइवर|ফ্রি চালক
 `;
 const T={};
 for(const line of DICT.trim().split('\n')){const p=line.split('|');T[p[0]]=p.slice(1)}
@@ -566,14 +635,14 @@ function seed(){
   const T0=today(),M=curMonth();
   S={v:1,seq:1000,
    settings:{company:'مؤسسة بن جليل للنقليات',cr:'',vatNo:'',address:'',phone:'',vat:15,alertDays:30,dieselPrice:1.66},
-   users:[{id:'u1',name:'المدير',role:'manager',pin:'1234'},{id:'u2',name:'المحاسب',role:'accountant',pin:'1234'},{id:'u3',name:'مشرف الحركة',role:'dispatcher',pin:'1234'}],
+   users:[{id:'u1',name:'عبدالله بن جليل',role:'manager',idNo:'1012345678',pin:'1234',phone:''},{id:'u2',name:'أحمد المحاسب',role:'accountant',idNo:'1023456789',pin:'1234',phone:''},{id:'u3',name:'إمران مشرف الحركة',role:'dispatcher',idNo:'2034567890',pin:'1234',phone:''}],
    trucks:[],drivers:[],driverTx:[],tyres:[],clients:[],routes:[],trips:[],fixed:[],log:[]};
   const tr=[['ر ط ب 4521','Mercedes','Actros',2021,'tr_curtain',25,412300,9600,'own_cash',0],['أ ص ن 7810','Volvo','FH',2022,'tr_flat',26,288900,10400,'own_loan',6500],['ح ق د 3302','Isuzu','Giga',2019,'tr_tipper',22,596100,8200,'own_cash',0],['س ع م 1187','MAN','TGX',2023,'tr_reefer',24,154700,11200,'own_loan',7200],['ك ل ر 9064','Hino','700',2020,'tr_flat',25,503800,8800,'own_cash',0]];
   tr.forEach((x,i)=>S.trucks.push({id:'t'+(i+1),plate:x[0],make:x[1],model:x[2],year:x[3],vin:'',trailer:x[4],cap:x[5],odo:x[6],status:'available',
     docs:{istimara:addDays(T0,[200,18,320,140,-4][i]),insurance:addDays(T0,[90,250,25,300,160][i]),inspection:addDays(T0,[60,110,12,190,75][i]),opcard:addDays(T0,[400,220,170,35,260][i])},
     insAnnual:x[7],own:x[8],installment:x[9],serviceEvery:10000,lastService:x[6]-[3200,9700,6100,1800,4500][i]}));
   const dr=[['محمد أصغر','0551234501','2'+'412345601',2900,'t1'],['راجيش كومار','0551234502','2'+'412345602',2700,'t2'],['عبدالرحمن حسين','0551234503','2'+'412345603',3100,'t3'],['شفيق الإسلام','0551234504','2'+'412345604',2600,'t4'],['سليم خان','0551234505','2'+'412345605',2800,'t5']];
-  dr.forEach((x,i)=>S.drivers.push({id:'d'+(i+1),name:x[0],phone:x[1],idNo:x[2],idExp:addDays(T0,[120,22,300,210,80][i]),licExp:addDays(T0,[400,180,15,500,260][i]),salary:x[3],allow:500,mode:'em_trip',rate:150,truckId:x[4],status:'ds_active'}));
+  dr.forEach((x,i)=>S.drivers.push({id:'d'+(i+1),name:x[0],phone:x[1],idNo:x[2],idExp:addDays(T0,[120,22,300,210,80][i]),licExp:addDays(T0,[400,180,15,500,260][i]),salary:x[3],allow:500,mode:'em_trip',rate:150,truckId:x[4],status:'ds_active',pin:'1234'}));
   S.clients=[{id:'c1',name:'شركة الخليج للمقاولات',cr:'2050012345',vatNo:'300012345600003',contact:'م. فهد',phone:'0138000001',address:'الدمام',terms:'t_credit',days:30,limit:60000},
    {id:'c2',name:'مصنع الشرق للأسمنت',cr:'2055012346',vatNo:'300012345700003',contact:'أ. خالد',phone:'0138000002',address:'الجبيل',terms:'t_credit',days:45,limit:80000},
    {id:'c3',name:'مؤسسة الريان للتجارة',cr:'1010012347',vatNo:'300012345800003',contact:'أ. سعد',phone:'0118000003',address:'الرياض',terms:'t_cash',days:0,limit:0},
@@ -604,9 +673,13 @@ function seed(){
     S.fixed.push({id:uid('f'),month:m,cat:'fc_salaries',truckId:'',amount:9000,note:''},{id:uid('f'),month:m,cat:'fc_rent',truckId:'',amount:3000,note:''},{id:uid('f'),month:m,cat:'fc_telecom',truckId:'',amount:650,note:''});
   }
   // live trips today
-  const live=[['t1','d1','c1','r1','onroad'],['t3','d3','c2','r2','scheduled'],['t4','d4','c4','r3','new']];
-  live.forEach(x=>{const rt=byId('routes',x[3]),no=++S.seq,trk=byId('trucks',x[0]);S.trips.push({id:'p'+no,no,clientId:x[2],routeId:x[3],from:rt.from,to:rt.to,cargo:'مواد بناء',weight:22,loadDate:T0,price:rt.price,vat:15,
-    truckId:x[4]==='new'?'':x[0],driverId:x[4]==='new'?'':x[1],status:x[4],depart:x[4]==='onroad'?T0+'T05:30':'',arrive:'',odoStart:x[4]==='onroad'?trk.odo:'',odoEnd:'',bayan:'',notes:'',
+  const live=[['t1','d1','c1','r1','onroad'],['t2','d2','c3','r4','accepted'],['t3','d3','c2','r2','sent'],['t4','d4','c4','r3','new']];
+  live.forEach(x=>{const rt=byId('routes',x[3]),no=++S.seq,trk=byId('trucks',x[0]),dn=byId('drivers',x[1]).name,ev=[{type:'created',at:T0+'T04:10',by:'إمران مشرف الحركة'}];
+    if(x[4]!=='new')ev.push({type:'sent',at:T0+'T04:15',by:'إمران مشرف الحركة',n:dn});
+    if(x[4]==='accepted'||x[4]==='onroad')ev.push({type:'accepted',at:T0+'T04:40',by:dn});
+    if(x[4]==='onroad')ev.push({type:'loaded',at:T0+'T05:30',by:dn});
+    S.trips.push({id:'p'+no,no,clientId:x[2],routeId:x[3],from:rt.from,to:rt.to,cargo:'مواد بناء',weight:22,loadDate:T0,price:rt.price,vat:15,
+    truckId:x[4]==='new'?'':x[0],driverId:x[4]==='new'?'':x[1],status:x[4],depart:x[4]==='onroad'?T0+'T05:30':'',arrive:'',odoStart:x[4]==='onroad'?trk.odo:'',odoEnd:'',bayan:'',notes:'',events:ev,loadDocs:[],cargoPhotos:[],unloadDocs:[],
     expenses:x[4]==='onroad'?[{id:uid('e'),type:'ex_diesel',amount:r2(200*1.66),liters:200,ppl:1.66,station:'نفط',date:T0}]:[],payments:[],confirmed:null,created:T0});if(x[4]==='onroad')trk.status='ts_trip'});
   S.trucks.forEach(x=>{if(x.status==='available')x.status='ts_available'});
   // fix odometers for delivered trips: chain them per truck
@@ -618,19 +691,33 @@ function seed(){
   S.log.push({at:nowISO(),by:'',msg:'demo'});
   save();
 }
+// bring data saved by older versions up to date
+function migrate(){let ch=false;const ids={u1:'1012345678',u2:'1023456789',u3:'2034567890'};
+  for(const u of S.users){if(!u.idNo){u.idNo=ids[u.id]||'';ch=true}if(u.phone===undefined){u.phone='';ch=true}}
+  for(const d of S.drivers){if(!d.pin){d.pin='1234';ch=true}}
+  for(const p of S.trips){if(p.status==='scheduled'){p.status='accepted';ch=true}if(!p.events){p.events=[];ch=true}for(const k of['loadDocs','cargoPhotos','unloadDocs'])if(!p[k]){p[k]=[];ch=true}}
+  if(ch)save()}
+// a signed-in account is a staff user or a driver
+function accountOf(ses){if(!ses)return null;return ses.role==='driver'?S.drivers.find(d=>d.id===ses.id):S.users.find(u=>u.id===ses.id)}
+const idKind=n=>/^1\d{9}$/.test(n)?'national_id':/^2\d{9}$/.test(n)?'iqama':null;
+function idTaken(n,exceptId){return S.users.some(u=>u.idNo===n&&u.id!==exceptId)||S.drivers.some(d=>d.idNo===n&&d.id!==exceptId)}
 function load(){try{const r=localStorage.getItem(KEY);if(r)S=JSON.parse(r)}catch(e){S=null}if(!S)seed();
   try{PREFS=Object.assign(PREFS,JSON.parse(localStorage.getItem(PREF_KEY)||'{}'))}catch(e){}
   try{SES=JSON.parse(localStorage.getItem(SES_KEY)||'null')}catch(e){SES=null}
-  if(SES&&!S.users.find(u=>u.id===SES.id))SES=null;
+  migrate();
+  if(SES&&!accountOf(SES))SES=null;
   if(S.settings.company==='مؤسسة النقليات'){S.settings.company='مؤسسة بن جليل للنقليات';save()}
   LANG=PREFS.lang||'ar';ui.month=curMonth()}
 
 /* ---------- permissions ---------- */
 const P={
  manager:['*'],
- accountant:['pay','fixed','clients','reports','viewAll','invoice'],
- dispatcher:['trips','expenses','fleet','routes','viewAll'],
+ accountant:['pay','fixed','clients','reports','viewAll','invoice','finance'],
+ dispatcher:['trips','expenses','routes','clientsAdd','fleetView','viewAll'],
+ driver:['driverApp'],
 };
+const isDriver=()=>!!SES&&SES.role==='driver';
+const isMgr=()=>!!SES&&SES.role==='manager';
 const can=a=>!!SES&&(P[SES.role].includes('*')||P[SES.role].includes(a));
 function guard(a){if(can(a))return true;toast(t('not_allowed'),'bad');return false}
 
@@ -669,14 +756,18 @@ function alerts(){const out=[],T0=today(),lim=+S.settings.alertDays||30;
     if(+c.limit&&clientBalance(c.id)>+c.limit)out.push({lvl:'bad',txt:t('al_limit',{c:c.name}),go:['client',c.id],sort:-40})}
   for(const p of S.trips){if(!isLive(p))continue;const rt=byId('routes',p.routeId);
     if(rt&&p.status!=='new'){const used=sum(p.expenses.filter(e=>e.type==='ex_diesel'||e.type==='ex_driver'),e=>e.amount);if(used>((+rt.diesel||0)+(+rt.driver||0))*1.2&&daysBetween(p.loadDate,T0)<=45)out.push({lvl:'warn',txt:t('al_highcost',{n:p.no}),go:['trip',p.id],sort:10})}
-    if(payState(p)==='pay_paid')out.push({lvl:'warn',txt:t('al_unconfirmed',{n:p.no}),go:['trip',p.id],sort:0})}
+    if(p.status==='new'&&p.lastReject)out.push({lvl:'bad',txt:t('al_rejected',{n:p.no}),go:['trip',p.id],sort:-60});
+    if(p.status==='sent'){const ev=(p.events||[]).filter(e=>e.type==='sent').pop();if(ev&&(Date.now()-new Date(ev.at))>2*3600e3)out.push({lvl:'warn',txt:t('al_waiting',{n:p.no}),go:['trip',p.id],sort:-5})}
+    if(payState(p)==='pay_paid'&&can('finance'))out.push({lvl:'warn',txt:t('al_unconfirmed',{n:p.no}),go:['trip',p.id],sort:0})}
   return out.sort((a,b)=>a.sort-b.sort)}
 
 /* ---------- toast ---------- */
 let toastT;function toast(msg,kind){const el=$('#toast');el.className='toast'+(kind?' '+kind:'');el.textContent=msg;el.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>el.hidden=true,2600)}
 
 /* ---------- labels ---------- */
-const ST={new:['st_new',''],scheduled:['st_scheduled','info'],onroad:['st_onroad','amber'],delivered:['st_delivered','good'],cancelled:['st_cancelled','bad']};
+const ST={new:['st_new',''],sent:['st_sent','info'],accepted:['st_accepted','info'],onroad:['st_onroad','amber'],delivered:['st_delivered','good'],cancelled:['st_cancelled','bad']};
+const STEPS=['new','sent','accepted','onroad','delivered'],ACTIVE=['new','sent','accepted','onroad'];
+const addEv=(p,type,x)=>{(p.events=p.events||[]).push({type,at:nowISO(),by:SES?SES.name:'',...(x||{})})};
 const PAYC={pay_unpaid:'bad',pay_partial:'warn',pay_paid:'info',pay_confirmed:'good'};
 const pill=(k,c)=>`<span class="pill ${c||''}">${esc(t(k))}</span>`;
 const stPill=p=>pill(ST[p.status][0],ST[p.status][1]);
@@ -694,6 +785,7 @@ function closeSheet(){ui.sheet=null;ui.form={};$('#sheet').innerHTML=''}
 function fieldHTML(f){const v=ui.form[f.k]??'',err=ui.errs[f.k]?' err':'',lab=`<span>${esc(f.l)}${f.req?' <i>*</i>':''}</span>`,id='f_'+f.k;
   if(f.type==='select')return`<label class="fld${err}${f.full?' full':''}" for="${id}">${lab}<select id="${id}" data-fk="${f.k}">${f.empty!==false?`<option value="">—</option>`:''}${f.opts.map(([a,b])=>`<option value="${esc(a)}" ${String(v)===String(a)?'selected':''}>${esc(b)}</option>`).join('')}</select>${f.hint?`<span class="hint">${esc(f.hint)}</span>`:''}</label>`;
   if(f.type==='textarea')return`<label class="fld full${err}" for="${id}">${lab}<textarea id="${id}" data-fk="${f.k}">${esc(v)}</textarea></label>`;
+  if(f.type==='photos'){const arr=Array.isArray(v)?v:[];return`<div class="fld full${err}">${lab}<div class="thumbs">${arr.map(id=>`<span class="ph"><img class="thumb" data-ph="${esc(id)}" alt=""><button type="button" class="phx" data-act="ph-del" data-type="${f.k}" data-id="${esc(id)}" aria-label="${esc(t('delete'))}">×</button></span>`).join('')}<label class="thumb addph" role="button">${IC.plus}<input type="file" accept="image/*" multiple data-photos="${f.k}" hidden></label></div></div>`}
   if(f.type==='photo')return`<div class="fld full">${lab}<div class="photo-in">${v?`<img data-ph="${esc(v)}" alt="">`:''}<label class="btn sec sm">${IC.upload}${esc(v?t('change_photo'):t('add_photo'))}<input type="file" accept="image/*" data-photo="${f.k}" hidden></label></div></div>`;
   const ty=f.type==='number'?'text':(f.type||'text'),im=f.type==='number'?' inputmode="decimal" dir="ltr"':f.type==='tel'?' inputmode="tel" dir="ltr"':f.type==='pin'?' inputmode="numeric" maxlength="4" dir="ltr"':'';
   return`<label class="fld${err}${f.full?' full':''}" for="${id}">${lab}<input id="${id}" type="${ty==='pin'?'password':ty}"${im} value="${esc(v)}" data-fk="${f.k}" autocomplete="off">${f.hint?`<span class="hint">${esc(f.hint)}</span>`:''}</label>`}
@@ -705,11 +797,11 @@ function renderSheet(){const o=ui.sheet;if(!o){$('#sheet').innerHTML='';return}
    <footer>${o.del?`<button class="btn ghost" data-act="sheet-del" style="flex:0 0 auto;color:var(--bad)">${esc(t('delete'))}</button>`:''}<button class="btn ghost" data-act="sheet-close">${esc(t('cancel'))}</button><button class="btn ${o.okKind||''}" data-act="sheet-ok">${esc(o.ok||t('save'))}</button></footer></div></div>`;
   hydratePhotos($('#sheet'))}
 function sheetOK(){const o=ui.sheet;if(!o)return;const fields=o.fields.filter(f=>!f.show||f.show(ui.form));ui.errs={};
-  for(const f of fields){const v=ui.form[f.k];if(f.req&&(v===undefined||v===null||String(v).trim()===''))ui.errs[f.k]=1;
+  for(const f of fields){const v=ui.form[f.k];if(f.req&&(f.type==='photos'?!(Array.isArray(v)&&v.length):(v===undefined||v===null||String(v).trim()==='')))ui.errs[f.k]=1;
     if(f.type==='number'&&v!==undefined&&String(v).trim()!==''){const n=parseFloat(String(v).replace(/,/g,''));if(!isFinite(n)||(f.min!==undefined&&n<f.min))ui.errs[f.k]=1}
     if(f.type==='pin'&&v&&!/^\d{4}$/.test(v))ui.errs[f.k]=1}
-  if(Object.keys(ui.errs).length){renderSheet();toast(t('required'),'bad');return}
-  const out={};for(const f of fields){let v=ui.form[f.k];if(f.type==='number')v=String(v??'').trim()===''?'':parseFloat(String(v).replace(/,/g,''));out[f.k]=typeof v==='string'?v.trim():v}
+  if(Object.keys(ui.errs).length){renderSheet();toast(fields.some(f=>f.type==='photos'&&ui.errs[f.k])?t('photo_required'):t('required'),'bad');return}
+  const out={};for(const f of fields){let v=ui.form[f.k];if(f.type==='photos'){out[f.k]=Array.isArray(v)?v:[];continue}if(f.type==='number')v=String(v??'').trim()===''?'':parseFloat(String(v).replace(/,/g,''));out[f.k]=typeof v==='string'?v.trim():v}
   const r=o.onSave(out);if(r===false)return;if(typeof r==='string'){toast(r,'bad');return}
   closeSheet();save();render();toast(t('saved'))}
 
@@ -728,21 +820,26 @@ const truckOpts=()=>opt(S.trucks.filter(x=>x.status!=='ts_stopped'),x=>x.plate+'
 const driverOpts=()=>opt(S.drivers.filter(x=>x.status==='ds_active'),x=>x.name);
 const keyOpts=keys=>keys.map(k=>[k,t(k)]);
 
-function tripForm(p){if(!guard('trips'))return;const isNew=!p;
+function tripForm(p){if(!guard('trips'))return;const isNew=!p;const prevDriver=p&&p.driverId;
   openForm({title:t(isNew?'new_trip':'edit_trip'),values:p?{...p}:{loadDate:today(),vat:S.settings.vat},
+   intro:isNew?t('send_hint'):'',
    fields:[
     {k:'clientId',l:t('client'),type:'select',opts:opt(S.clients,c=>c.name),req:true,full:true},
     {k:'routeId',l:t('route_pick'),type:'select',opts:opt(S.routes,r=>`${r.from} ${arrow()} ${r.to}`),full:true,onch:f=>{const r=byId('routes',f.routeId);if(r){f.from=r.from;f.to=r.to;f.price=r.price}}},
     {k:'from',l:t('from'),req:true},{k:'to',l:t('to'),req:true},
     {k:'cargo',l:t('cargo')},{k:'weight',l:t('weight'),type:'number',min:0},
     {k:'loadDate',l:t('load_date'),type:'date',req:true},{k:'price',l:t('price'),type:'number',req:true,min:0},
-    {k:'truckId',l:t('truck'),type:'select',opts:truckOpts(),onch:f=>{const d=truckDrivers(f.truckId)[0];if(d&&!f.driverId)f.driverId=d.id}},
-    {k:'driverId',l:t('driver'),type:'select',opts:driverOpts()},
+    {k:'driverId',l:t('driver'),type:'select',opts:driverOpts(),onch:f=>{const d=byId('drivers',f.driverId);if(d&&d.truckId)f.truckId=d.truckId}},
+    {k:'truckId',l:t('truck'),type:'select',opts:truckOpts()},
     {k:'bayan',l:t('bayan'),full:true},{k:'notes',l:t('notes'),type:'textarea'}],
-   onSave:v=>{if(isNew){const no=++S.seq;const np={id:'p'+no,no,...v,vat:+S.settings.vat,status:(v.truckId&&v.driverId)?'scheduled':'new',depart:'',arrive:'',odoStart:'',odoEnd:'',expenses:[],payments:[],confirmed:null,created:today()};S.trips.push(np);log(`+ ${t('trip')} ${no}`);ui.stack=[{type:'trip',id:np.id}];ui.tab='trips'}
-     else{Object.assign(p,v);if(p.status==='new'&&p.truckId&&p.driverId)p.status='scheduled';log(`${t('edit_trip')} ${p.no}`)}}})}
+   onSave:v=>{if(v.driverId&&!v.truckId)return t('need_truck_driver');
+     if(isNew){const no=++S.seq;const np={id:'p'+no,no,...v,vat:+S.settings.vat,status:'new',depart:'',arrive:'',odoStart:'',odoEnd:'',expenses:[],payments:[],confirmed:null,created:today(),events:[],loadDocs:[],cargoPhotos:[],unloadDocs:[]};
+       addEv(np,'created');if(np.driverId){np.status='sent';addEv(np,'sent',{n:driverName(np.driverId)})}
+       S.trips.push(np);log(`+ ${t('trip')} ${no}`);ui.stack=[{type:'trip',id:np.id}];ui.tab='trips'}
+     else{Object.assign(p,v);if(v.driverId&&v.driverId!==prevDriver&&['new','sent','accepted'].includes(p.status)){p.status='sent';p.lastReject='';addEv(p,'sent',{n:driverName(v.driverId)})}
+       if(!v.driverId&&['sent','accepted'].includes(p.status))p.status='new';log(`${t('edit_trip')} ${p.no}`)}}})}
 
-function expenseForm(p,e){if(!guard('expenses'))return;if(p.confirmed)return toast(t('locked_note'),'bad');
+function expenseForm(p,e){const own=isDriver()&&p.driverId===SES.id;if(!can('expenses')&&!own)return toast(t('not_allowed'),'bad');if(p.confirmed&&!isMgr())return toast(t('locked_note'),'bad');
   const tyres=S.tyres.filter(x=>x.truckId===p.truckId&&x.status!=='ty_replaced');
   openForm({title:t('add_expense'),values:e?{...e}:{type:'ex_diesel',date:today(),ppl:S.settings.dieselPrice},del:!!e,
    fields:[{k:'type',l:t('ex_type'),type:'select',opts:keyOpts(['ex_diesel','ex_driver','ex_maint','ex_tyre','ex_other']),req:true,full:true,empty:false},
@@ -756,12 +853,12 @@ function expenseForm(p,e){if(!guard('expenses'))return;if(p.confirmed)return toa
     {k:'desc',l:t('desc'),full:true,show:f=>f.type!=='ex_diesel'},{k:'photo',l:t('photo'),type:'photo'}],
    onDel:()=>{p.expenses=p.expenses.filter(x=>x.id!==e.id)},
    onSave:v=>{if(v.type==='ex_tyre'&&!v.action)v.action='repair';
-     if(e)Object.assign(e,v);else p.expenses.push({id:uid('e'),...v});
+     if(e)Object.assign(e,v);else p.expenses.push({id:uid('e'),...v,by:SES.name});
      if(v.type==='ex_tyre'&&v.tyreId){const ty=byId('tyres',v.tyreId);if(ty){ty.status=v.action==='replace'?'ty_replaced':'ty_repaired';if(v.action==='replace')setTimeout(()=>toast(t('tyre_replaced_note')),2700)}}
      if(v.type==='ex_diesel'&&+v.odo){const trk=byId('trucks',p.truckId);if(trk&&+v.odo>+trk.odo)trk.odo=+v.odo}
      log(`${t(v.type)} ${moneyT(v.amount)} · ${t('trip')} ${p.no}`)}})}
 
-function paymentForm(p,y){if(!guard('pay'))return;if(p.confirmed)return toast(t('locked_note'),'bad');
+function paymentForm(p,y){if(!guard('pay'))return;if(p.confirmed&&!isMgr())return toast(t('locked_note'),'bad');
   openForm({title:t('add_payment'),values:y?{...y}:{amount:Math.max(0,tripDue(p)),method:'m_transfer',date:today()},del:!!y,
    fields:[{k:'amount',l:t('amount')+' ('+t('sar')+')',type:'number',req:true,min:0.01},{k:'date',l:t('date'),type:'date',req:true},
     {k:'method',l:t('method'),type:'select',opts:keyOpts(['m_cash','m_transfer','m_cheque']),empty:false,full:true},
@@ -786,12 +883,12 @@ function truckForm(x){if(!guard('fleet'))return;const isNew=!x;
 
 function driverForm(x){if(!guard('fleet'))return;const isNew=!x;
   openForm({title:isNew?t('new_driver'):x.name,values:x?{...x}:{mode:'em_trip',status:'ds_active'},del:!isNew&&can('*'),
-   fields:[{k:'name',l:t('name'),req:true,full:true},{k:'phone',l:t('phone'),type:'tel'},{k:'idNo',l:t('id_no')},{k:'idExp',l:t('id_exp'),type:'date'},{k:'licExp',l:t('lic_exp'),type:'date'},
+   fields:[{k:'name',l:t('name'),req:true,full:true},{k:'idNo',l:t('id_or_iqama'),req:true,type:'tel'},{k:'pin',l:t('pin_code'),type:'pin',req:true},{k:'phone',l:t('phone'),type:'tel'},{k:'idExp',l:t('id_exp'),type:'date'},{k:'licExp',l:t('lic_exp'),type:'date'},
     {k:'salary',l:t('salary'),type:'number',min:0},{k:'allow',l:t('allowances'),type:'number',min:0},
     {k:'mode',l:t('exp_mode'),type:'select',opts:keyOpts(['em_trip','em_day','em_km']),empty:false},{k:'rate',l:t('exp_rate'),type:'number',min:0},
     {k:'truckId',l:t('assigned_truck'),type:'select',opts:opt(S.trucks,x=>x.plate)},{k:'status',l:t('status'),type:'select',opts:keyOpts(['ds_active','ds_leave','ds_left']),empty:false}],
    onDel:()=>{if(S.trips.some(p=>p.driverId===x.id))return t('not_allowed');S.drivers=S.drivers.filter(y=>y.id!==x.id);ui.stack=[]},
-   onSave:v=>{if(isNew){S.drivers.push({id:uid('d'),...v});log(`+ ${t('driver')} ${v.name}`)}else Object.assign(x,v)}})}
+   onSave:v=>{if(!idKind(v.idNo))return t('id_invalid');if(idTaken(v.idNo,x&&x.id))return t('id_taken');if(isNew){S.drivers.push({id:uid('d'),...v});log(`+ ${t('driver')} ${v.name}`)}else Object.assign(x,v)}})}
 
 function tyreForm(x,truckId){if(!guard('fleet'))return;
   openForm({title:x?t('tyre'):t('new_tyre'),values:x?{...x}:{truckId:truckId||'',date:today(),status:'ty_ok',odo:truckId?byId('trucks',truckId).odo:''},del:!!x,
@@ -800,7 +897,7 @@ function tyreForm(x,truckId){if(!guard('fleet'))return;
    onDel:()=>{S.tyres=S.tyres.filter(y=>y.id!==x.id)},
    onSave:v=>{if(x)Object.assign(x,v);else S.tyres.push({id:uid('y'),...v})}})}
 
-function clientForm(x){if(!guard('clients')&&!can('trips'))return;const isNew=!x;
+function clientForm(x){if(!can('clients')&&!can('clientsAdd'))return toast(t('not_allowed'),'bad');if(x&&!can('clients'))return toast(t('not_allowed'),'bad');const isNew=!x;
   openForm({title:isNew?t('new_client'):x.name,values:x?{...x}:{terms:'t_cash',days:0},del:!isNew&&can('*'),
    fields:[{k:'name',l:t('name'),req:true,full:true},{k:'cr',l:t('cr')},{k:'vatNo',l:t('vat_no')},{k:'contact',l:t('contact')},{k:'phone',l:t('phone'),type:'tel'},{k:'address',l:t('address'),full:true},
     {k:'terms',l:t('terms'),type:'select',opts:keyOpts(['t_cash','t_credit']),empty:false},{k:'days',l:t('credit_days'),type:'number',min:0,show:f=>f.terms==='t_credit'},{k:'limit',l:t('credit_limit'),type:'number',min:0,show:f=>f.terms==='t_credit'}],
@@ -821,16 +918,18 @@ function fixedForm(x){if(!guard('fixed'))return;
    onDel:()=>{S.fixed=S.fixed.filter(y=>y.id!==x.id)},
    onSave:v=>{if(x)Object.assign(x,v);else S.fixed.push({id:uid('f'),...v});log(`${t('fixed_costs')} ${t(v.cat)} ${moneyT(v.amount)}`)}})}
 
-function custodyForm(d){if(!guard('pay')&&!can('fleet'))return;
+function custodyForm(d){if(!can('pay')&&!can('fleet'))return toast(t('not_allowed'),'bad');
   openForm({title:t('custody')+' · '+d.name,values:{type:'advance',date:today()},
    fields:[{k:'type',l:t('ex_type'),type:'select',opts:[['advance',t('advance')],['settle',t('settle')]],empty:false,full:true},{k:'amount',l:t('amount'),type:'number',req:true,min:0.01},{k:'date',l:t('date'),type:'date',req:true},{k:'note',l:t('notes'),full:true}],
    onSave:v=>{S.driverTx.push({id:uid('x'),driverId:d.id,...v});log(`${t(v.type==='advance'?'advance':'settle')} ${d.name} ${moneyT(v.amount)}`)}})}
 
 function userForm(x){if(!guard('*'))return;
   openForm({title:x?x.name:t('new_user'),values:x?{...x}:{role:'dispatcher'},del:!!x,
-   fields:[{k:'name',l:t('name'),req:true,full:true},{k:'role',l:t('role'),type:'select',opts:[['manager',t('role_manager')],['accountant',t('role_accountant')],['dispatcher',t('role_dispatcher')]],empty:false},{k:'pin',l:t('pin_code'),type:'pin',req:true}],
+   intro:t('users_note'),
+   fields:[{k:'name',l:t('name'),req:true,full:true},{k:'role',l:t('role'),type:'select',opts:[['manager',t('role_manager')],['accountant',t('role_accountant')],['dispatcher',t('role_dispatcher')]],empty:false},
+    {k:'idNo',l:t('id_or_iqama'),type:'tel',req:true},{k:'pin',l:t('pin_code'),type:'pin',req:true},{k:'phone',l:t('phone'),type:'tel',full:true}],
    onDel:()=>{if(x.id===SES.id)return t('cant_delete_self');S.users=S.users.filter(y=>y.id!==x.id)},
-   onSave:v=>{if(x)Object.assign(x,v);else S.users.push({id:uid('u'),...v})}})}
+   onSave:v=>{if(!idKind(v.idNo))return t('id_invalid');if(idTaken(v.idNo,x&&x.id))return t('id_taken');if(x)Object.assign(x,v);else S.users.push({id:uid('u'),...v});log(`${t('users')}: ${v.name}`)}})}
 
 function settingsForm(){if(!guard('*'))return;
   openForm({title:t('company'),values:{...S.settings},
@@ -839,17 +938,30 @@ function settingsForm(){if(!guard('*'))return;
    onSave:v=>{Object.assign(S.settings,v)}})}
 
 /* ---------- trip status actions ---------- */
-function tripAction(p,act){if(!guard('trips'))return;
-  if(act==='schedule'){if(!p.truckId||!p.driverId)return tripForm(p);p.status='scheduled';log(`${t('st_scheduled')} ${p.no}`);save();render();return}
-  if(act==='start'){if(!p.truckId||!p.driverId){toast(t('need_truck_driver'),'bad');return tripForm(p)}
-    const trk=byId('trucks',p.truckId);
-    openForm({title:t('act_start')+' · '+p.no,values:{odoStart:trk?trk.odo:'',depart:nowISO()},fields:[{k:'odoStart',l:t('odo_start'),type:'number',req:true,min:0},{k:'depart',l:t('depart'),type:'datetime-local',req:true}],
-     onSave:v=>{Object.assign(p,v,{status:'onroad'});if(trk)trk.status='ts_trip';log(`${t('st_onroad')} ${p.no}`)}});return}
-  if(act==='deliver'){const trk=byId('trucks',p.truckId),rt=byId('routes',p.routeId);
-    openForm({title:t('act_deliver')+' · '+p.no,values:{odoEnd:rt&&+p.odoStart?+p.odoStart+(+rt.km||0):'',arrive:nowISO(),pod:p.pod||''},
-     fields:[{k:'odoEnd',l:t('odo_end'),type:'number',req:true,min:0,hint:t('odo_start')+': '+nf(p.odoStart,0)},{k:'arrive',l:t('arrive'),type:'datetime-local',req:true},{k:'pod',l:t('pod'),type:'photo'}],
-     onSave:v=>{if(+v.odoEnd<+p.odoStart)return t('odo_invalid');Object.assign(p,v,{status:'delivered'});if(trk){if(+v.odoEnd>+trk.odo)trk.odo=+v.odoEnd;if(trk.status==='ts_trip')trk.status='ts_available'}log(`${t('st_delivered')} ${p.no}`)}});return}
-  if(act==='cancel'){ui.confirm={msg:t('act_cancel')+' '+p.no+'؟',ok:t('act_cancel'),fn:()=>{p.status='cancelled';const trk=byId('trucks',p.truckId);if(trk&&trk.status==='ts_trip')trk.status='ts_available';log(`${t('st_cancelled')} ${p.no}`)}};render();return}
+function tripAction(p,act){
+  if(act==='status'||act==='delete'){if(!guard('*'))return}else if(!guard('trips'))return;
+  if(act==='send'){openForm({title:t('act_send')+' · #'+p.no,values:{driverId:p.driverId||'',truckId:p.truckId||''},
+     fields:[{k:'driverId',l:t('driver'),type:'select',opts:driverOpts(),req:true,full:true,onch:f=>{const d=byId('drivers',f.driverId);if(d&&d.truckId)f.truckId=d.truckId}},{k:'truckId',l:t('truck'),type:'select',opts:truckOpts(),req:true,full:true}],
+     onSave:v=>{Object.assign(p,v,{status:'sent',lastReject:''});addEv(p,'sent',{n:driverName(v.driverId)});log(`${t('ev_sent',{n:driverName(v.driverId)})} · ${t('trip')} ${p.no}`)}});return}
+  if(act==='cancel'){ui.confirm={msg:t('act_cancel')+' #'+p.no,ok:t('act_cancel'),fn:()=>{p.status='cancelled';addEv(p,'cancelled');const trk=byId('trucks',p.truckId);if(trk&&trk.status==='ts_trip')trk.status='ts_available';log(`${t('st_cancelled')} ${p.no}`)}};render();return}
+  if(act==='status'){openForm({title:t('set_status')+' · #'+p.no,values:{status:p.status},fields:[{k:'status',l:t('status'),type:'select',opts:Object.keys(ST).map(k=>[k,t(ST[k][0])]),empty:false,full:true}],
+     onSave:v=>{if(v.status!==p.status){p.status=v.status;addEv(p,'status',{s:v.status});log(`${t('set_status')} #${p.no}: ${t(ST[v.status][0])}`)}}});return}
+  if(act==='delete'){ui.confirm={msg:t('delete_trip')+' #'+p.no,sub:t('confirm_delete'),ok:t('yes_delete'),fn:()=>{S.trips=S.trips.filter(x=>x!==p);log(`${t('delete_trip')} #${p.no}`);ui.stack.pop()}};render();return}
+}
+/* driver steps (also usable by the dispatcher and manager on the driver's behalf) */
+function driverAction(p,act){const drv=isDriver();if(drv&&p.driverId!==SES.id)return;if(!drv&&!can('trips'))return toast(t('not_allowed'),'bad');
+  const trk=byId('trucks',p.truckId);
+  if(act==='accept'){ui.confirm={msg:t('act_accept')+' · #'+p.no,sub:`${p.from} ${arrow()} ${p.to}`,ok:t('act_accept'),kind:'good',fn:()=>{p.status='accepted';addEv(p,'accepted');log(`${t('ev_accepted')} · ${t('trip')} ${p.no}`)}};render();return}
+  if(act==='reject'){openForm({title:t('act_reject')+' · #'+p.no,values:{},fields:[{k:'r',l:t('reject_reason'),type:'textarea',req:true}],okKind:'bad',ok:t('act_reject'),
+     onSave:v=>{addEv(p,'rejected',{r:v.r});p.lastReject=v.r;p.status='new';p.driverId='';log(`${t('ev_rejected',{r:v.r})} · ${t('trip')} ${p.no}`)}});return}
+  if(act==='loaded'){openForm({title:t('act_loaded')+' · #'+p.no,values:{loadDocs:[],cargoPhotos:[],odoStart:trk?trk.odo:''},noFocus:true,
+     fields:[{k:'loadDocs',l:t('docs_photos'),type:'photos',req:drv},{k:'cargoPhotos',l:t('cargo_photos'),type:'photos',req:drv},{k:'odoStart',l:t('odo_start'),type:'number',min:0}],
+     onSave:v=>{Object.assign(p,{loadDocs:[...(p.loadDocs||[]),...v.loadDocs],cargoPhotos:[...(p.cargoPhotos||[]),...v.cargoPhotos],odoStart:v.odoStart,depart:nowISO(),status:'onroad'});if(trk)trk.status='ts_trip';addEv(p,'loaded');log(`${t('ev_loaded')} · ${t('trip')} ${p.no}`)}});return}
+  if(act==='unloaded'){const rt=byId('routes',p.routeId);
+    openForm({title:t('act_unloaded')+' · #'+p.no,values:{unloadDocs:[],odoEnd:rt&&+p.odoStart?+p.odoStart+(+rt.km||0):''},noFocus:true,
+     fields:[{k:'unloadDocs',l:t('unload_photos'),type:'photos',req:drv},{k:'odoEnd',l:t('odo_end'),type:'number',min:0,hint:p.odoStart!==''?t('odo_start')+': '+nf(p.odoStart,0):''}],
+     onSave:v=>{if(v.odoEnd!==''&&+v.odoEnd<+p.odoStart)return t('odo_invalid');Object.assign(p,{unloadDocs:[...(p.unloadDocs||[]),...v.unloadDocs],odoEnd:v.odoEnd,arrive:nowISO(),status:'delivered'});
+       if(trk){if(+v.odoEnd>+trk.odo)trk.odo=+v.odoEnd;if(trk.status==='ts_trip')trk.status='ts_available'}addEv(p,'unloaded');log(`${t('ev_unloaded')} · ${t('trip')} ${p.no}`)}});return}
 }
 
 /* ---------- views ---------- */
@@ -859,14 +971,25 @@ function bar(title,sub,right){return`<header class="appbar">${ui.stack.length?ba
 const sec=(title,body,act)=>`<section class="stack"><div class="spread"><h2>${esc(title)}</h2>${act||''}</div>${body}</section>`;
 const emptyBox=()=>`<div class="empty">${esc(t('no_data'))}</div>`;
 
-V.login=()=>{const u=ui.loginUser&&byId('users',ui.loginUser);
-  return`<div class="login"><div class="brand"><div class="logo">${IC.truck}</div><div><h1>${esc(t('appName'))}</h1><div class="muted small">${esc(S.settings.company)}</div></div></div>
+V.login=()=>{const n=(ui.loginId||'').replace(/\D/g,''),k=idKind(n);
+  const demo=[...S.users.map(u=>[u.idNo,u.name,t('role_'+u.role)]),...S.drivers.filter(d=>d.status!=='ds_left').slice(0,2).map(d=>[d.idNo,d.name,t('role_driver')])];
+  return`<div class="login"><div class="brand"><div class="logo">${IC.truck}</div><div><h1>${esc(S.settings.company)}</h1><div class="muted small">${esc(t('appName'))}</div></div></div>
   <div class="seg" role="group" aria-label="${esc(t('language'))}">${LANGS.map(l=>`<button data-act="lang" data-id="${l[0]}" aria-pressed="${LANG===l[0]}">${l[1]}</button>`).join('')}</div>
-  <div class="card stack"><h2>${esc(t('choose_user'))}</h2><div class="users">${S.users.map(x=>`<button data-act="login-pick" data-id="${x.id}" aria-pressed="${ui.loginUser===x.id}"><span class="av">${esc(x.name.trim()[0]||'?')}</span><span class="grow"><b>${esc(x.name)}</b><br><span class="muted small">${esc(t('role_'+x.role))}</span></span></button>`).join('')}</div>
-  ${u?`<label class="fld"><span>${esc(t('pin'))}</span><input id="pin" class="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off" dir="ltr"></label><button class="btn block" data-act="login">${esc(t('enter'))}</button>`:''}</div>
-  <p class="note small">${esc(t('demo_pins'))}</p></div>`};
+  <div class="card stack"><h2>${esc(t('login_title'))}</h2>
+   <label class="fld" for="lid"><span>${esc(t('id_or_iqama'))}</span><input id="lid" type="text" inputmode="numeric" maxlength="10" autocomplete="username" dir="ltr" value="${esc(n)}" data-ch="loginId" placeholder="1XXXXXXXXX / 2XXXXXXXXX"><span class="hint" id="lid-kind">${k?esc(t(k)):n.length===10?`<span class="negv">${esc(t('id_invalid'))}</span>`:''}</span></label>
+   <label class="fld" for="pin"><span>${esc(t('pin'))}</span><input id="pin" class="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="current-password" dir="ltr"></label>
+   <button class="btn block" data-act="login">${esc(t('enter'))}</button></div>
+  <div class="card stack"><h3>${esc(t('demo_accounts'))}</h3><div class="users">${demo.map(([id,nm,r])=>`<button data-act="login-fill" data-id="${esc(id)}"><span class="av">${esc(nm.trim()[0]||'?')}</span><span class="grow"><b>${esc(nm)}</b><br><span class="muted small">${esc(r)} · <span class="num">${esc(id)}</span></span></span></button>`).join('')}</div><p class="muted xs" style="margin:0">${esc(t('demo_pins'))}</p></div></div>`};
 
-V.home=()=>{const m=curMonth(),st=monthStats(m),al=alerts(),act=S.trips.filter(p=>p.status==='onroad'||p.status==='scheduled'||p.status==='new');
+V.phone=()=>{const a=accountOf(SES);return`<div class="login"><div class="brand"><div class="logo">${IC.person}</div><div><h1>${esc(t('phone_title'))}</h1><div class="muted small">${esc(a.name)} · ${esc(t('role_'+SES.role))}</div></div></div>
+  <div class="card stack"><p class="muted small" style="margin:0">${esc(t('phone_note'))}</p>
+   <label class="fld" for="mob"><span>${esc(t('phone'))}</span><input id="mob" type="tel" inputmode="tel" maxlength="10" dir="ltr" placeholder="05XXXXXXXX" autocomplete="tel"></label>
+   <button class="btn block" data-act="phone-save">${esc(t('continue'))}</button></div>
+  <button class="link" data-act="logout">${esc(t('logout'))}</button></div>`};
+
+/* home: one per role */
+V.home=()=>isDriver()?V.driverHome():SES.role==='dispatcher'?V.dispHome():V.finHome();
+V.finHome=()=>{const m=curMonth(),st=monthStats(m),al=alerts(),act=S.trips.filter(p=>ACTIVE.includes(p.status));
   const recv=sum(S.trips.filter(p=>p.status==='delivered'),tripDue),unc=S.trips.filter(p=>payState(p)==='pay_paid').length;
   const ms=[5,4,3,2,1,0].map(k=>prevMonth(m,k)),vals=ms.map(x=>monthStats(x).net),mx=Math.max(1,...vals.map(Math.abs));
   return bar(S.settings.company,t('role_'+SES.role)+' · '+SES.name)+`<main class="stack">
@@ -875,60 +998,99 @@ V.home=()=>{const m=curMonth(),st=monthStats(m),al=alerts(),act=S.trips.filter(p
    <div class="kpi"><div class="l">${esc(t('costs'))}</div><div class="v">${int(st.vexp+st.fixed)} <small>${t('sar')}</small></div></div>
    <div class="kpi"><div class="l">${esc(t('trips_count'))}</div><div class="v">${int(st.trips)}</div></div>
    <div class="kpi"><div class="l">${esc(t('receivable'))}</div><div class="v">${int(recv)} <small>${t('sar')}</small></div></div></div>
-  ${unc&&can('*')?`<button class="note warn" data-act="trips-filter" data-id="topay" style="border:0;text-align:start;cursor:pointer">${IC.lock.replace('<svg','<svg style="width:16px;height:16px;vertical-align:-3px"')} ${esc(t('unconfirmed'))}: <b class="num">${unc}</b></button>`:''}
+  ${unc&&isMgr()?`<button class="note warn" data-act="trips-filter" data-id="topay" style="border:0;text-align:start;cursor:pointer">${IC.lock.replace('<svg','<svg style="width:16px;height:16px;vertical-align:-3px"')} ${esc(t('unconfirmed'))}: <b class="num">${unc}</b></button>`:''}
   ${sec(t('active_trips'),act.length?`<div class="list">${act.slice(0,6).map(tripItem).join('')}</div>`:emptyBox(),`<button class="link" data-act="go" data-id="trips">${esc(t('view_all'))}</button>`)}
-  ${sec(t('alerts'),`<div class="card">${al.length?al.slice(0,8).map(a=>`<div class="alert ${a.lvl}" role="button" tabindex="0" data-act="open" data-type="${a.go[0]}" data-id="${a.go[1]}" style="cursor:pointer">${IC.alert}<span class="grow">${esc(a.txt)}</span></div>`).join(''):`<div class="muted small">${esc(t('no_alerts'))}</div>`}</div>`,al.length>8?`<button class="link" data-act="push" data-type="alerts">${esc(t('view_all'))} (${al.length})</button>`:'')}
+  ${alertsCard(al)}
   ${sec(t('profit_6m'),`<div class="card"><div class="bars">${ms.map((x,i)=>`<div class="b"><em class="num ${vals[i]<0?'negv':''}">${nf(vals[i]/1000,1)}k</em><i class="${vals[i]<0?'neg':''}" style="height:${Math.max(3,Math.abs(vals[i])/mx*90)}px"></i><span>${esc(fmonthS(x))}</span></div>`).join('')}</div></div>`)}
   </main>`};
+function alertsCard(al){return sec(t('alerts'),`<div class="card">${al.length?al.slice(0,8).map(a=>`<div class="alert ${a.lvl}" role="button" tabindex="0" data-act="open" data-type="${a.go[0]}" data-id="${a.go[1]}" style="cursor:pointer">${IC.alert}<span class="grow">${esc(a.txt)}</span></div>`).join(''):`<div class="muted small">${esc(t('no_alerts'))}</div>`}</div>`,al.length>8?`<button class="link" data-act="push" data-type="alerts">${esc(t('view_all'))} (${al.length})</button>`:'')}
+V.dispHome=()=>{const T0=today(),by=s=>S.trips.filter(p=>p.status===s);
+  const freeDrivers=S.drivers.filter(d=>d.status==='ds_active'&&!S.trips.some(p=>p.driverId===d.id&&['sent','accepted','onroad'].includes(p.status)));
+  const act=S.trips.filter(p=>ACTIVE.includes(p.status)).sort((a,b)=>ACTIVE.indexOf(a.status)-ACTIVE.indexOf(b.status));
+  return bar(S.settings.company,t('role_'+SES.role)+' · '+SES.name)+`<main class="stack">
+  <div class="kpis"><div class="kpi"><div class="l">${esc(t('st_new'))}</div><div class="v">${int(by('new').length)}</div></div><div class="kpi"><div class="l">${esc(t('waiting_accept'))}</div><div class="v">${int(by('sent').length)}</div></div>
+   <div class="kpi"><div class="l">${esc(t('st_onroad'))}</div><div class="v">${int(by('onroad').length+by('accepted').length)}</div></div><div class="kpi"><div class="l">${esc(t('available_drivers'))}</div><div class="v">${int(freeDrivers.length)}</div></div></div>
+  <button class="btn block amber" data-act="trip-new">${IC.plus}${esc(t('new_trip'))}</button>
+  ${sec(t('active_trips'),act.length?`<div class="list">${act.map(tripItem).join('')}</div>`:emptyBox())}
+  ${alertsCard(alerts())}</main>`};
+V.driverHome=()=>{const me=SES.id,mine=S.trips.filter(p=>p.driverId===me);
+  const req=mine.filter(p=>p.status==='sent'),curT=mine.filter(p=>p.status==='accepted'||p.status==='onroad'),done=tripsIn(curMonth(),p=>p.driverId===me&&p.status==='delivered').length;
+  const card=(p,acts)=>`<div class="card stack"><div class="spread"><b style="font-size:1.05rem">${esc(p.from)} ${arrow()} ${esc(p.to)}</b>${stPill(p)}</div>
+    <dl class="kv"><dt>${esc(t('cargo'))}</dt><dd>${esc(p.cargo||'—')}${p.weight?` · <span class="num">${p.weight}</span> ${t('tons')}`:''}</dd><dt>${esc(t('load_date'))}</dt><dd>${fdate(p.loadDate)}</dd><dt>${esc(t('client'))}</dt><dd>${esc(clientName(p.clientId))}</dd><dt>${esc(t('truck'))}</dt><dd>${esc(plateOf(p.truckId))}</dd>${p.notes?`<dt>${esc(t('notes'))}</dt><dd>${esc(p.notes)}</dd>`:''}</dl>
+    <div class="row">${acts}<button class="btn ghost sm" data-act="open" data-type="trip" data-id="${p.id}">${esc(t('details'))}</button></div></div>`;
+  return bar(t('requests'),SES.name)+`<main class="stack">
+  <div class="kpis"><div class="kpi"><div class="l">${esc(t('my_month'))}</div><div class="v">${int(done)}</div></div><div class="kpi"><div class="l">${esc(t('new_requests'))}</div><div class="v">${int(req.length)}</div></div></div>
+  ${sec(t('current_trip'),curT.length?curT.map(p=>card(p,p.status==='accepted'?`<button class="btn amber" data-act="drv-do" data-type="loaded" data-id="${p.id}">${IC.truck}${esc(t('act_loaded'))}</button>`:`<button class="btn good" data-act="drv-do" data-type="unloaded" data-id="${p.id}">${IC.check}${esc(t('act_unloaded'))}</button><button class="btn sec sm" data-act="drv-exp" data-id="${p.id}">${IC.fuel}${esc(t('add_expense'))}</button>`)).join(''):emptyBox())}
+  ${sec(t('new_requests'),req.length?req.map(p=>card(p,`<button class="btn good" data-act="drv-do" data-type="accept" data-id="${p.id}">${IC.check}${esc(t('act_accept'))}</button><button class="btn ghost" data-act="drv-do" data-type="reject" data-id="${p.id}" style="color:var(--bad)">${esc(t('act_reject'))}</button>`)).join(''):`<div class="empty">${esc(t('no_requests'))}</div>`)}
+  </main>`};
 
-function tripItem(p){return`<button class="item" data-act="open" data-type="trip" data-id="${p.id}"><span class="ic">${IC.route}</span>
-  <span class="t"><b>${esc(p.from)} ${arrow()} ${esc(p.to)}</b><span><span class="num">#${p.no}</span> · ${esc(clientName(p.clientId))} · ${esc(plateOf(p.truckId))}</span></span>
-  <span class="e">${stPill(p)}${payPill(p)}<span class="small num">${nf(p.price,0)}</span></span></button>`}
+function tripItem(p){const fin=!isDriver();return`<button class="item" data-act="open" data-type="trip" data-id="${p.id}"><span class="ic">${IC.route}</span>
+  <span class="t"><b>${esc(p.from)} ${arrow()} ${esc(p.to)}</b><span><span class="num">#${p.no}</span> · ${esc(isDriver()?fdate(p.loadDate):clientName(p.clientId))} · ${esc(isDriver()?plateOf(p.truckId):p.driverId?driverName(p.driverId):plateOf(p.truckId))}</span></span>
+  <span class="e">${stPill(p)}${can('finance')?payPill(p):''}${fin?`<span class="small num">${nf(p.price,0)}</span>`:''}</span></button>`}
 
-V.trips=()=>{const f=ui.filter,q=ui.q.trim().toLowerCase();
+V.trips=()=>{const f=isDriver()?'all':ui.filter,q=ui.q.trim().toLowerCase();
   let ps=S.trips.slice().sort((a,b)=>(b.loadDate+b.no)>(a.loadDate+a.no)?1:-1);
-  const flt={active:p=>['new','scheduled','onroad'].includes(p.status),delivered:p=>p.status==='delivered',unpaid:p=>['pay_unpaid','pay_partial'].includes(payState(p)),topay:p=>payState(p)==='pay_paid',confirmed:p=>!!p.confirmed,cancelled:p=>p.status==='cancelled',all:()=>true};
+  if(isDriver())ps=ps.filter(p=>p.driverId===SES.id&&p.status!=='sent');
+  const flt={active:p=>ACTIVE.includes(p.status),waiting:p=>p.status==='sent',delivered:p=>p.status==='delivered',unpaid:p=>['pay_unpaid','pay_partial'].includes(payState(p)),topay:p=>payState(p)==='pay_paid',confirmed:p=>!!p.confirmed,cancelled:p=>p.status==='cancelled',all:()=>true};
   ps=ps.filter(flt[f]||flt.all);
-  if(q)ps=ps.filter(p=>String(p.no).includes(q)||clientName(p.clientId).toLowerCase().includes(q)||plateOf(p.truckId).toLowerCase().includes(q)||(p.from+p.to).toLowerCase().includes(q));
-  const shown=ps.slice(0,120);
-  return bar(t('trips'),t('n_trips',{n:ps.length}))+`<main class="stack">
+  if(q)ps=ps.filter(p=>String(p.no).includes(q)||clientName(p.clientId).toLowerCase().includes(q)||plateOf(p.truckId).toLowerCase().includes(q)||driverName(p.driverId).toLowerCase().includes(q)||(p.from+p.to).toLowerCase().includes(q));
+  const shown=ps.slice(0,150);
+  const tabs=[['active','active_trips'],['waiting','waiting_accept'],['delivered','st_delivered'],...(can('finance')?[['unpaid','unpaid_trips'],['topay','pay_paid'],['confirmed','pay_confirmed']]:[]),['cancelled','st_cancelled'],['all','all']];
+  return bar(isDriver()?t('my_trips'):t('trips'),t('n_trips',{n:ps.length}))+`<main class="stack">
   <input class="search" type="search" placeholder="${esc(t('search_trips'))}" value="${esc(ui.q)}" data-ch="q" aria-label="${esc(t('search'))}">
-  <div class="seg">${[['active','active_trips'],['delivered','st_delivered'],['unpaid','unpaid_trips'],['topay','pay_paid'],['confirmed','pay_confirmed'],['cancelled','st_cancelled'],['all','all']].map(([k,l])=>`<button data-act="trips-filter" data-id="${k}" aria-pressed="${f===k}">${esc(t(l))}</button>`).join('')}</div>
+  ${isDriver()?'':`<div class="seg">${tabs.map(([k,l])=>`<button data-act="trips-filter" data-id="${k}" aria-pressed="${f===k}">${esc(t(l))}</button>`).join('')}</div>`}
   ${shown.length?`<div class="list">${shown.map(tripItem).join('')}</div>`:emptyBox()}</main>
   ${can('trips')?`<button class="fab" data-act="trip-new" aria-label="${esc(t('new_trip'))}">${IC.plus}</button>`:''}`};
 
-V.trip=id=>{const p=byId('trips',id);if(!p)return gone();const lock=!!p.confirmed,rtl=isRTL();
-  const steps=['new','scheduled','onroad','delivered'],si=steps.indexOf(p.status);
+const photoRow=(label,ids)=>ids&&ids.length?`<div class="stack" style="gap:6px"><span class="muted small">${esc(label)}</span><div class="thumbs">${ids.map(id=>`<img class="thumb" data-ph="${esc(id)}" alt="" role="button" tabindex="0" data-act="photo-view" data-id="${esc(id)}">`).join('')}</div></div>`:'';
+function timeline(p){const ev=(p.events||[]).slice();
+  if(!ev.length){ev.push({type:'created',at:(p.created||p.loadDate)+'T00:00'});if(p.depart)ev.push({type:'loaded',at:p.depart});if(p.arrive)ev.push({type:'unloaded',at:p.arrive})}
+  const lab=e=>e.type==='sent'?t('ev_sent',{n:e.n||''}):e.type==='rejected'?t('ev_rejected',{r:e.r||'—'}):e.type==='status'?t('ev_status',{s:t(ST[e.s]?ST[e.s][0]:e.s)}):t('ev_'+e.type);
+  return`<div class="card"><ol class="tl">${ev.map(e=>`<li class="${e.type==='rejected'||e.type==='cancelled'?'bad':''}"><b>${esc(lab(e))}</b><span class="muted xs">${fdt(e.at)}${e.by?' · '+esc(e.by):''}</span></li>`).join('')}</ol></div>`}
+
+V.trip=id=>{const p=byId('trips',id);if(!p)return gone();const drv=isDriver();if(drv&&p.driverId!==SES.id)return gone();
+  const lock=!!p.confirmed&&!isMgr(),rtl=isRTL();
+  const si=STEPS.indexOf(p.status);
   const exp=tripExp(p),fx=fixedShare(p),prof=tripProfit(p),ps=payState(p);
-  const actions=[];if(can('trips')&&!lock){
-    if(p.status==='new')actions.push(`<button class="btn" data-act="trip-do" data-id="schedule">${esc(t('act_schedule'))}</button>`);
-    if(p.status==='scheduled')actions.push(`<button class="btn amber" data-act="trip-do" data-id="start">${IC.truck}${esc(t('act_start'))}</button>`);
-    if(p.status==='onroad')actions.push(`<button class="btn good" data-act="trip-do" data-id="deliver">${IC.check}${esc(t('act_deliver'))}</button>`);
-    if(['new','scheduled','onroad'].includes(p.status))actions.push(`<button class="btn ghost" data-act="trip-do" data-id="cancel">${esc(t('act_cancel'))}</button>`)}
-  return bar(t('trip')+' #'+p.no,clientName(p.clientId),can('trips')&&!lock&&p.status!=='cancelled'?`<button class="iconbtn" data-act="trip-edit" aria-label="${esc(t('edit'))}">${IC.wrench}</button>`:'')+`<main class="stack">
+  const actions=[];
+  if(drv){if(p.status==='sent')actions.push(`<button class="btn good" data-act="drv-do" data-type="accept" data-id="${p.id}">${esc(t('act_accept'))}</button><button class="btn ghost" data-act="drv-do" data-type="reject" data-id="${p.id}" style="color:var(--bad)">${esc(t('act_reject'))}</button>`);
+    if(p.status==='accepted')actions.push(`<button class="btn amber" data-act="drv-do" data-type="loaded" data-id="${p.id}">${IC.truck}${esc(t('act_loaded'))}</button>`);
+    if(p.status==='onroad')actions.push(`<button class="btn good" data-act="drv-do" data-type="unloaded" data-id="${p.id}">${IC.check}${esc(t('act_unloaded'))}</button>`)}
+  else if(can('trips')&&!lock){
+    if(p.status==='new')actions.push(`<button class="btn" data-act="trip-do" data-id="send">${esc(t('act_send'))}</button>`);
+    if(p.status==='sent'||p.status==='accepted')actions.push(`<button class="btn ghost" data-act="trip-do" data-id="send">${esc(t('change_driver'))}</button>`);
+    if(p.status==='accepted')actions.push(`<button class="btn amber" data-act="drv-do" data-type="loaded" data-id="${p.id}">${IC.truck}${esc(t('act_loaded'))}</button>`);
+    if(p.status==='onroad')actions.push(`<button class="btn good" data-act="drv-do" data-type="unloaded" data-id="${p.id}">${IC.check}${esc(t('act_unloaded'))}</button>`);
+    if(ACTIVE.includes(p.status))actions.push(`<button class="btn ghost" data-act="trip-do" data-id="cancel">${esc(t('act_cancel'))}</button>`)}
+  if(isMgr())actions.push(`<button class="btn ghost sm" data-act="trip-do" data-id="status">${esc(t('set_status'))}</button><button class="btn ghost sm" data-act="trip-do" data-id="delete" style="color:var(--bad)">${esc(t('delete_trip'))}</button>`);
+  const canExp=(can('expenses')||(drv&&['accepted','onroad','delivered'].includes(p.status)))&&!lock&&!(drv&&p.confirmed)&&p.status!=='cancelled';
+  return bar(t('trip')+' #'+p.no,drv?fdate(p.loadDate):clientName(p.clientId),!drv&&(can('trips')&&!lock||isMgr())?`<button class="iconbtn" data-act="trip-edit" aria-label="${esc(t('edit'))}">${IC.wrench}</button>`:'')+`<main class="stack">
   <div class="card stack"><div class="spread"><b style="font-size:1.08rem">${esc(p.from)} ${rtl?'←':'→'} ${esc(p.to)}</b>${stPill(p)}</div>
-   ${p.status!=='cancelled'?`<div class="steps">${steps.map((s,i)=>`<i class="${i<=si?'on':''}"></i>`).join('')}</div>`:''}
+   ${p.status!=='cancelled'?`<div class="steps">${STEPS.map((s,i)=>`<i class="${i<=si?'on':''}"></i>`).join('')}</div>`:''}
    <dl class="kv"><dt>${esc(t('client'))}</dt><dd>${esc(clientName(p.clientId))}</dd><dt>${esc(t('cargo'))}</dt><dd>${esc(p.cargo||'—')}${p.weight?` · <span class="num">${p.weight}</span> ${t('tons')}`:''}</dd>
    <dt>${esc(t('load_date'))}</dt><dd>${fdate(p.loadDate)}</dd><dt>${esc(t('truck'))}</dt><dd>${esc(plateOf(p.truckId))}</dd><dt>${esc(t('driver'))}</dt><dd>${esc(driverName(p.driverId))}</dd>
+   ${!drv?`<dt>${esc(t('price'))}</dt><dd>${money(p.price)}</dd>`:''}
    ${p.depart?`<dt>${esc(t('depart'))}</dt><dd>${fdt(p.depart)}</dd>`:''}${p.arrive?`<dt>${esc(t('arrive'))}</dt><dd>${fdt(p.arrive)}</dd>`:''}
    ${tripKm(p)?`<dt>${esc(t('distance'))}</dt><dd>${int(tripKm(p))} ${t('km')}</dd>`:''}${p.bayan?`<dt>${esc(t('bayan'))}</dt><dd class="num">${esc(p.bayan)}</dd>`:''}${p.notes?`<dt>${esc(t('notes'))}</dt><dd>${esc(p.notes)}</dd>`:''}</dl>
-   ${p.pod?`<div class="row"><span class="muted small">${esc(t('pod'))}</span><img class="thumb" data-ph="${esc(p.pod)}" alt="" data-act="photo-view" data-id="${esc(p.pod)}"></div>`:''}
+   ${p.lastReject&&p.status==='new'&&!drv?`<div class="note bad">${esc(t('ev_rejected',{r:p.lastReject}))}</div>`:''}
    ${actions.length?`<div class="row">${actions.join('')}</div>`:''}</div>
 
-  <div class="card sum"><div class="spread"><span>${esc(t('price'))}</span><b>${money(p.price)}</b></div>
+  ${sec(t('tracking'),timeline(p)+`${photoRow(t('docs_photos'),p.loadDocs)}${photoRow(t('cargo_photos'),p.cargoPhotos)}${photoRow(t('unload_photos'),p.unloadDocs)}${p.pod?photoRow(t('pod'),[p.pod]):''}`)}
+
+  ${can('finance')?`<div class="card sum"><div class="spread"><span>${esc(t('price'))}</span><b>${money(p.price)}</b></div>
    <div class="spread muted"><span>− ${esc(t('var_costs'))}</span><span>${money(exp)}</span></div>
    <div class="spread muted"><span>− ${esc(t('fixed_share'))}</span><span>${money(fx)}</span></div>
-   <div class="spread tot"><span>${esc(t('trip_profit'))}</span><span class="${prof<0?'negv':'pos'}">${money(prof)}</span></div></div>
+   <div class="spread tot"><span>${esc(t('trip_profit'))}</span><span class="${prof<0?'negv':'pos'}">${money(prof)}</span></div></div>`:''}
 
-  ${sec(t('expenses'),p.expenses.length?`<div class="list">${p.expenses.map(e=>`<button class="item" data-act="exp-edit" data-id="${e.id}"><span class="ic">${EXIC[e.type]||IC.coin}</span><span class="t"><b>${esc(t(e.type))}${e.type==='ex_tyre'&&e.action?' · '+esc(t(e.action)):''}</b><span>${fdate(e.date)}${e.liters?` · <span class="num">${nf(e.liters,0)}</span> ${t('liters')}`:''}${e.station?' · '+esc(e.station):''}${e.desc?' · '+esc(e.desc):''}</span></span><span class="e"><b>${money(e.amount)}</b>${e.photo?`<img class="thumb" style="width:34px;height:34px" data-ph="${esc(e.photo)}" alt="">`:''}</span></button>`).join('')}</div>`:emptyBox(),
-    can('expenses')&&!lock&&p.status!=='cancelled'?`<button class="btn sec sm" data-act="exp-new">${IC.plus}${esc(t('add'))}</button>`:'')}
+  ${sec(t('expenses'),p.expenses.length?`<div class="list">${p.expenses.map(e=>`<button class="item" data-act="exp-edit" data-id="${e.id}"><span class="ic">${EXIC[e.type]||IC.coin}</span><span class="t"><b>${esc(t(e.type))}${e.type==='ex_tyre'&&e.action?' · '+esc(t(e.action)):''}</b><span>${fdate(e.date)}${e.liters?` · <span class="num">${nf(e.liters,0)}</span> ${t('liters')}`:''}${e.station?' · '+esc(e.station):''}${e.desc?' · '+esc(e.desc):''}${e.by?' · '+esc(e.by):''}</span></span><span class="e"><b>${money(e.amount)}</b>${e.photo?`<img class="thumb" style="width:34px;height:34px" data-ph="${esc(e.photo)}" alt="">`:''}</span></button>`).join('')}</div>`:emptyBox(),
+    canExp?`<button class="btn sec sm" data-act="exp-new">${IC.plus}${esc(t('add'))}</button>`:'')}
 
-  ${p.status==='delivered'?sec(t('payments'),`<div class="card sum"><div class="spread"><span>${esc(t('price'))}</span><span>${money(p.price)}</span></div><div class="spread"><span>${esc(t('vat'))} <span class="num">${p.vat??S.settings.vat}%</span></span><span>${money(tripVat(p))}</span></div>
+  ${p.status==='delivered'&&can('finance')?sec(t('payments'),`<div class="card sum"><div class="spread"><span>${esc(t('price'))}</span><span>${money(p.price)}</span></div><div class="spread"><span>${esc(t('vat'))} <span class="num">${p.vat??S.settings.vat}%</span></span><span>${money(tripVat(p))}</span></div>
      <div class="spread tot"><span>${esc(t('total_vat'))}</span><span>${money(tripTotal(p))}</span></div><div class="spread"><span>${esc(t('paid'))}</span><span class="pos">${money(tripPaid(p))}</span></div>
      <div class="spread"><span>${esc(t('remaining'))}</span><b class="${tripDue(p)>.01?'negv':''}">${money(Math.max(0,tripDue(p)))}</b></div><div class="spread"><span>${esc(t('due_date'))}</span><span>${fdate(dueDateOf(p))}</span></div></div>
     ${p.payments.length?`<div class="list">${p.payments.map(y=>`<button class="item" data-act="pay-edit" data-id="${y.id}"><span class="ic">${IC.cash}</span><span class="t"><b>${esc(t(y.method))}${y.ref?' · <span class="num">'+esc(y.ref)+'</span>':''}</b><span>${fdate(y.date)} · ${esc(t('received_by'))}: ${esc(y.by||'—')}${y.bank?' · '+esc(y.bank):''}</span></span><span class="e"><b>${money(y.amount)}</b>${y.photo?`<img class="thumb" style="width:34px;height:34px" data-ph="${esc(y.photo)}" alt="">`:''}</span></button>`).join('')}</div>`:''}
-    ${lock?`<div class="note good">${IC.lock.replace('<svg','<svg style="width:16px;height:16px;vertical-align:-3px"')} ${esc(t('confirmed_by',{n:p.confirmed.by,d:fdt(p.confirmed.at)}))}</div>${can('*')?`<button class="btn ghost sm" data-act="trip-unlock">${esc(t('act_unlock'))}</button>`:''}`
-      :`<div class="row">${can('pay')&&tripDue(p)>.01?`<button class="btn" data-act="pay-new">${IC.plus}${esc(t('add_payment'))}</button>`:''}${can('*')?`<button class="btn good" data-act="trip-confirm" ${ps!=='pay_paid'?'disabled':''}>${IC.check}${esc(t('act_confirm'))}</button>`:''}</div>${can('*')&&ps!=='pay_paid'?`<p class="muted xs" style="margin:0">${esc(t('confirm_need_paid'))}</p>`:''}`}
+    ${p.confirmed?`<div class="note good">${IC.lock.replace('<svg','<svg style="width:16px;height:16px;vertical-align:-3px"')} ${esc(t('confirmed_by',{n:p.confirmed.by,d:fdt(p.confirmed.at)}))}</div>${isMgr()?`<button class="btn ghost sm" data-act="trip-unlock">${esc(t('act_unlock'))}</button>`:''}`
+      :`<div class="row">${can('pay')&&tripDue(p)>.01?`<button class="btn" data-act="pay-new">${IC.plus}${esc(t('add_payment'))}</button>`:''}${isMgr()?`<button class="btn good" data-act="trip-confirm" ${ps!=='pay_paid'?'disabled':''}>${IC.check}${esc(t('act_confirm'))}</button>`:''}</div>${isMgr()&&ps!=='pay_paid'?`<p class="muted xs" style="margin:0">${esc(t('confirm_need_paid'))}</p>`:''}`}
     ${can('invoice')?`<button class="btn ghost" data-act="invoice">${IC.printer}${esc(t('invoice'))}</button>`:''}`,ps?payPill(p):''):''}
   </main>`};
 
@@ -953,9 +1115,9 @@ V.truck=id=>{const x=byId('trucks',id);if(!x)return gone();const m=ui.month,ps=t
   const docRow=k=>{const d=x.docs&&x.docs[k];const n=d?daysBetween(T0,d):null;return`<dt>${esc(t(k))}</dt><dd>${d?fdate(d):'—'} ${n!==null&&n<=(+S.settings.alertDays||30)?pill(n<0?'expired':'expiry',n<0?'bad':'warn'):''}</dd>`};
   return bar(x.plate,`${x.make} ${x.model} ${x.year||''}`,can('fleet')?`<button class="iconbtn" data-act="truck-edit" aria-label="${esc(t('edit'))}">${IC.wrench}</button>`:'')+`<main class="stack">
   <div class="row"><input type="month" class="search" style="max-width:200px" value="${m}" data-ch="month" aria-label="${esc(t('month'))}">${pill(x.status,TRUCK_ST[x.status])}</div>
-  <div class="kpis"><div class="kpi"><div class="l">${esc(t('trips_count'))}</div><div class="v">${int(ps.length)}</div></div><div class="kpi"><div class="l">${esc(t('net_profit'))}</div><div class="v ${rev-ex-fx<0?'negv':''}">${int(rev-ex-fx)} <small>${t('sar')}</small></div></div>
+  <div class="kpis"><div class="kpi"><div class="l">${esc(t('trips_count'))}</div><div class="v">${int(ps.length)}</div></div>${can('finance')?`<div class="kpi"><div class="l">${esc(t('net_profit'))}</div><div class="v ${rev-ex-fx<0?'negv':''}">${int(rev-ex-fx)} <small>${t('sar')}</small></div></div>
    <div class="kpi"><div class="l">${esc(t('revenue'))}</div><div class="v">${int(rev)} <small>${t('sar')}</small></div></div><div class="kpi"><div class="l">${esc(t('var_costs'))}</div><div class="v">${int(ex)} <small>${t('sar')}</small></div></div>
-   <div class="kpi"><div class="l">${esc(t('fixed_costs'))}</div><div class="v">${int(fx)} <small>${t('sar')}</small></div></div><div class="kpi"><div class="l">${esc(t('l100'))}</div><div class="v">${km?nf(lit/km*100,1):'—'}</div></div></div>
+   <div class="kpi"><div class="l">${esc(t('fixed_costs'))}</div><div class="v">${int(fx)} <small>${t('sar')}</small></div></div>`:''}<div class="kpi"><div class="l">${esc(t('l100'))}</div><div class="v">${km?nf(lit/km*100,1):'—'}</div></div></div>
   ${sec(t('documents'),`<div class="card"><dl class="kv">${['istimara','insurance','inspection','opcard'].map(docRow).join('')}</dl></div>`)}
   ${sec(t('general_info'),`<div class="card stack"><dl class="kv"><dt>${esc(t('trailer'))}</dt><dd>${esc(t(x.trailer))}</dd><dt>${esc(t('capacity'))}</dt><dd class="num">${esc(x.cap||'—')}</dd><dt>${esc(t('odometer'))}</dt><dd>${int(x.odo)}</dd>
    <dt>${esc(t('service_every'))}</dt><dd>${int(x.serviceEvery||0)} · ${esc(t('last_service'))} ${int(x.lastService||0)}</dd><dt>${esc(t('ownership'))}</dt><dd>${esc(t(x.own))}${x.own==='own_loan'?' · '+money(x.installment):''}</dd><dt>${esc(t('ins_annual'))}</dt><dd>${money(x.insAnnual)}</dd>
@@ -970,7 +1132,7 @@ V.driver=id=>{const d=byId('drivers',id);if(!d)return gone();const m=ui.month,ps
   <input type="month" class="search" style="max-width:200px" value="${m}" data-ch="month" aria-label="${esc(t('month'))}">
   <div class="kpis"><div class="kpi"><div class="l">${esc(t('trips_count'))}</div><div class="v">${int(ps.length)}</div></div><div class="kpi"><div class="l">${esc(t('revenue'))}</div><div class="v">${int(sum(ps,p=>p.price))} <small>${t('sar')}</small></div></div></div>
   <div class="card"><dl class="kv"><dt>${esc(t('phone'))}</dt><dd class="num">${esc(d.phone||'—')}</dd><dt>${esc(t('id_no'))}</dt><dd class="num">${esc(d.idNo||'—')}</dd><dt>${esc(t('id_exp'))}</dt><dd>${fdate(d.idExp)}</dd><dt>${esc(t('lic_exp'))}</dt><dd>${fdate(d.licExp)}</dd>
-   <dt>${esc(t('salary'))}</dt><dd>${money(d.salary)}</dd><dt>${esc(t('allowances'))}</dt><dd>${money(d.allow)}</dd><dt>${esc(t('exp_mode'))}</dt><dd>${esc(t(d.mode))} · ${money(d.rate)}</dd><dt>${esc(t('assigned_truck'))}</dt><dd>${esc(plateOf(d.truckId))}</dd></dl></div>
+   ${can('finance')?`<dt>${esc(t('salary'))}</dt><dd>${money(d.salary)}</dd><dt>${esc(t('allowances'))}</dt><dd>${money(d.allow)}</dd>`:''}<dt>${esc(t('exp_mode'))}</dt><dd>${esc(t(d.mode))} · ${money(d.rate)}</dd><dt>${esc(t('assigned_truck'))}</dt><dd>${esc(plateOf(d.truckId))}</dd></dl></div>
   ${sec(t('custody'),`<div class="card spread"><span>${esc(t('custody_balance'))}</span><b class="${bal>0?'negv':''}">${money(bal)}</b></div>${tx.length?`<div class="list">${tx.map(x=>`<div class="item" style="cursor:default"><span class="ic">${IC.cash}</span><span class="t"><b>${esc(t(x.type==='advance'?'advance':'settle'))}</b><span>${fdate(x.date)}${x.note?' · '+esc(x.note):''}</span></span><b class="${x.type==='advance'?'negv':'pos'}">${x.type==='advance'?'+':'−'}${money(x.amount)}</b></div>`).join('')}</div>`:''}`,(can('pay')||can('fleet'))?`<button class="btn sec sm" data-act="custody-new">${IC.plus}${esc(t('add'))}</button>`:'')}
   ${sec(t('trips'),ps.length?`<div class="list">${ps.slice().reverse().map(tripItem).join('')}</div>`:emptyBox())}</main>`};
 
@@ -1029,16 +1191,23 @@ V.settings=()=>bar(t('settings'))+`<main class="stack">
   <p class="note small">${esc(t('demo_note'))}</p></main>`;
 
 /* ---------- render ---------- */
-const NAV=[['home','home',IC.home],['trips','trips',IC.route],['fleet','fleet',IC.truck],['clients','clients',IC.users],['more','more',IC.grid]];
+const NAVS={manager:[['home','home',IC.home],['trips','trips',IC.route],['fleet','fleet',IC.truck],['clients','clients',IC.users],['more','more',IC.grid]],
+ accountant:[['home','home',IC.home],['trips','trips',IC.route],['clients','clients',IC.users],['more','more',IC.grid]],
+ dispatcher:[['home','home',IC.home],['trips','trips',IC.route],['fleet','fleet',IC.truck],['clients','clients',IC.users],['more','more',IC.grid]],
+ driver:[['home','requests',IC.clipboard],['trips','my_trips',IC.route],['more','more',IC.grid]]};
 function applyLang(){const l=LANGS.find(x=>x[0]===LANG)||LANGS[0];document.documentElement.lang=l[0];document.documentElement.dir=l[2];document.title=t('appName');
   if(PREFS.theme==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',PREFS.theme)}
 function render(){applyLang();const app=$('#app');
   if(!SES){app.innerHTML=V.login();return}
+  const acc=accountOf(SES);if(!acc){SES=null;app.innerHTML=V.login();return}
+  if(!acc.phone){app.innerHTML=V.phone();return}
+  const NAV=NAVS[SES.role]||NAVS.driver;if(!NAV.some(n=>n[0]===ui.tab)){ui.tab='home';ui.stack=[]}
   const s=cur();let html;
   if(s)html=V[s.type](s.id);else html=V[ui.tab]();
-  const al=alerts().filter(a=>a.lvl==='bad').length;
+  const al=isDriver()?S.trips.filter(p=>p.driverId===SES.id&&p.status==='sent').length:alerts().filter(a=>a.lvl==='bad').length;
   html+=`<nav class="tabbar" aria-label="nav"><div class="in">${NAV.map(([k,l,ic])=>`<button data-act="go" data-id="${k}" aria-current="${ui.tab===k?'page':'false'}">${ic}<span>${esc(t(l))}</span>${k==='home'&&al?`<span class="dot num">${al}</span>`:''}</button>`).join('')}</div></nav>`;
   if(ui.confirm)html+=`<div class="scrim" style="z-index:60" data-act="confirm-no"><div class="sheet" role="alertdialog" aria-modal="true"><div class="body"><p style="margin:0;font-weight:600">${esc(ui.confirm.msg)}</p>${ui.confirm.sub?`<p class="muted small" style="margin:0">${esc(ui.confirm.sub)}</p>`:''}</div><footer><button class="btn ghost" data-act="confirm-no">${esc(t('cancel'))}</button><button class="btn ${ui.confirm.kind||'bad'}" data-act="confirm-yes">${esc(ui.confirm.ok)}</button></footer></div></div>`;
+  if(ui.lightbox)html+=`<div class="scrim lb" style="z-index:70" data-act="lb-close"><img data-ph="${esc(ui.lightbox)}" alt=""><button class="xbtn" data-act="lb-close" aria-label="${esc(t('close'))}">${IC.x}</button></div>`;
   app.innerHTML=html;hydratePhotos(app)}
 
 /* ---------- csv ---------- */
@@ -1052,18 +1221,27 @@ const ACT={
  'open':(id,el)=>{if(el.dataset.type==='client'&&ui.tab!=='clients'&&!ui.stack.length)ui.tab='clients';push(el.dataset.type,id)},
  'lang':id=>{LANG=id;PREFS.lang=id;savePrefs();render();if(ui.sheet)renderSheet()},
  'theme':id=>{PREFS.theme=id;savePrefs();render()},
- 'login-pick':id=>{ui.loginUser=id;render();setTimeout(()=>{const p=$('#pin');if(p)p.focus()},30)},
- 'login':()=>{const u=byId('users',ui.loginUser),p=$('#pin');if(!u||!p)return;if(p.value!==u.pin){toast(t('wrong_pin'),'bad');p.value='';p.focus();return}
-   SES={id:u.id,name:u.name,role:u.role};try{localStorage.setItem(SES_KEY,JSON.stringify(SES))}catch(e){}ui.tab='home';ui.stack=[];render()},
+ 'login-fill':id=>{ui.loginId=id;render();setTimeout(()=>{const p=$('#pin');if(p)p.focus()},30)},
+ 'login':()=>{const n=($('#lid')||{}).value?$('#lid').value.replace(/\D/g,''):'',pin=($('#pin')||{}).value||'';ui.loginId=n;
+   if(!idKind(n)){toast(t('id_invalid'),'bad');return}
+   const u=S.users.find(x=>x.idNo===n),d=!u&&S.drivers.find(x=>x.idNo===n&&x.status!=='ds_left'),a=u||d;
+   if(!a||a.pin!==pin){toast(t('login_bad'),'bad');const p=$('#pin');if(p){p.value='';p.focus()}return}
+   SES={id:a.id,name:a.name,role:u?u.role:'driver'};try{localStorage.setItem(SES_KEY,JSON.stringify(SES))}catch(e){}ui.tab='home';ui.stack=[];ui.filter='active';render()},
+ 'phone-save':()=>{const v=(($('#mob')||{}).value||'').replace(/\s/g,'');if(!/^05\d{8}$/.test(v)){toast(t('phone_invalid'),'bad');return}
+   const a=accountOf(SES);a.phone=v;log(`${t('phone')}: ${a.name}`);save();toast(t('phone_saved'));render()},
+ 'drv-do':(id,el)=>{const p=byId('trips',id);if(p)driverAction(p,el.dataset.type)},
+ 'drv-exp':id=>{const p=byId('trips',id);if(!p)return;ui.stack=[{type:'trip',id}];render();expenseForm(p)},
+ 'ph-del':(id,el)=>{const k=el.dataset.type;ui.form[k]=(ui.form[k]||[]).filter(x=>x!==id);renderSheet()},
+ 'lb-close':(id,el,e)=>{ui.lightbox=null;render()},
  'logout':()=>{SES=null;try{localStorage.removeItem(SES_KEY)}catch(e){}ui.loginUser=null;ui.stack=[];render()},
  'trips-filter':id=>{ui.filter=id;ui.tab='trips';ui.stack=[];render()},
  'trip-new':()=>tripForm(null),
  'trip-edit':()=>tripForm(byId('trips',cur().id)),
  'trip-do':id=>tripAction(byId('trips',cur().id),id),
  'exp-new':()=>expenseForm(byId('trips',cur().id)),
- 'exp-edit':id=>{const p=byId('trips',cur().id);if(p.confirmed||!can('expenses'))return;expenseForm(p,p.expenses.find(e=>e.id===id))},
+ 'exp-edit':id=>{const p=byId('trips',cur().id),ex=p.expenses.find(e=>e.id===id);if(p.confirmed&&!isMgr())return;if(!can('expenses')&&!(isDriver()&&ex&&ex.by===SES.name))return;expenseForm(p,p.expenses.find(e=>e.id===id))},
  'pay-new':()=>paymentForm(byId('trips',cur().id)),
- 'pay-edit':id=>{const p=byId('trips',cur().id);if(p.confirmed||!can('pay'))return;paymentForm(p,p.payments.find(y=>y.id===id))},
+ 'pay-edit':id=>{const p=byId('trips',cur().id);if((p.confirmed&&!isMgr())||!can('pay'))return;paymentForm(p,p.payments.find(y=>y.id===id))},
  'trip-confirm':()=>{if(!guard('*'))return;const p=byId('trips',cur().id);if(payState(p)!=='pay_paid')return toast(t('confirm_need_paid'),'bad');
    ui.confirm={msg:t('act_confirm')+' · #'+p.no,sub:t('confirm_q'),ok:t('act_confirm'),kind:'good',fn:()=>{p.confirmed={by:SES.name,at:nowISO()};log(`${t('act_confirm')} · ${t('trip')} ${p.no}`)}};render()},
  'trip-unlock':()=>{if(!guard('*'))return;const p=byId('trips',cur().id);ui.confirm={msg:t('act_unlock')+' · #'+p.no,ok:t('act_unlock'),fn:()=>{p.confirmed=null;log(`${t('act_unlock')} · ${t('trip')} ${p.no}`)}};render()},
@@ -1089,7 +1267,7 @@ const ACT={
  'backup':async()=>{const photos={};if(idb){const ids=[];JSON.stringify(S).replace(/"(ph_[a-z0-9]+)"/g,(m,id)=>ids.push(id));for(const id of ids)photos[id]=await photoGet(id)}
    downloadText(`backup-${today()}.json`,JSON.stringify({app:'naql',S,photos}),'application/json');toast(t('backup_done'))},
  'reset':()=>{ui.confirm={msg:t('reset_demo'),sub:t('reset_confirm'),ok:t('reset_demo'),fn:()=>{localStorage.removeItem(KEY);seed();ui.stack=[];ui.tab='home'}};render()},
- 'photo-view':()=>{},
+ 'photo-view':id=>{if(ui.sheet)return;ui.lightbox=id;render()},
 };
 
 /* ---------- events ---------- */
@@ -1100,11 +1278,15 @@ document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='pin')
   if((e.key==='Enter'||e.key===' ')&&e.target.matches('div[data-act]')){e.preventDefault();e.target.click()}});
 document.addEventListener('input',e=>{const el=e.target;
   if(el.dataset.fk){ui.form[el.dataset.fk]=el.value;if(el.closest('.fld'))el.closest('.fld').classList.remove('err');return}
+  if(el.dataset.ch==='loginId'){const n=el.value.replace(/\D/g,'');ui.loginId=n;const k=idKind(n),h=$('#lid-kind');if(h)h.innerHTML=k?esc(t(k)):n.length===10?`<span class="negv">${esc(t('id_invalid'))}</span>`:'';return}
   if(el.dataset.ch==='q'){ui.q=el.value;const pos=el.selectionStart;render();const n=$('.search[data-ch="q"]');if(n){n.focus();try{n.setSelectionRange(pos,pos)}catch(x){}}}});
 document.addEventListener('change',async e=>{const el=e.target;
   if(el.dataset.fk&&ui.sheet){ui.form[el.dataset.fk]=el.value;const f=ui.sheet.fields.find(x=>x.k===el.dataset.fk);
     if(f&&f.onch)f.onch(ui.form);if(el.tagName==='SELECT')renderSheet();else if(f&&f.onch){for(const i of document.querySelectorAll('#sheet [data-fk]'))if(i!==el&&i.tagName==='INPUT'&&ui.form[i.dataset.fk]!==undefined)i.value=ui.form[i.dataset.fk]}return}
   if(el.dataset.ch==='month'){if(el.value){ui.month=el.value;render()}return}
+  if(el.dataset.photos){const files=[...(el.files||[])];if(!files.length)return;if(!idb)await idbOpen();const k=el.dataset.photos;ui.form[k]=Array.isArray(ui.form[k])?ui.form[k]:[];
+    for(const file of files){const data=await shrink(file);if(!data)continue;const id='ph_'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);await photoPut(id,data);photoCache[id]=data;ui.form[k].push(id)}
+    delete ui.errs[k];renderSheet();return}
   if(el.dataset.photo){const file=el.files&&el.files[0];if(!file)return;const data=await shrink(file);if(!data)return;const id='ph_'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
     if(!idb)await idbOpen();await photoPut(id,data);photoCache[id]=data;ui.form[el.dataset.photo]=id;renderSheet();return}
   if(el.hasAttribute('data-restore')){const file=el.files&&el.files[0];if(!file)return;try{const j=JSON.parse(await file.text());if(j.app!=='naql'||!j.S||!j.S.trips)throw 0;
