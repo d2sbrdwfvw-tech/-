@@ -1,0 +1,1116 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>بن جليل للنقليات</title>
+<meta name="theme-color" content="#1d4d78">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="بن جليل">
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<style>:root{
+  --bg:#eef2f6;--surface:#ffffff;--sunk:#f5f7fa;--ink:#132132;--muted:#5f6d7e;--line:#dde3ea;
+  --accent:#1d4d78;--accent-ink:#ffffff;--accent-soft:#e3edf6;--amber:#e39b2d;--amber-soft:#fcf1df;
+  --good:#1b7f52;--good-soft:#e2f3ea;--bad:#b83a2e;--bad-soft:#f9e5e2;--warn:#a86c10;--warn-soft:#fbf0dc;
+  --shadow:0 1px 2px rgba(16,32,50,.06),0 4px 14px rgba(16,32,50,.06);
+  --r:14px;--f:"IBM Plex Sans Arabic",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1620;--surface:#16212d;--sunk:#1b2836;--ink:#e8eef5;--muted:#9aa9ba;--line:#26364a;
+  --accent:#5b9bd5;--accent-ink:#0b1622;--accent-soft:#1c3045;--amber:#f0b04f;--amber-soft:#3a2c14;
+  --good:#4cc38a;--good-soft:#173a2a;--bad:#ef7a6c;--bad-soft:#3d1f1b;--warn:#e8b45a;--warn-soft:#3a2d14;
+  --shadow:0 1px 2px rgba(0,0,0,.3);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1620;--surface:#16212d;--sunk:#1b2836;--ink:#e8eef5;--muted:#9aa9ba;--line:#26364a;
+  --accent:#5b9bd5;--accent-ink:#0b1622;--accent-soft:#1c3045;--amber:#f0b04f;--amber-soft:#3a2c14;
+  --good:#4cc38a;--good-soft:#173a2a;--bad:#ef7a6c;--bad-soft:#3d1f1b;--warn:#e8b45a;--warn-soft:#3a2d14;
+  --shadow:0 1px 2px rgba(0,0,0,.3);color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.55}
+button,input,select,textarea{font:inherit;color:inherit}
+.num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+#app{max-width:760px;margin:0 auto;min-height:100vh;min-height:100dvh;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+.appbar{position:sticky;top:0;z-index:20;background:var(--accent);color:var(--accent-ink);padding:calc(10px + env(safe-area-inset-top)) 16px 12px;display:flex;align-items:center;gap:10px}
+.appbar h1{margin:0;font-size:1.12rem;font-weight:700;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.appbar .sub{font-size:.75rem;opacity:.8;font-weight:500}
+.iconbtn{width:40px;height:40px;border-radius:12px;border:0;background:rgba(255,255,255,.14);color:inherit;display:grid;place-items:center;cursor:pointer;flex:none}
+.iconbtn svg{width:22px;height:22px}
+main{padding:14px 16px}
+.tabbar{position:fixed;bottom:0;inset-inline:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom)}
+.tabbar .in{display:flex;width:100%;max-width:760px}
+.tabbar button{flex:1;border:0;background:none;padding:8px 2px 9px;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--muted);font-size:.72rem;cursor:pointer;position:relative}
+.tabbar button svg{width:23px;height:23px}
+.tabbar button[aria-current="page"]{color:var(--accent);font-weight:700}
+.tabbar .dot{position:absolute;top:4px;inset-inline-start:calc(50% + 6px);background:var(--bad);color:#fff;border-radius:99px;font-size:.62rem;min-width:16px;height:16px;padding:0 4px;display:grid;place-items:center}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--shadow)}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.spread{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.grow{flex:1;min-width:0}
+h2{font-size:1.02rem;margin:0}
+h3{font-size:.92rem;margin:0}
+.muted{color:var(--muted)}.small{font-size:.82rem}.xs{font-size:.74rem}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:var(--shadow)}
+.kpi .l{font-size:.78rem;color:var(--muted)}
+.kpi .v{font-size:1.25rem;font-weight:700;margin-top:2px}
+.kpi .v small{font-size:.72rem;font-weight:500;color:var(--muted)}
+.kpi.hero{grid-column:1/-1;background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.kpi.hero .l,.kpi.hero .v small{color:inherit;opacity:.85}
+.kpi.hero .v{font-size:1.6rem}
+.pos{color:var(--good)}.negv{color:var(--bad)}
+.btn{border:0;border-radius:12px;padding:11px 16px;background:var(--accent);color:var(--accent-ink);font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px}
+.btn svg{width:18px;height:18px}
+.btn.sec{background:var(--accent-soft);color:var(--accent)}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--line)}
+.btn.good{background:var(--good);color:#fff}.btn.bad{background:var(--bad);color:#fff}.btn.amber{background:var(--amber);color:#1b1206}
+.btn.sm{padding:7px 12px;min-height:36px;font-size:.85rem;border-radius:10px}
+.btn.block{width:100%}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.link{background:none;border:0;color:var(--accent);font-weight:600;cursor:pointer;padding:4px}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:99px;font-size:.74rem;font-weight:700;background:var(--sunk);color:var(--muted);white-space:nowrap}
+.pill.good{background:var(--good-soft);color:var(--good)}.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}.pill.info{background:var(--accent-soft);color:var(--accent)}
+.pill.amber{background:var(--amber-soft);color:var(--warn)}
+.list{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.item{display:flex;align-items:center;gap:12px;padding:12px 14px;border:0;border-bottom:1px solid var(--line);background:none;text-align:start;width:100%;cursor:pointer;color:var(--ink)}
+.item:last-child{border-bottom:0}
+.item .ic{width:40px;height:40px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
+.item .ic svg{width:22px;height:22px}
+.item .t{flex:1;min-width:0}
+.item .t b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item .t>span{display:block;font-size:.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item .e{text-align:end;flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:3px}
+.item>svg.chev{width:16px;height:16px;color:var(--muted);flex:none}
+.empty{text-align:center;color:var(--muted);padding:28px 12px}
+.seg{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.seg::-webkit-scrollbar{display:none}
+.seg button{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:6px 13px;font-size:.84rem;white-space:nowrap;cursor:pointer;color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}
+.search{width:100%;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 12px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.9rem}
+.kv dt{color:var(--muted)}.kv dd{margin:0;text-align:end;font-weight:600;min-width:0;overflow-wrap:anywhere}
+.sum{display:flex;flex-direction:column;gap:4px;font-size:.9rem}
+.sum .spread.tot{border-top:1px solid var(--line);padding-top:6px;margin-top:2px;font-weight:700;font-size:1rem}
+.steps{display:flex;gap:4px}
+.steps i{flex:1;height:6px;border-radius:9px;background:var(--line)}
+.steps i.on{background:var(--accent)}
+.note{padding:10px 12px;border-radius:12px;background:var(--sunk);font-size:.86rem}
+.note.warn{background:var(--warn-soft);color:var(--warn)}.note.good{background:var(--good-soft);color:var(--good)}.note.bad{background:var(--bad-soft);color:var(--bad)}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);font-size:.88rem}
+.alert:last-child{border-bottom:0}
+.alert svg{width:18px;height:18px;flex:none;margin-top:2px}
+.alert.bad svg{color:var(--bad)}.alert.warn svg{color:var(--warn)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.84rem}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:start;white-space:nowrap}
+th{background:var(--sunk);color:var(--muted);font-weight:600;font-size:.76rem}
+tr:last-child td{border-bottom:0}
+tfoot td{font-weight:700;background:var(--sunk)}
+.fab{position:fixed;bottom:calc(86px + env(safe-area-inset-bottom));inset-inline-start:max(16px,calc(50% - 364px));z-index:25;width:56px;height:56px;border-radius:18px;background:var(--amber);color:#1b1206;border:0;box-shadow:0 6px 18px rgba(0,0,0,.2);display:grid;place-items:center;cursor:pointer}
+.fab svg{width:26px;height:26px}
+/* sheet */
+.scrim{position:fixed;inset:0;background:rgba(8,16,26,.45);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--surface);width:100%;max-width:760px;max-height:92vh;max-height:92dvh;border-radius:20px 20px 0 0;display:flex;flex-direction:column;animation:up .2s ease-out}
+@keyframes up{from{transform:translateY(30px);opacity:.5}}
+.sheet header{display:flex;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.sheet header h2{flex:1}
+.sheet .body{padding:14px 16px;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
+.sheet footer{padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:flex;gap:8px}
+.sheet footer .btn{flex:1}
+.xbtn{width:36px;height:36px;border-radius:10px;border:0;background:var(--sunk);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.xbtn svg{width:18px;height:18px}
+.fld{display:flex;flex-direction:column;gap:5px}
+.fld>span{font-size:.82rem;color:var(--muted);font-weight:600}
+.fld>span i{color:var(--bad);font-style:normal}
+.fld input,.fld select,.fld textarea{width:100%;border:1px solid var(--line);background:var(--sunk);border-radius:11px;padding:10px 12px;min-height:44px}
+.fld textarea{min-height:76px;resize:vertical}
+.fld input:focus,.fld select,.fld textarea:focus{outline-color:var(--accent)}
+.fld .hint{font-size:.74rem;color:var(--muted)}
+.fld.err input,.fld.err select{border-color:var(--bad)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fgrid .full{grid-column:1/-1}
+.photo-in{display:flex;align-items:center;gap:10px}
+.photo-in img,.thumb{width:64px;height:64px;object-fit:cover;border-radius:10px;border:1px solid var(--line);background:var(--sunk)}
+.photo-in label{cursor:pointer}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap}
+.toast{position:fixed;bottom:calc(92px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:.88rem;z-index:80;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:calc(100% - 32px)}
+.toast.bad{background:var(--bad);color:#fff}
+/* login */
+.login{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;padding:24px 18px;gap:18px;max-width:420px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .logo{width:54px;height:54px;border-radius:16px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center}
+.brand .logo svg{width:32px;height:32px}
+.brand h1{margin:0;font-size:1.3rem}
+.users{display:grid;gap:8px}
+.users button{display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;border:1px solid var(--line);background:var(--surface);cursor:pointer;text-align:start;color:var(--ink)}
+.users button[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.av{width:38px;height:38px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:700;flex:none}
+.pin{letter-spacing:.6em;text-align:center;font-size:1.3rem}
+/* chart */
+.bars{display:flex;align-items:flex-end;gap:8px;height:130px;padding-top:8px}
+.bars .b{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
+.bars .b i{display:block;width:100%;max-width:38px;border-radius:7px 7px 3px 3px;background:var(--accent)}
+.bars .b i.neg{background:var(--bad)}
+.bars .b span{font-size:.68rem;color:var(--muted)}
+.bars .b em{font-style:normal;font-size:.66rem;font-weight:700}
+/* invoice/print */
+.inv{background:#fff;color:#111;padding:22px;border-radius:12px;border:1px solid var(--line)}
+.inv h2{font-size:1.3rem}
+.inv table th{background:#f2f4f7;color:#333}
+.inv .tot td{font-weight:700}
+@media print{
+  body{background:#fff}
+  .appbar,.tabbar,.fab,.noprint,.toast{display:none!important}
+  #app{padding:0;max-width:none}
+  main{padding:0}
+  .inv{border:0;padding:0}
+}
+@media (max-width:380px){.fgrid{grid-template-columns:1fr}.kpi .v{font-size:1.1rem}}
+@media (min-width:700px){.kpis{grid-template-columns:repeat(4,1fr)}.kpi.hero{grid-column:span 2}}
+</style></head><body><div id="app"></div><div id="sheet"></div><div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+<script>// Languages: code, native name, direction
+const LANGS=[['ar','العربية','rtl'],['en','English','ltr'],['ur','اردو','rtl'],['hi','हिन्दी','ltr'],['bn','বাংলা','ltr']];
+// key | Arabic | English | Urdu | Hindi | Bengali
+const DICT=`
+appName|إدارة الحمولات|Load Manager|لوڈ مینیجر|लोड मैनेजर|লোড ম্যানেজার
+home|الرئيسية|Home|ہوم|होम|হোম
+trips|الرحلات|Trips|سفر|ट्रिप|ট্রিপ
+fleet|الأسطول|Fleet|بیڑا|बेड़ा|বহর
+clients|العملاء|Clients|کلائنٹس|ग्राहक|ক্লায়েন্ট
+more|المزيد|More|مزید|और|আরও
+role_manager|المدير|Manager|مینیجر|मैनेजर|ম্যানেজার
+role_accountant|المحاسب|Accountant|اکاؤنٹنٹ|अकाउंटेंट|হিসাবরক্ষক
+role_dispatcher|مشرف الحركة|Dispatcher|ڈسپیچر|डिस्पैचर|ডিসপ্যাচার
+login_title|تسجيل الدخول|Sign in|لاگ ان|लॉग इन|লগ ইন
+choose_user|اختر المستخدم|Choose user|صارف منتخب کریں|उपयोगकर्ता चुनें|ব্যবহারকারী বাছুন
+pin|رمز الدخول|PIN|پن کوڈ|पिन|পিন
+enter|دخول|Enter|داخل ہوں|प्रवेश करें|প্রবেশ
+wrong_pin|رمز الدخول غير صحيح|Wrong PIN|غلط پن کوڈ|गलत पिन|ভুল পিন
+demo_pins|نسخة تجريبية: رمز الدخول لكل المستخدمين 1234|Demo: the PIN for every user is 1234|ڈیمو: ہر صارف کا پن 1234 ہے|डेमो: हर उपयोगकर्ता का पिन 1234 है|ডেমো: সব ব্যবহারকারীর পিন 1234
+language|اللغة|Language|زبان|भाषा|ভাষা
+save|حفظ|Save|محفوظ کریں|सहेजें|সংরক্ষণ
+cancel|إلغاء|Cancel|منسوخ|रद्द करें|বাতিল
+delete|حذف|Delete|حذف کریں|हटाएं|মুছুন
+edit|تعديل|Edit|ترمیم|संपादित करें|সম্পাদনা
+add|إضافة|Add|شامل کریں|जोड़ें|যোগ করুন
+close|إغلاق|Close|بند کریں|बंद करें|বন্ধ
+back|رجوع|Back|واپس|वापस|ফিরে যান
+search|بحث|Search|تلاش|खोजें|খুঁজুন
+all|الكل|All|سب|सभी|সব
+none|بدون|None|کوئی نہیں|कोई नहीं|নেই
+required|مطلوب|Required|ضروری|आवश्यक|আবশ্যক
+saved|تم الحفظ|Saved|محفوظ ہو گیا|सहेजा गया|সংরক্ষিত
+deleted|تم الحذف|Deleted|حذف ہو گیا|हटा दिया गया|মুছে ফেলা হয়েছে
+sar|ر.س|SAR|ریال|रियाल|রিয়াল
+km|كم|km|کلومیٹر|किमी|কিমি
+liters|لتر|L|لیٹر|लीटर|লিটার
+tons|طن|t|ٹن|टन|টন
+date|التاريخ|Date|تاریخ|तारीख|তারিখ
+amount|المبلغ|Amount|رقم|राशि|পরিমাণ
+notes|ملاحظات|Notes|نوٹس|नोट्स|নোট
+photo|صورة|Photo|تصویر|फोटो|ছবি
+add_photo|إرفاق صورة|Attach photo|تصویر لگائیں|फोटो जोड़ें|ছবি যুক্ত করুন
+change_photo|تغيير الصورة|Change photo|تصویر بدلیں|फोटो बदलें|ছবি বদলান
+total|الإجمالي|Total|کل|कुल|মোট
+month|الشهر|Month|مہینہ|महीना|মাস
+export_csv|تصدير Excel|Export to Excel|ایکسل میں ایکسپورٹ|एक्सेल में निर्यात|এক্সেলে রপ্তানি
+print|طباعة / PDF|Print / PDF|پرنٹ / PDF|प्रिंट / PDF|প্রিন্ট / PDF
+confirm_delete|متأكد من الحذف؟ ما يمكن التراجع.|Delete this? This can't be undone.|کیا حذف کرنا ہے؟ یہ واپس نہیں ہوگا۔|क्या हटाना है? इसे वापस नहीं किया जा सकता।|মুছবেন? এটি ফেরানো যাবে না।
+yes_delete|نعم، احذف|Yes, delete|ہاں، حذف کریں|हाँ, हटाएं|হ্যাঁ, মুছুন
+no_data|لا توجد بيانات|No data yet|ابھی کوئی ڈیٹا نہیں|अभी कोई डेटा नहीं|এখনও কোনো ডেটা নেই
+not_allowed|ليست لديك صلاحية لهذا|You don't have permission for this|آپ کو اس کی اجازت نہیں|आपको इसकी अनुमति नहीं है|আপনার এর অনুমতি নেই
+logout|تسجيل الخروج|Sign out|لاگ آؤٹ|लॉग आउट|লগ আউট
+settings|الإعدادات|Settings|ترتیبات|सेटिंग्स|সেটিংস
+status|الحالة|Status|حالت|स्थिति|অবস্থা
+this_month|هذا الشهر|This month|اس مہینے|इस महीने|এই মাসে
+net_profit|صافي الربح|Net profit|خالص منافع|शुद्ध लाभ|নিট লাভ
+revenue|الإيرادات|Revenue|آمدنی|राजस्व|আয়
+costs|التكاليف|Costs|اخراجات|लागत|খরচ
+trips_count|عدد الرحلات|Trips|سفر کی تعداد|ट्रिप की संख्या|ট্রিপের সংখ্যা
+receivable|مستحقات عند العملاء|Owed by clients|کلائنٹس کے ذمے|ग्राहकों पर बकाया|ক্লায়েন্টদের কাছে পাওনা
+unconfirmed|بانتظار تأكيد الاستلام|Awaiting payment confirmation|ادائیگی کی تصدیق باقی|भुगतान पुष्टि बाकी|পেমেন্ট নিশ্চিতকরণ বাকি
+active_trips|رحلات جارية|Active trips|جاری سفر|चालू ट्रिप|চলমান ট্রিপ
+alerts|التنبيهات|Alerts|الرٹس|अलर्ट|সতর্কতা
+no_alerts|لا توجد تنبيهات|No alerts|کوئی الرٹ نہیں|कोई अलर्ट नहीं|কোনো সতর্কতা নেই
+profit_6m|صافي الربح آخر 6 أشهر|Net profit, last 6 months|پچھلے 6 ماہ کا خالص منافع|पिछले 6 महीनों का शुद्ध लाभ|গত ৬ মাসের নিট লাভ
+view_all|عرض الكل|View all|سب دیکھیں|सभी देखें|সব দেখুন
+st_new|جديدة|New|نیا|नया|নতুন
+st_scheduled|مجدولة|Scheduled|طے شدہ|निर्धारित|নির্ধারিত
+st_onroad|في الطريق|On the road|راستے میں|रास्ते में|পথে
+st_delivered|تم التسليم|Delivered|پہنچا دیا|डिलीवर|ডেলিভারি হয়েছে
+st_cancelled|ملغاة|Cancelled|منسوخ|रद्द|বাতিল
+pay_unpaid|غير مدفوعة|Unpaid|غیر ادا شدہ|अदत्त|অপরিশোধিত
+pay_partial|مدفوعة جزئياً|Partly paid|جزوی ادا|आंशिक भुगतान|আংশিক পরিশোধিত
+pay_paid|مدفوعة|Paid|ادا شدہ|भुगतान हुआ|পরিশোধিত
+pay_confirmed|مؤكدة|Confirmed|تصدیق شدہ|पुष्टि हुई|নিশ্চিত
+trip|رحلة|Trip|سفر|ट्रिप|ট্রিপ
+new_trip|رحلة جديدة|New trip|نیا سفر|नई ट्रिप|নতুন ট্রিপ
+edit_trip|تعديل الرحلة|Edit trip|سفر میں ترمیم|ट्रिप संपादित करें|ট্রিপ সম্পাদনা
+client|العميل|Client|کلائنٹ|ग्राहक|ক্লায়েন্ট
+route|المسار|Route|راستہ|रूट|রুট
+route_pick|اختر مساراً محفوظاً (اختياري)|Pick a saved route (optional)|محفوظ راستہ چنیں (اختیاری)|सहेजा रूट चुनें (वैकल्पिक)|সংরক্ষিত রুট বাছুন (ঐচ্ছিক)
+from|من|From|سے|से|থেকে
+to|إلى|To|تک|तक|পর্যন্ত
+cargo|نوع البضاعة|Cargo|سامان|माल|মালামাল
+weight|الوزن (طن)|Weight (t)|وزن (ٹن)|वजन (टन)|ওজন (টন)
+load_date|تاريخ التحميل|Loading date|لوڈنگ کی تاریخ|लोडिंग तारीख|লোডিংয়ের তারিখ
+price|سعر الحمولة قبل الضريبة|Load price before VAT|VAT سے پہلے قیمت|VAT से पहले कीमत|ভ্যাটের আগে দাম
+vat|ضريبة القيمة المضافة|VAT|VAT|VAT|ভ্যাট
+total_vat|الإجمالي شامل الضريبة|Total incl. VAT|VAT سمیت کل|VAT सहित कुल|ভ্যাটসহ মোট
+truck|الشاحنة|Truck|ٹرک|ट्रक|ট্রাক
+driver|السائق|Driver|ڈرائیور|ड्राइवर|চালক
+bayan|رقم وثيقة بيان|Bayan waybill no.|بیان دستاویز نمبر|बयान दस्तावेज़ संख्या|বায়ান নথি নম্বর
+depart|الانطلاق|Departure|روانگی|प्रस्थान|ছাড়ার সময়
+arrive|الوصول|Arrival|آمد|आगमन|পৌঁছানো
+odo_start|عداد البداية|Start odometer|شروع کا میٹر|शुरुआती मीटर|শুরুর মিটার
+odo_end|عداد النهاية|End odometer|آخر کا میٹر|अंतिम मीटर|শেষের মিটার
+distance|المسافة|Distance|فاصلہ|दूरी|দূরত্ব
+pod|إثبات التسليم|Proof of delivery|ڈلیوری کا ثبوت|डिलीवरी का प्रमाण|ডেলিভারির প্রমাণ
+act_schedule|جدولة الرحلة|Schedule|شیڈول کریں|शेड्यूल करें|নির্ধারণ করুন
+act_start|بدء الرحلة|Start trip|سفر شروع کریں|ट्रिप शुरू करें|ট্রিপ শুরু
+act_deliver|تم التسليم|Mark delivered|ڈلیور ہو گیا|डिलीवर हुआ|ডেলিভারি সম্পন্ন
+act_cancel|إلغاء الرحلة|Cancel trip|سفر منسوخ کریں|ट्रिप रद्द करें|ট্রিপ বাতিল
+act_confirm|تم تأكيد الاستلام|Confirm payment received|ادائیگی وصولی کی تصدیق|भुगतान प्राप्ति की पुष्टि|পেমেন্ট প্রাপ্তি নিশ্চিত
+act_unlock|فك القفل|Unlock|ان لاک کریں|अनलॉक करें|আনলক
+invoice|فاتورة ضريبية|Tax invoice|ٹیکس انوائس|टैक्स इनवॉइस|ট্যাক্স ইনভয়েস
+need_truck_driver|اختر الشاحنة والسائق أولاً|Pick the truck and driver first|پہلے ٹرک اور ڈرائیور چنیں|पहले ट्रक और ड्राइवर चुनें|আগে ট্রাক ও চালক বাছুন
+odo_invalid|قراءة العداد غير صحيحة|Odometer reading is not valid|میٹر ریڈنگ درست نہیں|मीटर रीडिंग सही नहीं|মিটার রিডিং সঠিক নয়
+locked_note|الرحلة مؤكدة ومقفلة مالياً|Trip confirmed and locked|سفر تصدیق شدہ اور لاک ہے|ट्रिप पुष्टि और लॉक है|ট্রিপ নিশ্চিত ও লক করা
+confirm_need_paid|ما ينفع التأكيد قبل استلام كامل المبلغ|Can't confirm before the full amount is received|پوری رقم وصول ہونے سے پہلے تصدیق نہیں ہو سکتی|पूरी राशि मिलने से पहले पुष्टि नहीं हो सकती|পুরো টাকা পাওয়ার আগে নিশ্চিত করা যাবে না
+confirmed_by|أكدها {n} في {d}|Confirmed by {n} on {d}|{n} نے {d} کو تصدیق کی|{n} ने {d} को पुष्टि की|{n} {d} তারিখে নিশ্চিত করেছেন
+confirm_q|تأكد إن المبلغ وصل للحساب. بعد التأكيد تنقفل الرحلة.|Make sure the money reached the account. The trip locks after confirming.|یقین کریں کہ رقم اکاؤنٹ میں آ گئی۔ تصدیق کے بعد سفر لاک ہو جائے گا۔|सुनिश्चित करें कि पैसा खाते में आ गया। पुष्टि के बाद ट्रिप लॉक हो जाएगी।|টাকা অ্যাকাউন্টে এসেছে নিশ্চিত হোন। নিশ্চিত করার পর ট্রিপ লক হবে।
+expenses|المصاريف|Expenses|اخراجات|खर्च|খরচ
+add_expense|إضافة مصروف|Add expense|خرچہ شامل کریں|खर्च जोड़ें|খরচ যোগ করুন
+ex_diesel|ديزل|Diesel|ڈیزل|डीज़ल|ডিজেল
+ex_driver|مصروف السائق|Driver allowance|ڈرائیور خرچ|ड्राइवर खर्च|চালকের খরচ
+ex_maint|صيانة أثناء الرحلة|Repair on trip|سفر میں مرمت|यात्रा में मरम्मत|ট্রিপে মেরামত
+ex_tyre|عطل كفر|Tyre failure|ٹائر خرابی|टायर खराबी|টায়ার বিকল
+ex_other|مصاريف أخرى|Other|دیگر|अन्य|অন্যান্য
+ex_type|النوع|Type|قسم|प्रकार|ধরন
+liters_n|عدد اللترات|Liters|لیٹر|लीटर|লিটার
+ppl|سعر اللتر|Price per liter|فی لیٹر قیمت|प्रति लीटर कीमत|প্রতি লিটার দাম
+station|المحطة|Station|اسٹیشن|स्टेशन|স্টেশন
+odo|قراءة العداد|Odometer|میٹر ریڈنگ|मीटर रीडिंग|মিটার রিডিং
+workshop|الورشة|Workshop|ورکشاپ|वर्कशॉप|ওয়ার্কশপ
+desc|الوصف|Description|تفصیل|विवरण|বিবরণ
+tyre|الكفر|Tyre|ٹائر|टायर|টায়ার
+tyre_action|الإجراء|Action|کارروائی|कार्रवाई|পদক্ষেপ
+repair|إصلاح|Repair|مرمت|मरम्मत|মেরামত
+replace|تبديل|Replace|تبدیل|बदलें|বদল
+payments|التحصيل|Payments|ادائیگیاں|भुगतान|পেমেন্ট
+add_payment|تسجيل دفعة|Record payment|ادائیگی درج کریں|भुगतान दर्ज करें|পেমেন্ট লিখুন
+method|طريقة الدفع|Method|طریقہ|तरीका|পদ্ধতি
+m_cash|نقد|Cash|نقد|नकद|নগদ
+m_transfer|تحويل بنكي|Bank transfer|بینک ٹرانسفر|बैंक ट्रांसफर|ব্যাংক ট্রান্সফার
+m_cheque|شيك|Cheque|چیک|चेक|চেক
+ref|رقم الحوالة أو الشيك|Transfer / cheque no.|ٹرانسفر / چیک نمبر|ट्रांसफर / चेक नंबर|ট্রান্সফার / চেক নম্বর
+bank|البنك|Bank|بینک|बैंक|ব্যাংক
+received_by|استلمها|Received by|وصول کنندہ|प्राप्तकर्ता|গ্রহণকারী
+paid|المدفوع|Paid|ادا شدہ|भुगतान|পরিশোধিত
+remaining|المتبقي|Remaining|باقی|शेष|বাকি
+trip_profit|صافي ربح الرحلة|Trip net profit|سفر کا خالص منافع|ट्रिप का शुद्ध लाभ|ট্রিপের নিট লাভ
+var_costs|مصاريف الرحلة|Trip expenses|سفر کے اخراجات|ट्रिप खर्च|ট্রিপের খরচ
+fixed_share|حصة التكاليف الثابتة|Share of fixed costs|مقررہ اخراجات کا حصہ|स्थिर लागत का हिस्सा|স্থির খরচের অংশ
+trucks|الشاحنات|Trucks|ٹرک|ट्रक|ট্রাক
+drivers|السائقين|Drivers|ڈرائیور|ड्राइवर|চালক
+tyres|الكفرات|Tyres|ٹائر|टायर|টায়ার
+new_truck|شاحنة جديدة|New truck|نیا ٹرک|नया ट्रक|নতুন ট্রাক
+plate|رقم اللوحة|Plate no.|پلیٹ نمبر|प्लेट नंबर|প্লেট নম্বর
+make|الشركة المصنعة|Make|کمپنی|निर्माता|প্রস্তুতকারক
+model|الموديل|Model|ماڈل|मॉडल|মডেল
+year|سنة الصنع|Year|سال|वर्ष|সাল
+vin|رقم الهيكل|Chassis no.|چیسس نمبر|चेसिस नंबर|চেসিস নম্বর
+trailer|نوع المقطورة|Trailer type|ٹریلر کی قسم|ट्रेलर प्रकार|ট্রেলারের ধরন
+tr_flat|سطحة|Flatbed|فلیٹ بیڈ|फ्लैटबेड|ফ্ল্যাটবেড
+tr_curtain|ستارة|Curtain|پردہ|पर्दा|পর্দা
+tr_reefer|براد|Refrigerated|ریفریجریٹڈ|रेफ्रिजरेटेड|রেফ্রিজারেটেড
+tr_tipper|قلاب|Tipper|ٹپر|टिपर|টিপার
+tr_tanker|صهريج|Tanker|ٹینکر|टैंकर|ট্যাংকার
+capacity|الحمولة القصوى (طن)|Max load (t)|زیادہ سے زیادہ بوجھ (ٹن)|अधिकतम भार (टन)|সর্বোচ্চ ভার (টন)
+odometer|العداد الحالي (كم)|Current odometer (km)|موجودہ میٹر (کلومیٹر)|वर्तमान मीटर (किमी)|বর্তমান মিটার (কিমি)
+istimara|الاستمارة|Registration|رجسٹریشن|पंजीकरण|রেজিস্ট্রেশন
+insurance|التأمين|Insurance|انشورنس|बीमा|বীমা
+inspection|الفحص الدوري|Periodic inspection|متواتر معائنہ|आवधिक निरीक्षण|পর্যায়ক্রমিক পরিদর্শন
+opcard|بطاقة التشغيل|Operating card|آپریٹنگ کارڈ|ऑपरेटिंग कार्ड|অপারেটিং কার্ড
+expiry|تاريخ الانتهاء|Expiry|میعاد ختم|समाप्ति|মেয়াদ শেষ
+ins_annual|قيمة التأمين السنوية|Annual insurance cost|سالانہ انشورنس لاگت|वार्षिक बीमा लागत|বার্ষিক বীমা খরচ
+ownership|التملك|Ownership|ملکیت|स्वामित्व|মালিকানা
+own_cash|ملك (كاش)|Owned (cash)|ملکیت (نقد)|स्वामित्व (नकद)|নিজস্ব (নগদ)
+own_loan|أقساط|Financed|قسطوں پر|किस्तों पर|কিস্তিতে
+installment|القسط الشهري|Monthly installment|ماہانہ قسط|मासिक किस्त|মাসিক কিস্তি
+service_every|الصيانة الدورية كل (كم)|Service every (km)|ہر (کلومیٹر) سروس|हर (किमी) सर्विस|প্রতি (কিমি) সার্ভিস
+last_service|عداد آخر صيانة دورية|Odometer at last service|آخری سروس پر میٹر|पिछली सर्विस पर मीटर|শেষ সার্ভিসে মিটার
+record_service|تسجيل صيانة دورية الآن|Log a service now|ابھی سروس درج کریں|अभी सर्विस दर्ज करें|এখন সার্ভিস লিখুন
+ts_available|متاحة|Available|دستیاب|उपलब्ध|উপলব্ধ
+ts_trip|في رحلة|On a trip|سفر پر|ट्रिप पर|ট্রিপে
+ts_maint|في الصيانة|In maintenance|مرمت میں|मरम्मत में|মেরামতে
+ts_stopped|متوقفة|Stopped|بند|बंद|বন্ধ
+new_driver|سائق جديد|New driver|نیا ڈرائیور|नया ड्राइवर|নতুন চালক
+name|الاسم|Name|نام|नाम|নাম
+phone|الجوال|Mobile|موبائل|मोबाइल|মোবাইল
+id_no|رقم الهوية أو الإقامة|ID / Iqama no.|شناختی / اقامہ نمبر|आईडी / इकामा नंबर|আইডি / ইকামা নম্বর
+id_exp|انتهاء الهوية أو الإقامة|ID / Iqama expiry|اقامہ کی میعاد|इकामा समाप्ति|ইকামার মেয়াদ
+lic_exp|انتهاء رخصة القيادة|Licence expiry|لائسنس کی میعاد|लाइसेंस समाप्ति|লাইসেন্সের মেয়াদ
+salary|الراتب الشهري|Monthly salary|ماہانہ تنخواہ|मासिक वेतन|মাসিক বেতন
+allowances|البدلات الشهرية|Monthly allowances|ماہانہ الاؤنس|मासिक भत्ते|মাসিক ভাতা
+exp_mode|طريقة المصروف|Allowance method|خرچ کا طریقہ|खर्च का तरीका|খরচের পদ্ধতি
+em_trip|مبلغ ثابت لكل رحلة|Fixed per trip|فی سفر مقررہ|प्रति ट्रिप निश्चित|প্রতি ট্রিপে নির্দিষ্ট
+em_day|يومي|Per day|یومیہ|प्रतिदिन|দৈনিক
+em_km|حسب المسافة (لكل كم)|Per km|فی کلومیٹر|प्रति किमी|প্রতি কিমি
+exp_rate|قيمة المصروف|Allowance rate|خرچ کی شرح|खर्च दर|খরচের হার
+assigned_truck|الشاحنة المعتادة|Usual truck|معمول کا ٹرک|सामान्य ट्रक|নিয়মিত ট্রাক
+ds_active|على رأس العمل|Active|کام پر|कार्यरत|কর্মরত
+ds_leave|إجازة|On leave|چھٹی پر|छुट्टी पर|ছুটিতে
+ds_left|منتهي الخدمة|Left|ملازمت ختم|सेवा समाप्त|চাকরি শেষ
+custody|العهدة والسلف|Advances|ایڈوانس|अग्रिम|অগ্রিম
+advance|سلفة / عهدة|Advance given|ایڈوانس دیا|अग्रिम दिया|অগ্রিম দেওয়া
+settle|تسوية / خصم|Settled / deducted|تصفیہ / کٹوتی|निपटान / कटौती|নিষ্পত্তি / কর্তন
+custody_balance|رصيد العهدة عند السائق|Advance balance with driver|ڈرائیور کے پاس ایڈوانس|ड्राइवर के पास अग्रिम शेष|চালকের কাছে অগ্রিম বাকি
+new_tyre|كفر جديد|New tyre|نیا ٹائر|नया टायर|নতুন টায়ার
+position|مكان الكفر|Position|جگہ|स्थान|অবস্থান
+brand|الماركة|Brand|برانڈ|ब्रांड|ব্র্যান্ড
+size|المقاس|Size|سائز|आकार|মাপ
+install_date|تاريخ التركيب|Fitted on|لگانے کی تاریخ|लगाने की तारीख|লাগানোর তারিখ
+install_odo|العداد عند التركيب|Odometer when fitted|لگاتے وقت میٹر|लगाते समय मीटर|লাগানোর সময় মিটার
+ty_ok|شغّال|In use|استعمال میں|उपयोग में|ব্যবহারে
+ty_repaired|اتصلّح|Repaired|مرمت شدہ|मरम्मत हुई|মেরামত করা
+ty_replaced|اتبدّل|Replaced|تبدیل شدہ|बदला गया|বদলানো
+tyre_km|عمر الكفر|Tyre life|ٹائر کی عمر|टायर की आयु|টায়ারের আয়ু
+new_client|عميل جديد|New client|نیا کلائنٹ|नया ग्राहक|নতুন ক্লায়েন্ট
+cr|السجل التجاري|CR no.|سی آر نمبر|सीआर नंबर|সিআর নম্বর
+vat_no|الرقم الضريبي|VAT no.|VAT نمبر|VAT नंबर|ভ্যাট নম্বর
+contact|الشخص المسؤول|Contact person|رابطہ شخص|संपर्क व्यक्ति|যোগাযোগ ব্যক্তি
+address|العنوان|Address|پتہ|पता|ঠিকানা
+terms|طريقة الدفع|Payment terms|ادائیگی کی شرائط|भुगतान शर्तें|পেমেন্টের শর্ত
+t_cash|نقدي|Cash|نقد|नकद|নগদ
+t_credit|آجل|Credit|ادھار|उधार|বাকিতে
+credit_days|أيام الأجل|Credit days|ادھار کے دن|उधार के दिन|বাকির দিন
+credit_limit|الحد الائتماني|Credit limit|ادھار کی حد|उधार सीमा|বাকির সীমা
+balance|الرصيد المستحق|Balance due|واجب الادا رقم|बकाया राशि|বকেয়া
+statement|كشف حساب|Statement|اسٹیٹمنٹ|स्टेटमेंट|স্টেটমেন্ট
+routes|المسارات|Routes|راستے|रूट|রুট
+new_route|مسار جديد|New route|نیا راستہ|नया रूट|নতুন রুট
+route_km|المسافة (كم)|Distance (km)|فاصلہ (کلومیٹر)|दूरी (किमी)|দূরত্ব (কিমি)
+usual_price|السعر المعتاد قبل الضريبة|Usual price before VAT|عام قیمت VAT سے پہلے|सामान्य कीमत VAT से पहले|সাধারণ দাম ভ্যাটের আগে
+usual_diesel|الديزل المعتاد (ر.س)|Usual diesel (SAR)|عام ڈیزل (ریال)|सामान्य डीज़ल (रियाल)|সাধারণ ডিজেল (রিয়াল)
+usual_driver|مصروف السائق المعتاد (ر.س)|Usual driver allowance (SAR)|عام ڈرائیور خرچ (ریال)|सामान्य ड्राइवर खर्च (रियाल)|সাধারণ চালকের খরচ (রিয়াল)
+fixed_costs|التكاليف الثابتة|Fixed costs|مقررہ اخراجات|स्थिर लागत|স্থির খরচ
+reports|التقارير|Reports|رپورٹس|रिपोर्ट|রিপোর্ট
+users|المستخدمين|Users|صارفین|उपयोगकर्ता|ব্যবহারকারী
+backup|النسخ الاحتياطي|Backup|بیک اپ|बैकअप|ব্যাকআপ
+export_backup|تنزيل نسخة احتياطية|Download backup|بیک اپ ڈاؤن لوڈ کریں|बैकअप डाउनलोड करें|ব্যাকআপ ডাউনলোড
+import_backup|استرجاع من نسخة|Restore from backup|بیک اپ سے بحال کریں|बैकअप से पुनर्स्थापित करें|ব্যাকআপ থেকে ফেরান
+reset_demo|إعادة البيانات التجريبية|Reset demo data|ڈیمو ڈیٹا ری سیٹ کریں|डेमो डेटा रीसेट करें|ডেমো ডেটা রিসেট
+reset_confirm|بتنمسح كل البيانات وترجع البيانات التجريبية. متأكد؟|All data will be erased and replaced with demo data. Sure?|سارا ڈیٹا مٹ جائے گا۔ کیا آپ کو یقین ہے؟|सारा डेटा मिट जाएगा। क्या आप निश्चित हैं?|সব ডেটা মুছে যাবে। আপনি কি নিশ্চিত?
+company|بيانات المؤسسة|Company details|کمپنی کی تفصیلات|कंपनी विवरण|প্রতিষ্ঠানের তথ্য
+company_name|اسم المؤسسة|Company name|کمپنی کا نام|कंपनी का नाम|প্রতিষ্ঠানের নাম
+alert_days|التنبيه قبل انتهاء الوثائق (يوم)|Warn before documents expire (days)|دستاویزات ختم ہونے سے پہلے انتباہ (دن)|दस्तावेज़ समाप्ति से पहले चेतावनी (दिन)|নথির মেয়াদের আগে সতর্কতা (দিন)
+diesel_price|سعر لتر الديزل الافتراضي|Default diesel price per liter|ڈیزل فی لیٹر قیمت|डीज़ल प्रति लीटर कीमत|ডিজেলের প্রতি লিটার দাম
+vat_pct|نسبة الضريبة %|VAT %|VAT %|VAT %|ভ্যাট %
+theme|المظهر|Appearance|ظاہری شکل|रूप|চেহারা
+th_auto|تلقائي|Auto|خودکار|स्वचालित|স্বয়ংক্রিয়
+th_light|فاتح|Light|ہلکا|हल्का|হালকা
+th_dark|داكن|Dark|گہرا|गहरा|গাঢ়
+new_fixed|تكلفة ثابتة جديدة|New fixed cost|نیا مقررہ خرچ|नई स्थिर लागत|নতুন স্থির খরচ
+category|البند|Item|مد|मद|খাত
+fc_salaries|رواتب الإدارة|Office salaries|دفتری تنخواہیں|कार्यालय वेतन|অফিস বেতন
+fc_rent|إيجار|Rent|کرایہ|किराया|ভাড়া
+fc_telecom|اتصالات وتتبع|Phones & tracking|فون اور ٹریکنگ|फोन और ट्रैकिंग|ফোন ও ট্র্যাকিং
+fc_service|صيانة دورية|Scheduled service|طے شدہ سروس|नियमित सर्विस|নিয়মিত সার্ভিস
+fc_tyres|كفرات جديدة|New tyres|نئے ٹائر|नए टायर|নতুন টায়ার
+fc_renewal|تجديد وثائق|Document renewals|دستاویزات کی تجدید|दस्तावेज़ नवीनीकरण|নথি নবায়ন
+fc_other|أخرى|Other|دیگر|अन्य|অন্যান্য
+applies_to|يُحمّل على|Charged to|کس پر|किस पर|কার উপর
+general|عام (يتوزع على كل الشاحنات)|General (split across trucks)|عام (سب ٹرکوں پر)|सामान्य (सभी ट्रकों में बंटे)|সাধারণ (সব ট্রাকে ভাগ)
+auto_fixed|تكاليف تنحسب تلقائياً|Automatic fixed costs|خودکار مقررہ اخراجات|स्वचालित स्थिर लागत|স্বয়ংক্রিয় স্থির খরচ
+auto_fixed_note|رواتب السائقين وبدلاتهم، والتأمين، والأقساط تنحسب كل شهر من ملفات الشاحنات والسائقين.|Driver salaries, insurance and installments are added each month from the truck and driver files.|ڈرائیور تنخواہیں، انشورنس اور قسطیں ہر ماہ خود شامل ہوتی ہیں۔|ड्राइवर वेतन, बीमा और किस्तें हर महीने अपने आप जुड़ती हैं।|চালকের বেতন, বীমা ও কিস্তি প্রতি মাসে নিজে থেকে যোগ হয়।
+manual_fixed|تكاليف مسجلة يدوياً|Entered fixed costs|درج شدہ مقررہ اخراجات|दर्ज स्थिर लागत|লিখিত স্থির খরচ
+per_trip|لكل رحلة|per trip|فی سفر|प्रति ट्रिप|প্রতি ট্রিপ
+alloc_note|حصة الرحلة = التكاليف الثابتة للشاحنة في الشهر ÷ عدد رحلاتها في نفس الشهر. الشهر الحالي ينحسب بعدد الأيام اللي مضت منه.|Trip share = the truck's fixed costs for the month ÷ its trips that month. The current month counts only the days elapsed so far.|سفر کا حصہ = ٹرک کے ماہانہ مقررہ اخراجات ÷ اس ماہ کے سفر|ट्रिप हिस्सा = ट्रक की मासिक स्थिर लागत ÷ उस महीने की ट्रिप|ট্রিপের অংশ = ট্রাকের মাসিক স্থির খরচ ÷ সেই মাসের ট্রিপ
+rep_summary|الملخص|Summary|خلاصہ|सारांश|সারসংক্ষেপ
+by_truck|حسب الشاحنة|By truck|ٹرک کے لحاظ سے|ट्रक के अनुसार|ট্রাক অনুযায়ী
+by_driver|حسب السائق|By driver|ڈرائیور کے لحاظ سے|ड्राइवर के अनुसार|চালক অনুযায়ী
+by_client|حسب العميل|By client|کلائنٹ کے لحاظ سے|ग्राहक के अनुसार|ক্লায়েন্ট অনুযায়ী
+by_route|حسب المسار|By route|راستے کے لحاظ سے|रूट के अनुसार|রুট অনুযায়ী
+l100|لتر/100كم|L/100km|لیٹر/100 کلومیٹر|लीटर/100 किमी|লিটার/১০০ কিমি
+avg_profit|متوسط الربح|Avg profit|اوسط منافع|औसत लाभ|গড় লাভ
+al_doc|{doc}: الشاحنة {p} — {d}|{doc}: truck {p} — {d}|{doc}: ٹرک {p} — {d}|{doc}: ट्रक {p} — {d}|{doc}: ট্রাক {p} — {d}
+al_driver|{doc}: السائق {n} — {d}|{doc}: driver {n} — {d}|{doc}: ڈرائیور {n} — {d}|{doc}: ड्राइवर {n} — {d}|{doc}: চালক {n} — {d}
+expired|منتهية|expired|ختم ہو چکا|समाप्त|মেয়াদোত্তীর্ণ
+expires_in|تنتهي بعد {n} يوم|expires in {n} days|{n} دن میں ختم|{n} दिन में समाप्त|{n} দিনে শেষ
+al_service|الشاحنة {p} تحتاج صيانة دورية|Truck {p} is due for service|ٹرک {p} کی سروس کا وقت ہے|ट्रक {p} की सर्विस बाकी है|ট্রাক {p} এর সার্ভিস বাকি
+al_overdue|{c}: متأخر في سداد {a}|{c}: overdue {a}|{c}: {a} واجب الادا|{c}: {a} बकाया|{c}: {a} বকেয়া
+al_highcost|الرحلة {n}: المصاريف أعلى من المعتاد للمسار|Trip {n}: expenses above the route's usual|سفر {n}: اخراجات معمول سے زیادہ|ट्रिप {n}: खर्च सामान्य से अधिक|ট্রিপ {n}: খরচ স্বাভাবিকের বেশি
+al_unconfirmed|الرحلة {n}: مدفوعة وبانتظار تأكيد المدير|Trip {n}: paid, waiting for manager confirmation|سفر {n}: ادا شدہ، مینیجر کی تصدیق باقی|ट्रिप {n}: भुगतान हुआ, मैनेजर पुष्टि बाकी|ট্রিপ {n}: পরিশোধিত, ম্যানেজারের নিশ্চিতকরণ বাকি
+al_limit|{c}: تجاوز الحد الائتماني|{c}: over credit limit|{c}: ادھار کی حد سے زیادہ|{c}: उधार सीमा पार|{c}: বাকির সীমা ছাড়িয়েছে
+new_user|مستخدم جديد|New user|نیا صارف|नया उपयोगकर्ता|নতুন ব্যবহারকারী
+role|الصلاحية|Role|کردار|भूमिका|ভূমিকা
+pin_code|رمز الدخول (4 أرقام)|PIN (4 digits)|پن (4 ہندسے)|पिन (4 अंक)|পিন (৪ অঙ্ক)
+cant_delete_self|ما تقدر تحذف حسابك وأنت داخل فيه|You can't delete the account you're signed in with|آپ اپنا اکاؤنٹ حذف نہیں کر سکتے|आप अपना खाता नहीं हटा सकते|নিজের অ্যাকাউন্ট মুছতে পারবেন না
+demo_note|نسخة تجريبية: البيانات محفوظة على هذا الجهاز فقط. نزّل نسخة احتياطية بشكل دوري.|Demo version: data is saved on this device only. Download a backup regularly.|ڈیمو: ڈیٹا صرف اس ڈیوائس پر ہے۔ باقاعدگی سے بیک اپ لیں۔|डेमो: डेटा केवल इस डिवाइस पर है। नियमित बैकअप लें।|ডেমো: ডেটা শুধু এই ডিভাইসে। নিয়মিত ব্যাকআপ নিন।
+install_hint|لتثبيت التطبيق على جوالك: من قائمة المتصفح اختر «إضافة إلى الشاشة الرئيسية».|To install on your phone: in the browser menu choose "Add to Home Screen".|فون پر انسٹال کرنے کے لیے: براؤزر مینو میں "Add to Home Screen" چنیں۔|फ़ोन पर इंस्टॉल करने के लिए: ब्राउज़र मेनू में "Add to Home Screen" चुनें।|ফোনে ইনস্টল করতে: ব্রাউজার মেনুতে "Add to Home Screen" বাছুন।
+invoice_no|رقم الفاتورة|Invoice no.|انوائس نمبر|इनवॉइस नंबर|ইনভয়েস নম্বর
+seller|البائع|Seller|فروخت کنندہ|विक्रेता|বিক্রেতা
+buyer|العميل|Buyer|خریدار|खरीदार|ক্রেতা
+description|الوصف|Description|تفصیل|विवरण|বিবরণ
+transport_service|نقل {c} من {f} إلى {t}|Transport of {c} from {f} to {t}|{c} کی ترسیل {f} سے {t}|{c} का परिवहन {f} से {t}|{c} পরিবহন {f} থেকে {t}
+subtotal|المجموع قبل الضريبة|Subtotal before VAT|VAT سے پہلے کل|VAT से पहले कुल|ভ্যাটের আগে মোট
+issue_date|تاريخ الإصدار|Issue date|اجراء کی تاریخ|जारी तिथि|ইস্যুর তারিখ
+backup_done|تم تنزيل النسخة الاحتياطية|Backup downloaded|بیک اپ ڈاؤن لوڈ ہو گیا|बैकअप डाउनलोड हुआ|ব্যাকআপ ডাউনলোড হয়েছে
+import_done|تم الاسترجاع|Restored|بحال ہو گیا|पुनर्स्थापित हुआ|ফেরানো হয়েছে
+import_bad|الملف غير صالح|Invalid file|غلط فائل|अमान्य फ़ाइल|অবৈধ ফাইল
+search_trips|ابحث برقم الرحلة أو العميل أو اللوحة|Search by trip no., client or plate|سفر نمبر، کلائنٹ یا پلیٹ سے تلاش|ट्रिप नंबर, ग्राहक या प्लेट से खोजें|ট্রিপ নম্বর, ক্লায়েন্ট বা প্লেট দিয়ে খুঁজুন
+n_trips|{n} رحلة|{n} trips|{n} سفر|{n} ट्रिप|{n}টি ট্রিপ
+days|يوم|days|دن|दिन|দিন
+due_date|الاستحقاق|Due|واجب الادا|देय|দেয়
+overdue|متأخر|Overdue|تاخیر شدہ|अतिदेय|মেয়াদোত্তীর্ণ
+unpaid_trips|رحلات غير محصّلة|Uncollected trips|غیر وصول شدہ سفر|असंग्रहित ट्रिप|অসংগৃহীত ট্রিপ
+trip_no|رقم الرحلة|Trip no.|سفر نمبر|ट्रिप नंबर|ট্রিপ নম্বর
+km_total|الكيلومترات|Kilometers|کلومیٹر|किलोमीटर|কিলোমিটার
+diesel_l|الديزل (لتر)|Diesel (L)|ڈیزل (لیٹر)|डीज़ल (लीटर)|ডিজেল (লিটার)
+per_km|تكلفة الكيلو|Cost per km|فی کلومیٹر لاگت|प्रति किमी लागत|প্রতি কিমি খরচ
+documents|الوثائق|Documents|دستاویزات|दस्तावेज़|নথি
+general_info|البيانات الأساسية|Basic info|بنیادی معلومات|मूल जानकारी|মৌলিক তথ্য
+lock_unlocked|تم فك القفل|Unlocked|ان لاک ہو گیا|अनलॉक हुआ|আনলক হয়েছে
+tyre_replaced_note|تم تسجيل الكفر كـ«اتبدّل». أضف الكفر الجديد من صفحة الكفرات.|Tyre marked as replaced. Add the new tyre from the Tyres page.|ٹائر تبدیل شدہ درج۔ نیا ٹائر ٹائر صفحے سے شامل کریں۔|टायर बदला गया दर्ज। नया टायर टायर पेज से जोड़ें।|টায়ার বদলানো হিসেবে লেখা হয়েছে। নতুন টায়ার টায়ার পাতায় যোগ করুন।
+activity|سجل العمليات|Activity log|سرگرمی لاگ|गतिविधि लॉग|কার্যকলাপ লগ
+trip_counts|عدد الرحلات حسب الشاحنة|Trips by truck|ٹرک کے لحاظ سے سفر|ट्रक के अनुसार ट्रिप|ট্রাক অনুযায়ী ট্রিপ
+`;
+const T={};
+for(const line of DICT.trim().split('\n')){const p=line.split('|');T[p[0]]=p.slice(1)}
+const LIDX={ar:0,en:1,ur:2,hi:3,bn:4};
+let LANG='ar';
+function t(k,v){const r=T[k];let s=r?(r[LIDX[LANG]]||r[1]||r[0]):k;if(v)for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s}
+
+/* ===== Load Manager — single-page app (state in localStorage, photos in IndexedDB) ===== */
+const KEY='naql-demo-v1',SES_KEY='naql-session',PREF_KEY='naql-prefs';
+let S=null,SES=null,PREFS={lang:'ar',theme:'auto'};
+const ui={tab:'home',stack:[],filter:'active',q:'',fleetTab:'trucks',clientTab:'clients',month:null,sheet:null,form:{},errs:{},confirm:null,loginUser:null,repTab:'truck'};
+
+/* ---------- helpers ---------- */
+const $=s=>document.querySelector(s);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=p=>p+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const r2=n=>Math.round((+n||0)*100)/100;
+const pad=n=>String(n).padStart(2,'0');
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())};
+const nowISO=()=>{const d=new Date();return today()+'T'+pad(d.getHours())+':'+pad(d.getMinutes())};
+const monthOf=d=>(d||'').slice(0,7);
+const curMonth=()=>today().slice(0,7);
+const addDays=(d,n)=>{const x=new Date(d+'T00:00:00');x.setDate(x.getDate()+n);return x.getFullYear()+'-'+pad(x.getMonth()+1)+'-'+pad(x.getDate())};
+const daysBetween=(a,b)=>Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/864e5);
+const loc=()=>LANG+'-u-ca-gregory-nu-latn';
+const fdate=d=>{if(!d)return '—';try{return new Intl.DateTimeFormat(loc(),{day:'numeric',month:'short',year:'numeric'}).format(new Date(d.length<=10?d+'T00:00:00':d))}catch(e){return d}};
+const fdt=d=>{if(!d)return '—';try{return new Intl.DateTimeFormat(loc(),{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(d))}catch(e){return d}};
+const fmonth=m=>{try{return new Intl.DateTimeFormat(loc(),{month:'long',year:'numeric'}).format(new Date(m+'-01T00:00:00'))}catch(e){return m}};
+const fmonthS=m=>{try{return new Intl.DateTimeFormat(loc(),{month:'short'}).format(new Date(m+'-01T00:00:00'))}catch(e){return m}};
+const nf=(n,d=2)=>(+n||0).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+const money=n=>`<span class="num">${nf(n)}</span> ${t('sar')}`;
+const moneyT=n=>nf(n)+' '+t('sar');
+const int=n=>`<span class="num">${nf(n,0)}</span>`;
+const prevMonth=(m,k=1)=>{const d=new Date(m+'-01T00:00:00');d.setMonth(d.getMonth()-k);return d.getFullYear()+'-'+pad(d.getMonth()+1)};
+const sum=(a,f)=>a.reduce((s,x)=>s+(+f(x)||0),0);
+
+/* ---------- icons ---------- */
+const I=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+const IC={
+ home:I('<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>'),
+ route:I('<circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H16a3 3 0 0 0 0-6H8a3 3 0 0 1 0-6h7.5"/>'),
+ truck:I('<path d="M2 6h11v10H2z"/><path d="M13 9h4l4 4v3h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>'),
+ users:I('<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.8c1.6.8 2.6 2.5 3 5.2"/>'),
+ grid:I('<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>'),
+ plus:I('<path d="M12 5v14M5 12h14"/>'),
+ back:I('<path d="M9 6l6 6-6 6"/>'),
+ chev:I('<path d="M15 6l-6 6 6 6"/>'),
+ x:I('<path d="M6 6l12 12M18 6L6 18"/>'),
+ fuel:I('<path d="M4 20V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15"/><path d="M3 20h12M14 9h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/><path d="M7 7h4"/>'),
+ wrench:I('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>'),
+ tyre:I('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21"/>'),
+ cash:I('<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/>'),
+ person:I('<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>'),
+ dots:I('<circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/>'),
+ check:I('<path d="M5 12.5l4.5 4.5L19 7"/>'),
+ alert:I('<path d="M12 3l10 18H2z"/><path d="M12 10v4M12 17.5v.01"/>'),
+ doc:I('<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/>'),
+ chart:I('<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'),
+ cal:I('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'),
+ globe:I('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/>'),
+ out:I('<path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/>'),
+ lock:I('<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'),
+ save:I('<path d="M12 3v12M7 10l5 5 5-5M4 21h16"/>'),
+ upload:I('<path d="M12 21V9M7 14l5-5 5 5M4 3h16"/>'),
+ coin:I('<circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.5-1-1.6-1.5-3-1.5-1.7 0-3 .9-3 2s1.3 1.7 3 2 3 .9 3 2-1.3 2-3 2c-1.4 0-2.5-.5-3-1.5M12 6.5v11"/>'),
+ pin:I('<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>'),
+ printer:I('<path d="M7 8V3h10v5"/><rect x="3" y="8" width="18" height="9" rx="2"/><path d="M7 14h10v7H7z"/>'),
+ clipboard:I('<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/>'),
+};
+
+/* ---------- photos (IndexedDB) ---------- */
+let idb=null;
+function idbOpen(){return new Promise(res=>{try{const r=indexedDB.open('naql-photos',1);r.onupgradeneeded=()=>r.result.createObjectStore('p');r.onsuccess=()=>{idb=r.result;res(idb)};r.onerror=()=>res(null)}catch(e){res(null)}})}
+function photoPut(id,data){return new Promise(res=>{if(!idb)return res(false);try{const tx=idb.transaction('p','readwrite');tx.objectStore('p').put(data,id);tx.oncomplete=()=>res(true);tx.onerror=()=>res(false)}catch(e){res(false)}})}
+function photoGet(id){return new Promise(res=>{if(!idb)return res(null);try{const r=idb.transaction('p').objectStore('p').get(id);r.onsuccess=()=>res(r.result||null);r.onerror=()=>res(null)}catch(e){res(null)}})}
+const photoCache={};
+async function hydratePhotos(root){for(const img of root.querySelectorAll('img[data-ph]')){const id=img.dataset.ph;if(!photoCache[id])photoCache[id]=await photoGet(id);if(photoCache[id])img.src=photoCache[id];else img.style.display='none'}}
+function shrink(file){return new Promise(res=>{const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const m=1100,k=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.72))};im.onerror=()=>res(null);im.src=fr.result};fr.onerror=()=>res(null);fr.readAsDataURL(file)})}
+
+/* ---------- state ---------- */
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('⚠ storage full','bad')}}
+function savePrefs(){try{localStorage.setItem(PREF_KEY,JSON.stringify(PREFS))}catch(e){}}
+function log(msg){S.log.unshift({at:nowISO(),by:SES?SES.name:'',msg});S.log.length=Math.min(S.log.length,300)}
+const byId=(arr,id)=>(S[arr]||[]).find(x=>x.id===id);
+
+function seed(){
+  const rnd=(()=>{let s=7;return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}})();
+  const T0=today(),M=curMonth();
+  S={v:1,seq:1000,
+   settings:{company:'مؤسسة بن جليل للنقليات',cr:'',vatNo:'',address:'',phone:'',vat:15,alertDays:30,dieselPrice:1.66},
+   users:[{id:'u1',name:'المدير',role:'manager',pin:'1234'},{id:'u2',name:'المحاسب',role:'accountant',pin:'1234'},{id:'u3',name:'مشرف الحركة',role:'dispatcher',pin:'1234'}],
+   trucks:[],drivers:[],driverTx:[],tyres:[],clients:[],routes:[],trips:[],fixed:[],log:[]};
+  const tr=[['ر ط ب 4521','Mercedes','Actros',2021,'tr_curtain',25,412300,9600,'own_cash',0],['أ ص ن 7810','Volvo','FH',2022,'tr_flat',26,288900,10400,'own_loan',6500],['ح ق د 3302','Isuzu','Giga',2019,'tr_tipper',22,596100,8200,'own_cash',0],['س ع م 1187','MAN','TGX',2023,'tr_reefer',24,154700,11200,'own_loan',7200],['ك ل ر 9064','Hino','700',2020,'tr_flat',25,503800,8800,'own_cash',0]];
+  tr.forEach((x,i)=>S.trucks.push({id:'t'+(i+1),plate:x[0],make:x[1],model:x[2],year:x[3],vin:'',trailer:x[4],cap:x[5],odo:x[6],status:'available',
+    docs:{istimara:addDays(T0,[200,18,320,140,-4][i]),insurance:addDays(T0,[90,250,25,300,160][i]),inspection:addDays(T0,[60,110,12,190,75][i]),opcard:addDays(T0,[400,220,170,35,260][i])},
+    insAnnual:x[7],own:x[8],installment:x[9],serviceEvery:10000,lastService:x[6]-[3200,9700,6100,1800,4500][i]}));
+  const dr=[['محمد أصغر','0551234501','2'+'412345601',2900,'t1'],['راجيش كومار','0551234502','2'+'412345602',2700,'t2'],['عبدالرحمن حسين','0551234503','2'+'412345603',3100,'t3'],['شفيق الإسلام','0551234504','2'+'412345604',2600,'t4'],['سليم خان','0551234505','2'+'412345605',2800,'t5']];
+  dr.forEach((x,i)=>S.drivers.push({id:'d'+(i+1),name:x[0],phone:x[1],idNo:x[2],idExp:addDays(T0,[120,22,300,210,80][i]),licExp:addDays(T0,[400,180,15,500,260][i]),salary:x[3],allow:500,mode:'em_trip',rate:150,truckId:x[4],status:'ds_active'}));
+  S.clients=[{id:'c1',name:'شركة الخليج للمقاولات',cr:'2050012345',vatNo:'300012345600003',contact:'م. فهد',phone:'0138000001',address:'الدمام',terms:'t_credit',days:30,limit:60000},
+   {id:'c2',name:'مصنع الشرق للأسمنت',cr:'2055012346',vatNo:'300012345700003',contact:'أ. خالد',phone:'0138000002',address:'الجبيل',terms:'t_credit',days:45,limit:80000},
+   {id:'c3',name:'مؤسسة الريان للتجارة',cr:'1010012347',vatNo:'300012345800003',contact:'أ. سعد',phone:'0118000003',address:'الرياض',terms:'t_cash',days:0,limit:0},
+   {id:'c4',name:'شركة النخبة اللوجستية',cr:'4030012348',vatNo:'300012345900003',contact:'أ. ماجد',phone:'0128000004',address:'جدة',terms:'t_credit',days:30,limit:50000}];
+  S.routes=[{id:'r1',from:'الدمام',to:'الرياض',km:410,price:2200,diesel:250,driver:150},{id:'r2',from:'الجبيل',to:'الرياض',km:480,price:2500,diesel:290,driver:150},
+   {id:'r3',from:'الدمام',to:'جدة',km:1340,price:6200,diesel:800,driver:450},{id:'r4',from:'الرياض',to:'القصيم',km:360,price:1900,diesel:220,driver:120},{id:'r5',from:'الدمام',to:'الأحساء',km:160,price:1000,diesel:100,driver:80}];
+  const cargos=['حديد تسليح','أسمنت','مواد بناء','مواد غذائية','أنابيب','بلاستيك خام'];
+  const routeFor={c1:['r1','r5','r3'],c2:['r2','r1'],c3:['r4','r1'],c4:['r3','r1']};
+  // six months of history
+  for(let k=5;k>=0;k--){const m=prevMonth(M,k);const dim=k===0?Math.max(1,+T0.slice(8)):28;
+    S.trucks.forEach((trk,ti)=>{const n=k===0?Math.max(2,Math.round(6.5*dim/28)):5+Math.floor(rnd()*3);
+      for(let j=0;j<n;j++){const cid=['c1','c2','c3','c4'][Math.floor(rnd()*4)],rid=routeFor[cid][Math.floor(rnd()*routeFor[cid].length)],rt=byId('routes',rid);
+        const day=Math.min(dim,1+Math.floor((j+rnd())*dim/n));const ld=m+'-'+pad(day);if(ld>T0)continue;
+        const price=r2(rt.price*(0.95+rnd()*0.15)),no=++S.seq,dkm=Math.round(rt.km*(1.0+rnd()*0.08));
+        const tp={id:'p'+no,no,clientId:cid,routeId:rid,from:rt.from,to:rt.to,cargo:cargos[Math.floor(rnd()*cargos.length)],weight:Math.round(15+rnd()*10),loadDate:ld,price,vat:15,
+          truckId:trk.id,driverId:'d'+(ti+1),status:'delivered',depart:ld+'T06:00',arrive:(addDays(ld,rt.km>900?2:1)>T0?T0:addDays(ld,rt.km>900?2:1))+'T15:00',odoStart:0,odoEnd:dkm,bayan:'',notes:'',expenses:[],payments:[],confirmed:null,created:ld};
+        const lit=Math.round(rt.diesel*(0.92+rnd()*0.22)/1.66);
+        tp.expenses.push({id:uid('e'),type:'ex_diesel',amount:r2(lit*1.66),liters:lit,ppl:1.66,station:'ساسكو',date:ld});
+        tp.expenses.push({id:uid('e'),type:'ex_driver',amount:rt.driver,date:ld});
+        if(rnd()<.12)tp.expenses.push({id:uid('e'),type:'ex_maint',amount:r2(180+rnd()*900),desc:['تغيير سير','إصلاح كهرباء','تسريب هواء','تغيير لمبات'][Math.floor(rnd()*4)],workshop:'ورشة الطريق',date:ld});
+        if(rnd()<.08)tp.expenses.push({id:uid('e'),type:'ex_tyre',amount:r2(rnd()<.5?120:1350),action:rnd()<.5?'repair':'replace',desc:'',date:ld});
+        if(rnd()<.15)tp.expenses.push({id:uid('e'),type:'ex_other',amount:r2(40+rnd()*160),desc:'موازين ومواقف',date:ld});
+        const tot=r2(price*1.15),age=daysBetween(ld,T0);
+        if(age>40||(age>12&&rnd()<.7)){tp.payments.push({id:uid('y'),amount:tot,method:rnd()<.7?'m_transfer':'m_cash',ref:String(Math.floor(rnd()*9e8)),bank:'الراجحي',date:addDays(ld,Math.min(age,5+Math.floor(rnd()*25))),by:'المحاسب'});
+          if(age>20||rnd()<.5)tp.confirmed={by:'المدير',at:addDays(ld,Math.min(age,8+Math.floor(rnd()*25)))+'T12:00'}}
+        else if(age>6&&rnd()<.3)tp.payments.push({id:uid('y'),amount:r2(tot/2),method:'m_cash',ref:'',bank:'',date:addDays(ld,3),by:'المحاسب'});
+        S.trips.push(tp)}});
+    S.fixed.push({id:uid('f'),month:m,cat:'fc_salaries',truckId:'',amount:9000,note:''},{id:uid('f'),month:m,cat:'fc_rent',truckId:'',amount:3000,note:''},{id:uid('f'),month:m,cat:'fc_telecom',truckId:'',amount:650,note:''});
+  }
+  // live trips today
+  const live=[['t1','d1','c1','r1','onroad'],['t3','d3','c2','r2','scheduled'],['t4','d4','c4','r3','new']];
+  live.forEach(x=>{const rt=byId('routes',x[3]),no=++S.seq,trk=byId('trucks',x[0]);S.trips.push({id:'p'+no,no,clientId:x[2],routeId:x[3],from:rt.from,to:rt.to,cargo:'مواد بناء',weight:22,loadDate:T0,price:rt.price,vat:15,
+    truckId:x[4]==='new'?'':x[0],driverId:x[4]==='new'?'':x[1],status:x[4],depart:x[4]==='onroad'?T0+'T05:30':'',arrive:'',odoStart:x[4]==='onroad'?trk.odo:'',odoEnd:'',bayan:'',notes:'',
+    expenses:x[4]==='onroad'?[{id:uid('e'),type:'ex_diesel',amount:r2(200*1.66),liters:200,ppl:1.66,station:'نفط',date:T0}]:[],payments:[],confirmed:null,created:T0});if(x[4]==='onroad')trk.status='ts_trip'});
+  S.trucks.forEach(x=>{if(x.status==='available')x.status='ts_available'});
+  // fix odometers for delivered trips: chain them per truck
+  S.trucks.forEach(trk=>{let odo=trk.odo-sum(S.trips.filter(p=>p.truckId===trk.id&&p.status==='delivered'),p=>p.odoEnd);
+    S.trips.filter(p=>p.truckId===trk.id&&p.status==='delivered').sort((a,b)=>a.loadDate<b.loadDate?-1:1).forEach(p=>{const d=p.odoEnd;p.odoStart=odo;p.odoEnd=odo+d;odo+=d})});
+  const pos=['أمامي يمين','أمامي يسار','خلفي 1 يمين','خلفي 1 يسار','خلفي 2 يمين','خلفي 2 يسار'];
+  S.trucks.forEach(trk=>pos.forEach((p,i)=>S.tyres.push({id:uid('y'),truckId:trk.id,pos:p,brand:['Bridgestone','Michelin','Hankook'][i%3],size:'315/80R22.5',price:1350,date:addDays(T0,-200-i*20),odo:trk.odo-30000-i*4000,status:'ty_ok'})));
+  S.driverTx.push({id:uid('x'),driverId:'d1',date:addDays(T0,-10),type:'advance',amount:1000,note:'عهدة طريق'},{id:uid('x'),driverId:'d1',date:addDays(T0,-3),type:'settle',amount:600,note:'فواتير ديزل'},{id:uid('x'),driverId:'d3',date:addDays(T0,-6),type:'advance',amount:500,note:''});
+  S.log.push({at:nowISO(),by:'',msg:'demo'});
+  save();
+}
+function load(){try{const r=localStorage.getItem(KEY);if(r)S=JSON.parse(r)}catch(e){S=null}if(!S)seed();
+  try{PREFS=Object.assign(PREFS,JSON.parse(localStorage.getItem(PREF_KEY)||'{}'))}catch(e){}
+  try{SES=JSON.parse(localStorage.getItem(SES_KEY)||'null')}catch(e){SES=null}
+  if(SES&&!S.users.find(u=>u.id===SES.id))SES=null;
+  if(S.settings.company==='مؤسسة النقليات'){S.settings.company='مؤسسة بن جليل للنقليات';save()}
+  LANG=PREFS.lang||'ar';ui.month=curMonth()}
+
+/* ---------- permissions ---------- */
+const P={
+ manager:['*'],
+ accountant:['pay','fixed','clients','reports','viewAll','invoice'],
+ dispatcher:['trips','expenses','fleet','routes','viewAll'],
+};
+const can=a=>!!SES&&(P[SES.role].includes('*')||P[SES.role].includes(a));
+function guard(a){if(can(a))return true;toast(t('not_allowed'),'bad');return false}
+
+/* ---------- money calculations ---------- */
+const tripTotal=p=>r2(p.price*(1+(p.vat??S.settings.vat)/100));
+const tripVat=p=>r2(tripTotal(p)-p.price);
+const tripExp=p=>r2(sum(p.expenses,e=>e.amount));
+const tripPaid=p=>r2(sum(p.payments,y=>y.amount));
+const tripDue=p=>r2(tripTotal(p)-tripPaid(p));
+const isLive=p=>p.status!=='cancelled';
+function payState(p){if(p.status!=='delivered')return null;if(p.confirmed)return 'pay_confirmed';const pd=tripPaid(p);if(pd<=0)return 'pay_unpaid';if(pd<tripTotal(p)-.01)return 'pay_partial';return 'pay_paid'}
+const truckDrivers=id=>S.drivers.filter(d=>d.truckId===id&&d.status!=='ds_left');
+const activeTrucks=()=>S.trucks.filter(x=>x.status!=='ts_stopped');
+function truckAutoFixed(trk){return r2((+trk.insAnnual||0)/12+(trk.own==='own_loan'?(+trk.installment||0):0)+sum(truckDrivers(trk.id),d=>(+d.salary||0)+(+d.allow||0)))}
+// the current month is charged only for the days elapsed so far, so mid-month profit isn't distorted
+const monthFactor=m=>{if(m!==curMonth())return 1;const d=new Date();const dim=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();return d.getDate()/dim};
+function truckFixed(id,m){const trk=byId('trucks',id);if(!trk)return 0;const n=Math.max(1,activeTrucks().length);
+  return r2(monthFactor(m)*(truckAutoFixed(trk)+sum(S.fixed.filter(f=>f.month===m&&f.truckId===id),f=>f.amount)+sum(S.fixed.filter(f=>f.month===m&&!f.truckId),f=>f.amount)/n))}
+function monthFixed(m){return r2(sum(S.trucks.filter(x=>x.status!=='ts_stopped'||S.fixed.some(f=>f.truckId===x.id&&f.month===m)),x=>truckFixed(x.id,m)))}
+const tripsIn=(m,f)=>S.trips.filter(p=>isLive(p)&&monthOf(p.loadDate)===m&&(!f||f(p)));
+function fixedShare(p){if(!p.truckId||!isLive(p))return 0;const m=monthOf(p.loadDate);const n=tripsIn(m,x=>x.truckId===p.truckId).length;return n?r2(truckFixed(p.truckId,m)/n):0}
+const tripProfit=p=>r2(p.price-tripExp(p)-fixedShare(p));
+const tripKm=p=>(+p.odoEnd>0&&+p.odoStart>=0&&+p.odoEnd>=+p.odoStart)?(+p.odoEnd-+p.odoStart):0;
+const clientBalance=id=>r2(sum(S.trips.filter(p=>p.clientId===id&&p.status==='delivered'),tripDue));
+function dueDateOf(p){const c=byId('clients',p.clientId);const base=(p.arrive||p.loadDate||'').slice(0,10);return addDays(base,c&&c.terms==='t_credit'?(+c.days||0):3)}
+function monthStats(m){const ps=tripsIn(m);const rev=sum(ps,p=>p.price),vexp=sum(ps,tripExp),fx=monthFixed(m);return{trips:ps.length,rev:r2(rev),vexp:r2(vexp),fixed:fx,net:r2(rev-vexp-fx)}}
+
+/* ---------- alerts ---------- */
+function alerts(){const out=[],T0=today(),lim=+S.settings.alertDays||30;
+  const docTxt=d=>{const n=daysBetween(T0,d);return n<0?t('expired'):t('expires_in',{n})};
+  for(const trk of S.trucks){if(trk.status==='ts_stopped')continue;
+    for(const k of ['istimara','insurance','inspection','opcard']){const d=trk.docs&&trk.docs[k];if(d&&daysBetween(T0,d)<=lim)out.push({lvl:daysBetween(T0,d)<0?'bad':'warn',txt:t('al_doc',{doc:t(k),p:trk.plate,d:docTxt(d)}),go:['truck',trk.id],sort:daysBetween(T0,d)})}
+    if(+trk.serviceEvery&&(+trk.odo-(+trk.lastService||0))>=+trk.serviceEvery-500)out.push({lvl:'warn',txt:t('al_service',{p:trk.plate}),go:['truck',trk.id],sort:5})}
+  for(const d of S.drivers){if(d.status==='ds_left')continue;for(const[k,f]of[['id_exp','idExp'],['lic_exp','licExp']]){const x=d[f];if(x&&daysBetween(T0,x)<=lim)out.push({lvl:daysBetween(T0,x)<0?'bad':'warn',txt:t('al_driver',{doc:t(k),n:d.name,d:docTxt(x)}),go:['driver',d.id],sort:daysBetween(T0,x)})}}
+  for(const c of S.clients){const late=S.trips.filter(p=>p.clientId===c.id&&p.status==='delivered'&&tripDue(p)>.01&&dueDateOf(p)<T0);if(late.length)out.push({lvl:'bad',txt:t('al_overdue',{c:c.name,a:moneyT(sum(late,tripDue))}),go:['client',c.id],sort:-50});
+    if(+c.limit&&clientBalance(c.id)>+c.limit)out.push({lvl:'bad',txt:t('al_limit',{c:c.name}),go:['client',c.id],sort:-40})}
+  for(const p of S.trips){if(!isLive(p))continue;const rt=byId('routes',p.routeId);
+    if(rt&&p.status!=='new'){const used=sum(p.expenses.filter(e=>e.type==='ex_diesel'||e.type==='ex_driver'),e=>e.amount);if(used>((+rt.diesel||0)+(+rt.driver||0))*1.2&&daysBetween(p.loadDate,T0)<=45)out.push({lvl:'warn',txt:t('al_highcost',{n:p.no}),go:['trip',p.id],sort:10})}
+    if(payState(p)==='pay_paid')out.push({lvl:'warn',txt:t('al_unconfirmed',{n:p.no}),go:['trip',p.id],sort:0})}
+  return out.sort((a,b)=>a.sort-b.sort)}
+
+/* ---------- toast ---------- */
+let toastT;function toast(msg,kind){const el=$('#toast');el.className='toast'+(kind?' '+kind:'');el.textContent=msg;el.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>el.hidden=true,2600)}
+
+/* ---------- labels ---------- */
+const ST={new:['st_new',''],scheduled:['st_scheduled','info'],onroad:['st_onroad','amber'],delivered:['st_delivered','good'],cancelled:['st_cancelled','bad']};
+const PAYC={pay_unpaid:'bad',pay_partial:'warn',pay_paid:'info',pay_confirmed:'good'};
+const pill=(k,c)=>`<span class="pill ${c||''}">${esc(t(k))}</span>`;
+const stPill=p=>pill(ST[p.status][0],ST[p.status][1]);
+const payPill=p=>{const s=payState(p);return s?pill(s,PAYC[s]):''};
+const clientName=id=>{const c=byId('clients',id);return c?c.name:'—'};
+const plateOf=id=>{const x=byId('trucks',id);return x?x.plate:'—'};
+const driverName=id=>{const x=byId('drivers',id);return x?x.name:'—'};
+const EXIC={ex_diesel:IC.fuel,ex_driver:IC.person,ex_maint:IC.wrench,ex_tyre:IC.tyre,ex_other:IC.coin};
+const TRUCK_ST={ts_available:'good',ts_trip:'amber',ts_maint:'warn',ts_stopped:'bad'};
+
+/* ---------- form sheet ---------- */
+/* field: {k,l,type,opts:[[v,label]],req,full,show(f),onch(f),hint,min,step} */
+function openForm(o){ui.sheet=o;ui.form=Object.assign({},o.values||{});ui.errs={};renderSheet();setTimeout(()=>{const el=$('#sheet input:not([type=file]),#sheet select');if(el&&!o.noFocus)el.focus({preventScroll:true})},60)}
+function closeSheet(){ui.sheet=null;ui.form={};$('#sheet').innerHTML=''}
+function fieldHTML(f){const v=ui.form[f.k]??'',err=ui.errs[f.k]?' err':'',lab=`<span>${esc(f.l)}${f.req?' <i>*</i>':''}</span>`,id='f_'+f.k;
+  if(f.type==='select')return`<label class="fld${err}${f.full?' full':''}" for="${id}">${lab}<select id="${id}" data-fk="${f.k}">${f.empty!==false?`<option value="">—</option>`:''}${f.opts.map(([a,b])=>`<option value="${esc(a)}" ${String(v)===String(a)?'selected':''}>${esc(b)}</option>`).join('')}</select>${f.hint?`<span class="hint">${esc(f.hint)}</span>`:''}</label>`;
+  if(f.type==='textarea')return`<label class="fld full${err}" for="${id}">${lab}<textarea id="${id}" data-fk="${f.k}">${esc(v)}</textarea></label>`;
+  if(f.type==='photo')return`<div class="fld full">${lab}<div class="photo-in">${v?`<img data-ph="${esc(v)}" alt="">`:''}<label class="btn sec sm">${IC.upload}${esc(v?t('change_photo'):t('add_photo'))}<input type="file" accept="image/*" data-photo="${f.k}" hidden></label></div></div>`;
+  const ty=f.type==='number'?'text':(f.type||'text'),im=f.type==='number'?' inputmode="decimal" dir="ltr"':f.type==='tel'?' inputmode="tel" dir="ltr"':f.type==='pin'?' inputmode="numeric" maxlength="4" dir="ltr"':'';
+  return`<label class="fld${err}${f.full?' full':''}" for="${id}">${lab}<input id="${id}" type="${ty==='pin'?'password':ty}"${im} value="${esc(v)}" data-fk="${f.k}" autocomplete="off">${f.hint?`<span class="hint">${esc(f.hint)}</span>`:''}</label>`}
+function renderSheet(){const o=ui.sheet;if(!o){$('#sheet').innerHTML='';return}
+  const fields=o.fields.filter(f=>!f.show||f.show(ui.form));
+  $('#sheet').innerHTML=`<div class="scrim" data-act="sheet-bg"><div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(o.title)}">
+   <header><h2>${esc(o.title)}</h2><button class="xbtn" data-act="sheet-close" aria-label="${esc(t('close'))}">${IC.x}</button></header>
+   <div class="body">${o.intro?`<div class="note ${o.introKind||''}">${esc(o.intro)}</div>`:''}<div class="fgrid">${fields.map(fieldHTML).join('')}</div>${o.extra?o.extra():''}</div>
+   <footer>${o.del?`<button class="btn ghost" data-act="sheet-del" style="flex:0 0 auto;color:var(--bad)">${esc(t('delete'))}</button>`:''}<button class="btn ghost" data-act="sheet-close">${esc(t('cancel'))}</button><button class="btn ${o.okKind||''}" data-act="sheet-ok">${esc(o.ok||t('save'))}</button></footer></div></div>`;
+  hydratePhotos($('#sheet'))}
+function sheetOK(){const o=ui.sheet;if(!o)return;const fields=o.fields.filter(f=>!f.show||f.show(ui.form));ui.errs={};
+  for(const f of fields){const v=ui.form[f.k];if(f.req&&(v===undefined||v===null||String(v).trim()===''))ui.errs[f.k]=1;
+    if(f.type==='number'&&v!==undefined&&String(v).trim()!==''){const n=parseFloat(String(v).replace(/,/g,''));if(!isFinite(n)||(f.min!==undefined&&n<f.min))ui.errs[f.k]=1}
+    if(f.type==='pin'&&v&&!/^\d{4}$/.test(v))ui.errs[f.k]=1}
+  if(Object.keys(ui.errs).length){renderSheet();toast(t('required'),'bad');return}
+  const out={};for(const f of fields){let v=ui.form[f.k];if(f.type==='number')v=String(v??'').trim()===''?'':parseFloat(String(v).replace(/,/g,''));out[f.k]=typeof v==='string'?v.trim():v}
+  const r=o.onSave(out);if(r===false)return;if(typeof r==='string'){toast(r,'bad');return}
+  closeSheet();save();render();toast(t('saved'))}
+
+/* ---------- navigation ---------- */
+function go(tab){ui.tab=tab;ui.stack=[];render();window.scrollTo(0,0)}
+function push(type,id){ui.stack.push({type,id});render();window.scrollTo(0,0)}
+function pop(){ui.stack.pop();render()}
+const cur=()=>ui.stack[ui.stack.length-1];
+const isRTL=()=>(LANGS.find(l=>l[0]===LANG)||LANGS[0])[2]==='rtl';
+const arrow=()=>isRTL()?'←':'→';
+function gone(){ui.stack.pop();const s=cur();return s?V[s.type](s.id):V[ui.tab]()}
+
+/* ---------- forms ---------- */
+const opt=(arr,lf)=>arr.map(x=>[x.id,lf(x)]);
+const truckOpts=()=>opt(S.trucks.filter(x=>x.status!=='ts_stopped'),x=>x.plate+' · '+x.make);
+const driverOpts=()=>opt(S.drivers.filter(x=>x.status==='ds_active'),x=>x.name);
+const keyOpts=keys=>keys.map(k=>[k,t(k)]);
+
+function tripForm(p){if(!guard('trips'))return;const isNew=!p;
+  openForm({title:t(isNew?'new_trip':'edit_trip'),values:p?{...p}:{loadDate:today(),vat:S.settings.vat},
+   fields:[
+    {k:'clientId',l:t('client'),type:'select',opts:opt(S.clients,c=>c.name),req:true,full:true},
+    {k:'routeId',l:t('route_pick'),type:'select',opts:opt(S.routes,r=>`${r.from} ${arrow()} ${r.to}`),full:true,onch:f=>{const r=byId('routes',f.routeId);if(r){f.from=r.from;f.to=r.to;f.price=r.price}}},
+    {k:'from',l:t('from'),req:true},{k:'to',l:t('to'),req:true},
+    {k:'cargo',l:t('cargo')},{k:'weight',l:t('weight'),type:'number',min:0},
+    {k:'loadDate',l:t('load_date'),type:'date',req:true},{k:'price',l:t('price'),type:'number',req:true,min:0},
+    {k:'truckId',l:t('truck'),type:'select',opts:truckOpts(),onch:f=>{const d=truckDrivers(f.truckId)[0];if(d&&!f.driverId)f.driverId=d.id}},
+    {k:'driverId',l:t('driver'),type:'select',opts:driverOpts()},
+    {k:'bayan',l:t('bayan'),full:true},{k:'notes',l:t('notes'),type:'textarea'}],
+   onSave:v=>{if(isNew){const no=++S.seq;const np={id:'p'+no,no,...v,vat:+S.settings.vat,status:(v.truckId&&v.driverId)?'scheduled':'new',depart:'',arrive:'',odoStart:'',odoEnd:'',expenses:[],payments:[],confirmed:null,created:today()};S.trips.push(np);log(`+ ${t('trip')} ${no}`);ui.stack=[{type:'trip',id:np.id}];ui.tab='trips'}
+     else{Object.assign(p,v);if(p.status==='new'&&p.truckId&&p.driverId)p.status='scheduled';log(`${t('edit_trip')} ${p.no}`)}}})}
+
+function expenseForm(p,e){if(!guard('expenses'))return;if(p.confirmed)return toast(t('locked_note'),'bad');
+  const tyres=S.tyres.filter(x=>x.truckId===p.truckId&&x.status!=='ty_replaced');
+  openForm({title:t('add_expense'),values:e?{...e}:{type:'ex_diesel',date:today(),ppl:S.settings.dieselPrice},del:!!e,
+   fields:[{k:'type',l:t('ex_type'),type:'select',opts:keyOpts(['ex_diesel','ex_driver','ex_maint','ex_tyre','ex_other']),req:true,full:true,empty:false},
+    {k:'liters',l:t('liters_n'),type:'number',min:0,show:f=>f.type==='ex_diesel',onch:f=>{if(f.liters&&f.ppl)f.amount=r2(f.liters*f.ppl)}},
+    {k:'ppl',l:t('ppl'),type:'number',min:0,show:f=>f.type==='ex_diesel',onch:f=>{if(f.liters&&f.ppl)f.amount=r2(f.liters*f.ppl)}},
+    {k:'amount',l:t('amount')+' ('+t('sar')+')',type:'number',req:true,min:0},{k:'date',l:t('date'),type:'date',req:true},
+    {k:'station',l:t('station'),show:f=>f.type==='ex_diesel'},{k:'odo',l:t('odo'),type:'number',min:0,show:f=>f.type==='ex_diesel'},
+    {k:'workshop',l:t('workshop'),show:f=>f.type==='ex_maint'},
+    {k:'tyreId',l:t('tyre'),type:'select',opts:opt(tyres,x=>x.pos+' · '+x.brand),show:f=>f.type==='ex_tyre'},
+    {k:'action',l:t('tyre_action'),type:'select',opts:[['repair',t('repair')],['replace',t('replace')]],show:f=>f.type==='ex_tyre',empty:false},
+    {k:'desc',l:t('desc'),full:true,show:f=>f.type!=='ex_diesel'},{k:'photo',l:t('photo'),type:'photo'}],
+   onDel:()=>{p.expenses=p.expenses.filter(x=>x.id!==e.id)},
+   onSave:v=>{if(v.type==='ex_tyre'&&!v.action)v.action='repair';
+     if(e)Object.assign(e,v);else p.expenses.push({id:uid('e'),...v});
+     if(v.type==='ex_tyre'&&v.tyreId){const ty=byId('tyres',v.tyreId);if(ty){ty.status=v.action==='replace'?'ty_replaced':'ty_repaired';if(v.action==='replace')setTimeout(()=>toast(t('tyre_replaced_note')),2700)}}
+     if(v.type==='ex_diesel'&&+v.odo){const trk=byId('trucks',p.truckId);if(trk&&+v.odo>+trk.odo)trk.odo=+v.odo}
+     log(`${t(v.type)} ${moneyT(v.amount)} · ${t('trip')} ${p.no}`)}})}
+
+function paymentForm(p,y){if(!guard('pay'))return;if(p.confirmed)return toast(t('locked_note'),'bad');
+  openForm({title:t('add_payment'),values:y?{...y}:{amount:Math.max(0,tripDue(p)),method:'m_transfer',date:today()},del:!!y,
+   fields:[{k:'amount',l:t('amount')+' ('+t('sar')+')',type:'number',req:true,min:0.01},{k:'date',l:t('date'),type:'date',req:true},
+    {k:'method',l:t('method'),type:'select',opts:keyOpts(['m_cash','m_transfer','m_cheque']),empty:false,full:true},
+    {k:'ref',l:t('ref'),show:f=>f.method!=='m_cash'},{k:'bank',l:t('bank'),show:f=>f.method!=='m_cash'},{k:'photo',l:t('photo'),type:'photo'}],
+   onDel:()=>{p.payments=p.payments.filter(x=>x.id!==y.id)},
+   onSave:v=>{if(y)Object.assign(y,v);else p.payments.push({id:uid('y'),...v,by:SES.name});log(`${t('add_payment')} ${moneyT(v.amount)} · ${t('trip')} ${p.no}`)}})}
+
+function truckForm(x){if(!guard('fleet'))return;const isNew=!x;
+  const v=x?{...x,...Object.fromEntries(Object.entries(x.docs||{}).map(([k,d])=>['doc_'+k,d]))}:{trailer:'tr_flat',own:'own_cash',status:'ts_available',serviceEvery:10000};
+  openForm({title:isNew?t('new_truck'):x.plate,values:v,del:!isNew&&can('*'),
+   fields:[{k:'plate',l:t('plate'),req:true},{k:'make',l:t('make')},{k:'model',l:t('model')},{k:'year',l:t('year'),type:'number'},{k:'vin',l:t('vin'),full:true},
+    {k:'trailer',l:t('trailer'),type:'select',opts:keyOpts(['tr_flat','tr_curtain','tr_reefer','tr_tipper','tr_tanker']),empty:false},{k:'cap',l:t('capacity'),type:'number',min:0},
+    {k:'odo',l:t('odometer'),type:'number',min:0,req:true},{k:'status',l:t('status'),type:'select',opts:keyOpts(['ts_available','ts_trip','ts_maint','ts_stopped']),empty:false},
+    {k:'doc_istimara',l:t('istimara')+' · '+t('expiry'),type:'date'},{k:'doc_insurance',l:t('insurance')+' · '+t('expiry'),type:'date'},
+    {k:'doc_inspection',l:t('inspection')+' · '+t('expiry'),type:'date'},{k:'doc_opcard',l:t('opcard')+' · '+t('expiry'),type:'date'},
+    {k:'insAnnual',l:t('ins_annual'),type:'number',min:0},{k:'own',l:t('ownership'),type:'select',opts:keyOpts(['own_cash','own_loan']),empty:false},
+    {k:'installment',l:t('installment'),type:'number',min:0,show:f=>f.own==='own_loan'},
+    {k:'serviceEvery',l:t('service_every'),type:'number',min:0},{k:'lastService',l:t('last_service'),type:'number',min:0}],
+   onDel:()=>{if(S.trips.some(p=>p.truckId===x.id))return t('not_allowed');S.trucks=S.trucks.filter(y=>y.id!==x.id);ui.stack=[]},
+   onSave:v=>{const docs={};for(const k of['istimara','insurance','inspection','opcard']){docs[k]=v['doc_'+k]||'';delete v['doc_'+k]}
+     if(isNew){const n={id:uid('t'),...v,docs};if(n.lastService==='')n.lastService=n.odo;S.trucks.push(n);log(`+ ${t('truck')} ${n.plate}`)}else{Object.assign(x,v,{docs});log(`${t('edit')} ${t('truck')} ${x.plate}`)}}})}
+
+function driverForm(x){if(!guard('fleet'))return;const isNew=!x;
+  openForm({title:isNew?t('new_driver'):x.name,values:x?{...x}:{mode:'em_trip',status:'ds_active'},del:!isNew&&can('*'),
+   fields:[{k:'name',l:t('name'),req:true,full:true},{k:'phone',l:t('phone'),type:'tel'},{k:'idNo',l:t('id_no')},{k:'idExp',l:t('id_exp'),type:'date'},{k:'licExp',l:t('lic_exp'),type:'date'},
+    {k:'salary',l:t('salary'),type:'number',min:0},{k:'allow',l:t('allowances'),type:'number',min:0},
+    {k:'mode',l:t('exp_mode'),type:'select',opts:keyOpts(['em_trip','em_day','em_km']),empty:false},{k:'rate',l:t('exp_rate'),type:'number',min:0},
+    {k:'truckId',l:t('assigned_truck'),type:'select',opts:opt(S.trucks,x=>x.plate)},{k:'status',l:t('status'),type:'select',opts:keyOpts(['ds_active','ds_leave','ds_left']),empty:false}],
+   onDel:()=>{if(S.trips.some(p=>p.driverId===x.id))return t('not_allowed');S.drivers=S.drivers.filter(y=>y.id!==x.id);ui.stack=[]},
+   onSave:v=>{if(isNew){S.drivers.push({id:uid('d'),...v});log(`+ ${t('driver')} ${v.name}`)}else Object.assign(x,v)}})}
+
+function tyreForm(x,truckId){if(!guard('fleet'))return;
+  openForm({title:x?t('tyre'):t('new_tyre'),values:x?{...x}:{truckId:truckId||'',date:today(),status:'ty_ok',odo:truckId?byId('trucks',truckId).odo:''},del:!!x,
+   fields:[{k:'truckId',l:t('truck'),type:'select',opts:opt(S.trucks,x=>x.plate),req:true,full:true},{k:'pos',l:t('position'),req:true},{k:'brand',l:t('brand')},{k:'size',l:t('size')},{k:'price',l:t('amount'),type:'number',min:0},
+    {k:'date',l:t('install_date'),type:'date'},{k:'odo',l:t('install_odo'),type:'number',min:0},{k:'status',l:t('status'),type:'select',opts:keyOpts(['ty_ok','ty_repaired','ty_replaced']),empty:false}],
+   onDel:()=>{S.tyres=S.tyres.filter(y=>y.id!==x.id)},
+   onSave:v=>{if(x)Object.assign(x,v);else S.tyres.push({id:uid('y'),...v})}})}
+
+function clientForm(x){if(!guard('clients')&&!can('trips'))return;const isNew=!x;
+  openForm({title:isNew?t('new_client'):x.name,values:x?{...x}:{terms:'t_cash',days:0},del:!isNew&&can('*'),
+   fields:[{k:'name',l:t('name'),req:true,full:true},{k:'cr',l:t('cr')},{k:'vatNo',l:t('vat_no')},{k:'contact',l:t('contact')},{k:'phone',l:t('phone'),type:'tel'},{k:'address',l:t('address'),full:true},
+    {k:'terms',l:t('terms'),type:'select',opts:keyOpts(['t_cash','t_credit']),empty:false},{k:'days',l:t('credit_days'),type:'number',min:0,show:f=>f.terms==='t_credit'},{k:'limit',l:t('credit_limit'),type:'number',min:0,show:f=>f.terms==='t_credit'}],
+   onDel:()=>{if(S.trips.some(p=>p.clientId===x.id))return t('not_allowed');S.clients=S.clients.filter(y=>y.id!==x.id);ui.stack=[]},
+   onSave:v=>{if(isNew){S.clients.push({id:uid('c'),...v});log(`+ ${t('client')} ${v.name}`)}else Object.assign(x,v)}})}
+
+function routeForm(x){if(!guard('routes'))return;
+  openForm({title:x?`${x.from} - ${x.to}`:t('new_route'),values:x?{...x}:{},del:!!x,
+   fields:[{k:'from',l:t('from'),req:true},{k:'to',l:t('to'),req:true},{k:'km',l:t('route_km'),type:'number',min:0},{k:'price',l:t('usual_price'),type:'number',min:0},{k:'diesel',l:t('usual_diesel'),type:'number',min:0},{k:'driver',l:t('usual_driver'),type:'number',min:0}],
+   onDel:()=>{S.routes=S.routes.filter(y=>y.id!==x.id)},
+   onSave:v=>{if(x)Object.assign(x,v);else S.routes.push({id:uid('r'),...v})}})}
+
+function fixedForm(x){if(!guard('fixed'))return;
+  openForm({title:x?t(x.cat):t('new_fixed'),values:x?{...x}:{month:ui.month,cat:'fc_salaries',truckId:''},del:!!x,
+   fields:[{k:'cat',l:t('category'),type:'select',opts:keyOpts(['fc_salaries','fc_rent','fc_telecom','fc_service','fc_tyres','fc_renewal','fc_other']),empty:false,full:true},
+    {k:'month',l:t('month'),type:'month',req:true},{k:'amount',l:t('amount')+' ('+t('sar')+')',type:'number',req:true,min:0},
+    {k:'truckId',l:t('applies_to'),type:'select',opts:[['',t('general')],...opt(S.trucks,x=>x.plate)],empty:false,full:true},{k:'note',l:t('notes'),full:true}],
+   onDel:()=>{S.fixed=S.fixed.filter(y=>y.id!==x.id)},
+   onSave:v=>{if(x)Object.assign(x,v);else S.fixed.push({id:uid('f'),...v});log(`${t('fixed_costs')} ${t(v.cat)} ${moneyT(v.amount)}`)}})}
+
+function custodyForm(d){if(!guard('pay')&&!can('fleet'))return;
+  openForm({title:t('custody')+' · '+d.name,values:{type:'advance',date:today()},
+   fields:[{k:'type',l:t('ex_type'),type:'select',opts:[['advance',t('advance')],['settle',t('settle')]],empty:false,full:true},{k:'amount',l:t('amount'),type:'number',req:true,min:0.01},{k:'date',l:t('date'),type:'date',req:true},{k:'note',l:t('notes'),full:true}],
+   onSave:v=>{S.driverTx.push({id:uid('x'),driverId:d.id,...v});log(`${t(v.type==='advance'?'advance':'settle')} ${d.name} ${moneyT(v.amount)}`)}})}
+
+function userForm(x){if(!guard('*'))return;
+  openForm({title:x?x.name:t('new_user'),values:x?{...x}:{role:'dispatcher'},del:!!x,
+   fields:[{k:'name',l:t('name'),req:true,full:true},{k:'role',l:t('role'),type:'select',opts:[['manager',t('role_manager')],['accountant',t('role_accountant')],['dispatcher',t('role_dispatcher')]],empty:false},{k:'pin',l:t('pin_code'),type:'pin',req:true}],
+   onDel:()=>{if(x.id===SES.id)return t('cant_delete_self');S.users=S.users.filter(y=>y.id!==x.id)},
+   onSave:v=>{if(x)Object.assign(x,v);else S.users.push({id:uid('u'),...v})}})}
+
+function settingsForm(){if(!guard('*'))return;
+  openForm({title:t('company'),values:{...S.settings},
+   fields:[{k:'company',l:t('company_name'),req:true,full:true},{k:'cr',l:t('cr')},{k:'vatNo',l:t('vat_no')},{k:'phone',l:t('phone'),type:'tel'},{k:'address',l:t('address')},
+    {k:'vat',l:t('vat_pct'),type:'number',min:0},{k:'dieselPrice',l:t('diesel_price'),type:'number',min:0},{k:'alertDays',l:t('alert_days'),type:'number',min:1}],
+   onSave:v=>{Object.assign(S.settings,v)}})}
+
+/* ---------- trip status actions ---------- */
+function tripAction(p,act){if(!guard('trips'))return;
+  if(act==='schedule'){if(!p.truckId||!p.driverId)return tripForm(p);p.status='scheduled';log(`${t('st_scheduled')} ${p.no}`);save();render();return}
+  if(act==='start'){if(!p.truckId||!p.driverId){toast(t('need_truck_driver'),'bad');return tripForm(p)}
+    const trk=byId('trucks',p.truckId);
+    openForm({title:t('act_start')+' · '+p.no,values:{odoStart:trk?trk.odo:'',depart:nowISO()},fields:[{k:'odoStart',l:t('odo_start'),type:'number',req:true,min:0},{k:'depart',l:t('depart'),type:'datetime-local',req:true}],
+     onSave:v=>{Object.assign(p,v,{status:'onroad'});if(trk)trk.status='ts_trip';log(`${t('st_onroad')} ${p.no}`)}});return}
+  if(act==='deliver'){const trk=byId('trucks',p.truckId),rt=byId('routes',p.routeId);
+    openForm({title:t('act_deliver')+' · '+p.no,values:{odoEnd:rt&&+p.odoStart?+p.odoStart+(+rt.km||0):'',arrive:nowISO(),pod:p.pod||''},
+     fields:[{k:'odoEnd',l:t('odo_end'),type:'number',req:true,min:0,hint:t('odo_start')+': '+nf(p.odoStart,0)},{k:'arrive',l:t('arrive'),type:'datetime-local',req:true},{k:'pod',l:t('pod'),type:'photo'}],
+     onSave:v=>{if(+v.odoEnd<+p.odoStart)return t('odo_invalid');Object.assign(p,v,{status:'delivered'});if(trk){if(+v.odoEnd>+trk.odo)trk.odo=+v.odoEnd;if(trk.status==='ts_trip')trk.status='ts_available'}log(`${t('st_delivered')} ${p.no}`)}});return}
+  if(act==='cancel'){ui.confirm={msg:t('act_cancel')+' '+p.no+'؟',ok:t('act_cancel'),fn:()=>{p.status='cancelled';const trk=byId('trucks',p.truckId);if(trk&&trk.status==='ts_trip')trk.status='ts_available';log(`${t('st_cancelled')} ${p.no}`)}};render();return}
+}
+
+/* ---------- views ---------- */
+const V={};
+const back=()=>`<button class="iconbtn" data-act="pop" aria-label="${esc(t('back'))}">${IC.back}</button>`;
+function bar(title,sub,right){return`<header class="appbar">${ui.stack.length?back():''}<h1>${esc(title)}${sub?`<div class="sub">${esc(sub)}</div>`:''}</h1>${right||''}</header>`}
+const sec=(title,body,act)=>`<section class="stack"><div class="spread"><h2>${esc(title)}</h2>${act||''}</div>${body}</section>`;
+const emptyBox=()=>`<div class="empty">${esc(t('no_data'))}</div>`;
+
+V.login=()=>{const u=ui.loginUser&&byId('users',ui.loginUser);
+  return`<div class="login"><div class="brand"><div class="logo">${IC.truck}</div><div><h1>${esc(t('appName'))}</h1><div class="muted small">${esc(S.settings.company)}</div></div></div>
+  <div class="seg" role="group" aria-label="${esc(t('language'))}">${LANGS.map(l=>`<button data-act="lang" data-id="${l[0]}" aria-pressed="${LANG===l[0]}">${l[1]}</button>`).join('')}</div>
+  <div class="card stack"><h2>${esc(t('choose_user'))}</h2><div class="users">${S.users.map(x=>`<button data-act="login-pick" data-id="${x.id}" aria-pressed="${ui.loginUser===x.id}"><span class="av">${esc(x.name.trim()[0]||'?')}</span><span class="grow"><b>${esc(x.name)}</b><br><span class="muted small">${esc(t('role_'+x.role))}</span></span></button>`).join('')}</div>
+  ${u?`<label class="fld"><span>${esc(t('pin'))}</span><input id="pin" class="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off" dir="ltr"></label><button class="btn block" data-act="login">${esc(t('enter'))}</button>`:''}</div>
+  <p class="note small">${esc(t('demo_pins'))}</p></div>`};
+
+V.home=()=>{const m=curMonth(),st=monthStats(m),al=alerts(),act=S.trips.filter(p=>p.status==='onroad'||p.status==='scheduled'||p.status==='new');
+  const recv=sum(S.trips.filter(p=>p.status==='delivered'),tripDue),unc=S.trips.filter(p=>payState(p)==='pay_paid').length;
+  const ms=[5,4,3,2,1,0].map(k=>prevMonth(m,k)),vals=ms.map(x=>monthStats(x).net),mx=Math.max(1,...vals.map(Math.abs));
+  return bar(S.settings.company,t('role_'+SES.role)+' · '+SES.name)+`<main class="stack">
+  <div class="kpis"><div class="kpi hero"><div class="l">${esc(t('net_profit'))} · ${esc(fmonth(m))}</div><div class="v">${money(st.net)}</div></div>
+   <div class="kpi"><div class="l">${esc(t('revenue'))}</div><div class="v">${int(st.rev)} <small>${t('sar')}</small></div></div>
+   <div class="kpi"><div class="l">${esc(t('costs'))}</div><div class="v">${int(st.vexp+st.fixed)} <small>${t('sar')}</small></div></div>
+   <div class="kpi"><div class="l">${esc(t('trips_count'))}</div><div class="v">${int(st.trips)}</div></div>
+   <div class="kpi"><div class="l">${esc(t('receivable'))}</div><div class="v">${int(recv)} <small>${t('sar')}</small></div></div></div>
+  ${unc&&can('*')?`<button class="note warn" data-act="trips-filter" data-id="topay" style="border:0;text-align:start;cursor:pointer">${IC.lock.replace('<svg','<svg style="width:16px;height:16px;vertical-align:-3px"')} ${esc(t('unconfirmed'))}: <b class="num">${unc}</b></button>`:''}
+  ${sec(t('active_trips'),act.length?`<div class="list">${act.slice(0,6).map(tripItem).join('')}</div>`:emptyBox(),`<button class="link" data-act="go" data-id="trips">${esc(t('view_all'))}</button>`)}
+  ${sec(t('alerts'),`<div class="card">${al.length?al.slice(0,8).map(a=>`<div class="alert ${a.lvl}" role="button" tabindex="0" data-act="open" data-type="${a.go[0]}" data-id="${a.go[1]}" style="cursor:pointer">${IC.alert}<span class="grow">${esc(a.txt)}</span></div>`).join(''):`<div class="muted small">${esc(t('no_alerts'))}</div>`}</div>`,al.length>8?`<button class="link" data-act="push" data-type="alerts">${esc(t('view_all'))} (${al.length})</button>`:'')}
+  ${sec(t('profit_6m'),`<div class="card"><div class="bars">${ms.map((x,i)=>`<div class="b"><em class="num ${vals[i]<0?'negv':''}">${nf(vals[i]/1000,1)}k</em><i class="${vals[i]<0?'neg':''}" style="height:${Math.max(3,Math.abs(vals[i])/mx*90)}px"></i><span>${esc(fmonthS(x))}</span></div>`).join('')}</div></div>`)}
+  </main>`};
+
+function tripItem(p){return`<button class="item" data-act="open" data-type="trip" data-id="${p.id}"><span class="ic">${IC.route}</span>
+  <span class="t"><b>${esc(p.from)} ${arrow()} ${esc(p.to)}</b><span><span class="num">#${p.no}</span> · ${esc(clientName(p.clientId))} · ${esc(plateOf(p.truckId))}</span></span>
+  <span class="e">${stPill(p)}${payPill(p)}<span class="small num">${nf(p.price,0)}</span></span></button>`}
+
+V.trips=()=>{const f=ui.filter,q=ui.q.trim().toLowerCase();
+  let ps=S.trips.slice().sort((a,b)=>(b.loadDate+b.no)>(a.loadDate+a.no)?1:-1);
+  const flt={active:p=>['new','scheduled','onroad'].includes(p.status),delivered:p=>p.status==='delivered',unpaid:p=>['pay_unpaid','pay_partial'].includes(payState(p)),topay:p=>payState(p)==='pay_paid',confirmed:p=>!!p.confirmed,cancelled:p=>p.status==='cancelled',all:()=>true};
+  ps=ps.filter(flt[f]||flt.all);
+  if(q)ps=ps.filter(p=>String(p.no).includes(q)||clientName(p.clientId).toLowerCase().includes(q)||plateOf(p.truckId).toLowerCase().includes(q)||(p.from+p.to).toLowerCase().includes(q));
+  const shown=ps.slice(0,120);
+  return bar(t('trips'),t('n_trips',{n:ps.length}))+`<main class="stack">
+  <input class="search" type="search" placeholder="${esc(t('search_trips'))}" value="${esc(ui.q)}" data-ch="q" aria-label="${esc(t('search'))}">
+  <div class="seg">${[['active','active_trips'],['delivered','st_delivered'],['unpaid','unpaid_trips'],['topay','pay_paid'],['confirmed','pay_confirmed'],['cancelled','st_cancelled'],['all','all']].map(([k,l])=>`<button data-act="trips-filter" data-id="${k}" aria-pressed="${f===k}">${esc(t(l))}</button>`).join('')}</div>
+  ${shown.length?`<div class="list">${shown.map(tripItem).join('')}</div>`:emptyBox()}</main>
+  ${can('trips')?`<button class="fab" data-act="trip-new" aria-label="${esc(t('new_trip'))}">${IC.plus}</button>`:''}`};
+
+V.trip=id=>{const p=byId('trips',id);if(!p)return gone();const lock=!!p.confirmed,rtl=isRTL();
+  const steps=['new','scheduled','onroad','delivered'],si=steps.indexOf(p.status);
+  const exp=tripExp(p),fx=fixedShare(p),prof=tripProfit(p),ps=payState(p);
+  const actions=[];if(can('trips')&&!lock){
+    if(p.status==='new')actions.push(`<button class="btn" data-act="trip-do" data-id="schedule">${esc(t('act_schedule'))}</button>`);
+    if(p.status==='scheduled')actions.push(`<button class="btn amber" data-act="trip-do" data-id="start">${IC.truck}${esc(t('act_start'))}</button>`);
+    if(p.status==='onroad')actions.push(`<button class="btn good" data-act="trip-do" data-id="deliver">${IC.check}${esc(t('act_deliver'))}</button>`);
+    if(['new','scheduled','onroad'].includes(p.status))actions.push(`<button class="btn ghost" data-act="trip-do" data-id="cancel">${esc(t('act_cancel'))}</button>`)}
+  return bar(t('trip')+' #'+p.no,clientName(p.clientId),can('trips')&&!lock&&p.status!=='cancelled'?`<button class="iconbtn" data-act="trip-edit" aria-label="${esc(t('edit'))}">${IC.wrench}</button>`:'')+`<main class="stack">
+  <div class="card stack"><div class="spread"><b style="font-size:1.08rem">${esc(p.from)} ${rtl?'←':'→'} ${esc(p.to)}</b>${stPill(p)}</div>
+   ${p.status!=='cancelled'?`<div class="steps">${steps.map((s,i)=>`<i class="${i<=si?'on':''}"></i>`).join('')}</div>`:''}
+   <dl class="kv"><dt>${esc(t('client'))}</dt><dd>${esc(clientName(p.clientId))}</dd><dt>${esc(t('cargo'))}</dt><dd>${esc(p.cargo||'—')}${p.weight?` · <span class="num">${p.weight}</span> ${t('tons')}`:''}</dd>
+   <dt>${esc(t('load_date'))}</dt><dd>${fdate(p.loadDate)}</dd><dt>${esc(t('truck'))}</dt><dd>${esc(plateOf(p.truckId))}</dd><dt>${esc(t('driver'))}</dt><dd>${esc(driverName(p.driverId))}</dd>
+   ${p.depart?`<dt>${esc(t('depart'))}</dt><dd>${fdt(p.depart)}</dd>`:''}${p.arrive?`<dt>${esc(t('arrive'))}</dt><dd>${fdt(p.arrive)}</dd>`:''}
+   ${tripKm(p)?`<dt>${esc(t('distance'))}</dt><dd>${int(tripKm(p))} ${t('km')}</dd>`:''}${p.bayan?`<dt>${esc(t('bayan'))}</dt><dd class="num">${esc(p.bayan)}</dd>`:''}${p.notes?`<dt>${esc(t('notes'))}</dt><dd>${esc(p.notes)}</dd>`:''}</dl>
+   ${p.pod?`<div class="row"><span class="muted small">${esc(t('pod'))}</span><img class="thumb" data-ph="${esc(p.pod)}" alt="" data-act="photo-view" data-id="${esc(p.pod)}"></div>`:''}
+   ${actions.length?`<div class="row">${actions.join('')}</div>`:''}</div>
+
+  <div class="card sum"><div class="spread"><span>${esc(t('price'))}</span><b>${money(p.price)}</b></div>
+   <div class="spread muted"><span>− ${esc(t('var_costs'))}</span><span>${money(exp)}</span></div>
+   <div class="spread muted"><span>− ${esc(t('fixed_share'))}</span><span>${money(fx)}</span></div>
+   <div class="spread tot"><span>${esc(t('trip_profit'))}</span><span class="${prof<0?'negv':'pos'}">${money(prof)}</span></div></div>
+
+  ${sec(t('expenses'),p.expenses.length?`<div class="list">${p.expenses.map(e=>`<button class="item" data-act="exp-edit" data-id="${e.id}"><span class="ic">${EXIC[e.type]||IC.coin}</span><span class="t"><b>${esc(t(e.type))}${e.type==='ex_tyre'&&e.action?' · '+esc(t(e.action)):''}</b><span>${fdate(e.date)}${e.liters?` · <span class="num">${nf(e.liters,0)}</span> ${t('liters')}`:''}${e.station?' · '+esc(e.station):''}${e.desc?' · '+esc(e.desc):''}</span></span><span class="e"><b>${money(e.amount)}</b>${e.photo?`<img class="thumb" style="width:34px;height:34px" data-ph="${esc(e.photo)}" alt="">`:''}</span></button>`).join('')}</div>`:emptyBox(),
+    can('expenses')&&!lock&&p.status!=='cancelled'?`<button class="btn sec sm" data-act="exp-new">${IC.plus}${esc(t('add'))}</button>`:'')}
+
+  ${p.status==='delivered'?sec(t('payments'),`<div class="card sum"><div class="spread"><span>${esc(t('price'))}</span><span>${money(p.price)}</span></div><div class="spread"><span>${esc(t('vat'))} <span class="num">${p.vat??S.settings.vat}%</span></span><span>${money(tripVat(p))}</span></div>
+     <div class="spread tot"><span>${esc(t('total_vat'))}</span><span>${money(tripTotal(p))}</span></div><div class="spread"><span>${esc(t('paid'))}</span><span class="pos">${money(tripPaid(p))}</span></div>
+     <div class="spread"><span>${esc(t('remaining'))}</span><b class="${tripDue(p)>.01?'negv':''}">${money(Math.max(0,tripDue(p)))}</b></div><div class="spread"><span>${esc(t('due_date'))}</span><span>${fdate(dueDateOf(p))}</span></div></div>
+    ${p.payments.length?`<div class="list">${p.payments.map(y=>`<button class="item" data-act="pay-edit" data-id="${y.id}"><span class="ic">${IC.cash}</span><span class="t"><b>${esc(t(y.method))}${y.ref?' · <span class="num">'+esc(y.ref)+'</span>':''}</b><span>${fdate(y.date)} · ${esc(t('received_by'))}: ${esc(y.by||'—')}${y.bank?' · '+esc(y.bank):''}</span></span><span class="e"><b>${money(y.amount)}</b>${y.photo?`<img class="thumb" style="width:34px;height:34px" data-ph="${esc(y.photo)}" alt="">`:''}</span></button>`).join('')}</div>`:''}
+    ${lock?`<div class="note good">${IC.lock.replace('<svg','<svg style="width:16px;height:16px;vertical-align:-3px"')} ${esc(t('confirmed_by',{n:p.confirmed.by,d:fdt(p.confirmed.at)}))}</div>${can('*')?`<button class="btn ghost sm" data-act="trip-unlock">${esc(t('act_unlock'))}</button>`:''}`
+      :`<div class="row">${can('pay')&&tripDue(p)>.01?`<button class="btn" data-act="pay-new">${IC.plus}${esc(t('add_payment'))}</button>`:''}${can('*')?`<button class="btn good" data-act="trip-confirm" ${ps!=='pay_paid'?'disabled':''}>${IC.check}${esc(t('act_confirm'))}</button>`:''}</div>${can('*')&&ps!=='pay_paid'?`<p class="muted xs" style="margin:0">${esc(t('confirm_need_paid'))}</p>`:''}`}
+    ${can('invoice')?`<button class="btn ghost" data-act="invoice">${IC.printer}${esc(t('invoice'))}</button>`:''}`,ps?payPill(p):''):''}
+  </main>`};
+
+V.invoice=id=>{const p=byId('trips',id),c=byId('clients',p.clientId)||{},s=S.settings;
+  return bar(t('invoice'),'#'+p.no,`<button class="iconbtn" data-act="print" aria-label="${esc(t('print'))}">${IC.printer}</button>`)+`<main class="stack"><div class="inv stack">
+  <div class="spread"><div><h2>${esc(s.company)}</h2><div class="small">${s.cr?esc(t('cr'))+': <span class="num">'+esc(s.cr)+'</span><br>':''}${s.vatNo?esc(t('vat_no'))+': <span class="num">'+esc(s.vatNo)+'</span><br>':''}${esc(s.address||'')} ${s.phone?'<span class="num">'+esc(s.phone)+'</span>':''}</div></div><div style="text-align:end"><b>${esc(t('invoice'))}</b><br><span class="small">${esc(t('invoice_no'))}: <span class="num">INV-${p.no}</span><br>${esc(t('issue_date'))}: ${fdate(p.arrive||p.loadDate)}</span></div></div>
+  <div><b>${esc(t('buyer'))}:</b> ${esc(c.name||'')}<br><span class="small">${c.vatNo?esc(t('vat_no'))+': <span class="num">'+esc(c.vatNo)+'</span> · ':''}${c.cr?esc(t('cr'))+': <span class="num">'+esc(c.cr)+'</span> · ':''}${esc(c.address||'')}</span></div>
+  <div class="tablewrap" style="border-color:#ddd"><table><thead><tr><th>${esc(t('description'))}</th><th>${esc(t('amount'))}</th></tr></thead><tbody>
+   <tr><td style="white-space:normal">${esc(t('transport_service',{c:p.cargo||'',f:p.from,t:p.to}))} · ${esc(t('truck'))} ${esc(plateOf(p.truckId))} · ${fdate(p.loadDate)}${p.bayan?' · '+esc(t('bayan'))+' '+esc(p.bayan):''}</td><td class="num">${nf(p.price)}</td></tr></tbody>
+   <tfoot><tr><td>${esc(t('subtotal'))}</td><td class="num">${nf(p.price)}</td></tr><tr><td>${esc(t('vat'))} ${p.vat??s.vat}%</td><td class="num">${nf(tripVat(p))}</td></tr><tr class="tot"><td>${esc(t('total_vat'))} (${t('sar')})</td><td class="num">${nf(tripTotal(p))}</td></tr></tfoot></table></div>
+  </div><button class="btn noprint" data-act="print">${IC.printer}${esc(t('print'))}</button></main>`};
+
+V.fleet=()=>{const ft=ui.fleetTab;let body='',add='';
+  if(ft==='trucks'){body=S.trucks.length?`<div class="list">${S.trucks.map(x=>{const n=tripsIn(curMonth(),p=>p.truckId===x.id).length;return`<button class="item" data-act="open" data-type="truck" data-id="${x.id}"><span class="ic">${IC.truck}</span><span class="t"><b>${esc(x.plate)}</b><span>${esc(x.make)} ${esc(x.model)} · ${esc(t(x.trailer))} · <span class="num">${nf(x.odo,0)}</span> ${t('km')}</span></span><span class="e">${pill(x.status,TRUCK_ST[x.status])}<span class="xs muted">${esc(t('n_trips',{n}))}</span></span></button>`}).join('')}</div>`:emptyBox();add='truck-new'}
+  if(ft==='drivers'){body=S.drivers.length?`<div class="list">${S.drivers.map(d=>`<button class="item" data-act="open" data-type="driver" data-id="${d.id}"><span class="ic">${IC.person}</span><span class="t"><b>${esc(d.name)}</b><span>${esc(plateOf(d.truckId))} · <span class="num">${esc(d.phone||'')}</span></span></span><span class="e">${pill(d.status,d.status==='ds_active'?'good':d.status==='ds_leave'?'warn':'')}</span></button>`).join('')}</div>`:emptyBox();add='driver-new'}
+  if(ft==='tyres'){body=S.trucks.map(x=>{const ty=S.tyres.filter(y=>y.truckId===x.id);return ty.length?`<h3 class="muted">${esc(x.plate)}</h3><div class="list">${ty.map(y=>`<button class="item" data-act="tyre-edit" data-id="${y.id}"><span class="ic">${IC.tyre}</span><span class="t"><b>${esc(y.pos)}</b><span>${esc(y.brand||'')} ${esc(y.size||'')} · ${esc(t('tyre_km'))}: <span class="num">${nf(Math.max(0,(+x.odo)-(+y.odo||0)),0)}</span> ${t('km')}</span></span><span class="e">${pill(y.status,y.status==='ty_ok'?'good':y.status==='ty_repaired'?'warn':'bad')}</span></button>`).join('')}</div>`:''}).join('')||emptyBox();add='tyre-new'}
+  return bar(t('fleet'))+`<main class="stack"><div class="seg">${[['trucks','trucks'],['drivers','drivers'],['tyres','tyres']].map(([k,l])=>`<button data-act="fleet-tab" data-id="${k}" aria-pressed="${ft===k}">${esc(t(l))}</button>`).join('')}</div>${body}</main>
+  ${can('fleet')?`<button class="fab" data-act="${add}" aria-label="${esc(t('add'))}">${IC.plus}</button>`:''}`};
+
+V.truck=id=>{const x=byId('trucks',id);if(!x)return gone();const m=ui.month,ps=tripsIn(m,p=>p.truckId===id),T0=today();
+  const rev=sum(ps,p=>p.price),ex=sum(ps,tripExp),fx=truckFixed(id,m),km=sum(ps,tripKm),lit=sum(ps,p=>sum(p.expenses.filter(e=>e.type==='ex_diesel'),e=>e.liters||0));
+  const docRow=k=>{const d=x.docs&&x.docs[k];const n=d?daysBetween(T0,d):null;return`<dt>${esc(t(k))}</dt><dd>${d?fdate(d):'—'} ${n!==null&&n<=(+S.settings.alertDays||30)?pill(n<0?'expired':'expiry',n<0?'bad':'warn'):''}</dd>`};
+  return bar(x.plate,`${x.make} ${x.model} ${x.year||''}`,can('fleet')?`<button class="iconbtn" data-act="truck-edit" aria-label="${esc(t('edit'))}">${IC.wrench}</button>`:'')+`<main class="stack">
+  <div class="row"><input type="month" class="search" style="max-width:200px" value="${m}" data-ch="month" aria-label="${esc(t('month'))}">${pill(x.status,TRUCK_ST[x.status])}</div>
+  <div class="kpis"><div class="kpi"><div class="l">${esc(t('trips_count'))}</div><div class="v">${int(ps.length)}</div></div><div class="kpi"><div class="l">${esc(t('net_profit'))}</div><div class="v ${rev-ex-fx<0?'negv':''}">${int(rev-ex-fx)} <small>${t('sar')}</small></div></div>
+   <div class="kpi"><div class="l">${esc(t('revenue'))}</div><div class="v">${int(rev)} <small>${t('sar')}</small></div></div><div class="kpi"><div class="l">${esc(t('var_costs'))}</div><div class="v">${int(ex)} <small>${t('sar')}</small></div></div>
+   <div class="kpi"><div class="l">${esc(t('fixed_costs'))}</div><div class="v">${int(fx)} <small>${t('sar')}</small></div></div><div class="kpi"><div class="l">${esc(t('l100'))}</div><div class="v">${km?nf(lit/km*100,1):'—'}</div></div></div>
+  ${sec(t('documents'),`<div class="card"><dl class="kv">${['istimara','insurance','inspection','opcard'].map(docRow).join('')}</dl></div>`)}
+  ${sec(t('general_info'),`<div class="card stack"><dl class="kv"><dt>${esc(t('trailer'))}</dt><dd>${esc(t(x.trailer))}</dd><dt>${esc(t('capacity'))}</dt><dd class="num">${esc(x.cap||'—')}</dd><dt>${esc(t('odometer'))}</dt><dd>${int(x.odo)}</dd>
+   <dt>${esc(t('service_every'))}</dt><dd>${int(x.serviceEvery||0)} · ${esc(t('last_service'))} ${int(x.lastService||0)}</dd><dt>${esc(t('ownership'))}</dt><dd>${esc(t(x.own))}${x.own==='own_loan'?' · '+money(x.installment):''}</dd><dt>${esc(t('ins_annual'))}</dt><dd>${money(x.insAnnual)}</dd>
+   <dt>${esc(t('drivers'))}</dt><dd>${esc(truckDrivers(id).map(d=>d.name).join('، ')||'—')}</dd></dl>${can('fleet')?`<button class="btn sec sm" data-act="truck-service">${IC.wrench}${esc(t('record_service'))}</button>`:''}</div>`)}
+  ${sec(t('trips'),ps.length?`<div class="list">${ps.slice().reverse().map(tripItem).join('')}</div>`:emptyBox())}
+  ${sec(t('tyres'),`<div class="list">${S.tyres.filter(y=>y.truckId===id).map(y=>`<button class="item" data-act="tyre-edit" data-id="${y.id}"><span class="ic">${IC.tyre}</span><span class="t"><b>${esc(y.pos)}</b><span>${esc(y.brand||'')} · <span class="num">${nf(Math.max(0,(+x.odo)-(+y.odo||0)),0)}</span> ${t('km')}</span></span>${pill(y.status,y.status==='ty_ok'?'good':y.status==='ty_repaired'?'warn':'bad')}</button>`).join('')||emptyBox()}</div>`,can('fleet')?`<button class="btn sec sm" data-act="tyre-new" data-id="${id}">${IC.plus}${esc(t('add'))}</button>`:'')}
+  </main>`};
+
+V.driver=id=>{const d=byId('drivers',id);if(!d)return gone();const m=ui.month,ps=tripsIn(m,p=>p.driverId===id),tx=S.driverTx.filter(x=>x.driverId===id).sort((a,b)=>a.date<b.date?1:-1);
+  const bal=sum(tx,x=>x.type==='advance'?x.amount:-x.amount);
+  return bar(d.name,t(d.status),can('fleet')?`<button class="iconbtn" data-act="driver-edit" aria-label="${esc(t('edit'))}">${IC.wrench}</button>`:'')+`<main class="stack">
+  <input type="month" class="search" style="max-width:200px" value="${m}" data-ch="month" aria-label="${esc(t('month'))}">
+  <div class="kpis"><div class="kpi"><div class="l">${esc(t('trips_count'))}</div><div class="v">${int(ps.length)}</div></div><div class="kpi"><div class="l">${esc(t('revenue'))}</div><div class="v">${int(sum(ps,p=>p.price))} <small>${t('sar')}</small></div></div></div>
+  <div class="card"><dl class="kv"><dt>${esc(t('phone'))}</dt><dd class="num">${esc(d.phone||'—')}</dd><dt>${esc(t('id_no'))}</dt><dd class="num">${esc(d.idNo||'—')}</dd><dt>${esc(t('id_exp'))}</dt><dd>${fdate(d.idExp)}</dd><dt>${esc(t('lic_exp'))}</dt><dd>${fdate(d.licExp)}</dd>
+   <dt>${esc(t('salary'))}</dt><dd>${money(d.salary)}</dd><dt>${esc(t('allowances'))}</dt><dd>${money(d.allow)}</dd><dt>${esc(t('exp_mode'))}</dt><dd>${esc(t(d.mode))} · ${money(d.rate)}</dd><dt>${esc(t('assigned_truck'))}</dt><dd>${esc(plateOf(d.truckId))}</dd></dl></div>
+  ${sec(t('custody'),`<div class="card spread"><span>${esc(t('custody_balance'))}</span><b class="${bal>0?'negv':''}">${money(bal)}</b></div>${tx.length?`<div class="list">${tx.map(x=>`<div class="item" style="cursor:default"><span class="ic">${IC.cash}</span><span class="t"><b>${esc(t(x.type==='advance'?'advance':'settle'))}</b><span>${fdate(x.date)}${x.note?' · '+esc(x.note):''}</span></span><b class="${x.type==='advance'?'negv':'pos'}">${x.type==='advance'?'+':'−'}${money(x.amount)}</b></div>`).join('')}</div>`:''}`,(can('pay')||can('fleet'))?`<button class="btn sec sm" data-act="custody-new">${IC.plus}${esc(t('add'))}</button>`:'')}
+  ${sec(t('trips'),ps.length?`<div class="list">${ps.slice().reverse().map(tripItem).join('')}</div>`:emptyBox())}</main>`};
+
+V.clients=()=>{const ct=ui.clientTab;let body='',add='';
+  if(ct==='clients'){body=S.clients.length?`<div class="list">${S.clients.map(c=>{const b=clientBalance(c.id);return`<button class="item" data-act="open" data-type="client" data-id="${c.id}"><span class="ic">${IC.users}</span><span class="t"><b>${esc(c.name)}</b><span>${esc(t(c.terms))}${c.terms==='t_credit'?' · <span class="num">'+(c.days||0)+'</span> '+t('days'):''} · <span class="num">${esc(c.phone||'')}</span></span></span><span class="e"><span class="xs muted">${esc(t('balance'))}</span><b class="${b>.01?'negv':''}">${int(b)}</b></span></button>`}).join('')}</div>`:emptyBox();add='client-new'}
+  else{body=S.routes.length?`<div class="list">${S.routes.map(r=>`<button class="item" data-act="route-edit" data-id="${r.id}"><span class="ic">${IC.pin}</span><span class="t"><b>${esc(r.from)} - ${esc(r.to)}</b><span><span class="num">${nf(r.km,0)}</span> ${t('km')} · ${esc(t('ex_diesel'))} ${int(r.diesel)} · ${esc(t('driver'))} ${int(r.driver)}</span></span><span class="e"><b>${int(r.price)}</b><span class="xs muted">${t('sar')}</span></span></button>`).join('')}</div>`:emptyBox();add='route-new'}
+  return bar(t('clients'))+`<main class="stack"><div class="seg">${[['clients','clients'],['routes','routes']].map(([k,l])=>`<button data-act="client-tab" data-id="${k}" aria-pressed="${ct===k}">${esc(t(l))}</button>`).join('')}</div>${body}</main>
+  ${(ct==='clients'?can('clients')||can('trips'):can('routes'))?`<button class="fab" data-act="${add}" aria-label="${esc(t('add'))}">${IC.plus}</button>`:''}`};
+
+V.client=id=>{const c=byId('clients',id);if(!c)return gone();const ps=S.trips.filter(p=>p.clientId===id&&p.status==='delivered').sort((a,b)=>a.loadDate<b.loadDate?1:-1),T0=today();
+  const b=clientBalance(id);
+  return bar(c.name,t(c.terms),(can('clients')||can('trips'))?`<button class="iconbtn" data-act="client-edit" aria-label="${esc(t('edit'))}">${IC.wrench}</button>`:'')+`<main class="stack">
+  <div class="kpis"><div class="kpi hero"><div class="l">${esc(t('balance'))}</div><div class="v">${money(b)}</div></div><div class="kpi"><div class="l">${esc(t('trips_count'))}</div><div class="v">${int(ps.length)}</div></div><div class="kpi"><div class="l">${esc(t('credit_limit'))}</div><div class="v">${c.limit?int(c.limit):'—'}</div></div></div>
+  <div class="card"><dl class="kv"><dt>${esc(t('cr'))}</dt><dd class="num">${esc(c.cr||'—')}</dd><dt>${esc(t('vat_no'))}</dt><dd class="num">${esc(c.vatNo||'—')}</dd><dt>${esc(t('contact'))}</dt><dd>${esc(c.contact||'—')}</dd><dt>${esc(t('phone'))}</dt><dd class="num">${esc(c.phone||'—')}</dd><dt>${esc(t('address'))}</dt><dd>${esc(c.address||'—')}</dd></dl></div>
+  ${sec(t('statement'),ps.length?`<div class="tablewrap"><table><thead><tr><th>${esc(t('trip_no'))}</th><th>${esc(t('date'))}</th><th>${esc(t('total_vat'))}</th><th>${esc(t('paid'))}</th><th>${esc(t('remaining'))}</th><th>${esc(t('due_date'))}</th></tr></thead><tbody>
+   ${ps.map(p=>{const d=tripDue(p),dd=dueDateOf(p);return`<tr data-act="open" data-type="trip" data-id="${p.id}" style="cursor:pointer"><td class="num">${p.no}</td><td>${fdate(p.loadDate)}</td><td class="num">${nf(tripTotal(p))}</td><td class="num">${nf(tripPaid(p))}</td><td class="num ${d>.01?'negv':''}">${nf(Math.max(0,d))}</td><td>${d>.01&&dd<T0?pill('overdue','bad'):fdate(dd)}</td></tr>`}).join('')}</tbody>
+   <tfoot><tr><td colspan="2">${esc(t('total'))}</td><td class="num">${nf(sum(ps,tripTotal))}</td><td class="num">${nf(sum(ps,tripPaid))}</td><td class="num">${nf(b)}</td><td></td></tr></tfoot></table></div>`:emptyBox(),
+   ps.length?`<button class="btn ghost sm" data-act="csv-client">${IC.save}${esc(t('export_csv'))}</button>`:'')}</main>`};
+
+V.more=()=>{const items=[['fixed','fixed_costs',IC.coin,'fixed'],['reports','reports',IC.chart,'reports'],['alerts','alerts',IC.alert,'viewAll'],['users','users',IC.users,'*'],['activity','activity',IC.clipboard,'*'],['settings','settings',IC.grid,null]];
+  return bar(t('more'),SES.name+' · '+t('role_'+SES.role))+`<main class="stack"><div class="list">${items.filter(i=>!i[3]||can(i[3])).map(([k,l,ic])=>`<button class="item" data-act="push" data-type="${k}"><span class="ic">${ic}</span><span class="t"><b>${esc(t(l))}</b></span>${IC.chev.replace('<svg','<svg class="chev"')}</button>`).join('')}
+   <button class="item" data-act="logout"><span class="ic" style="background:var(--bad-soft);color:var(--bad)">${IC.out}</span><span class="t"><b>${esc(t('logout'))}</b></span></button></div>
+   <p class="note small">${esc(t('demo_note'))}</p><p class="muted xs">${esc(t('install_hint'))}</p></main>`};
+
+V.fixed=()=>{const m=ui.month,list=S.fixed.filter(f=>f.month===m);
+  const autoRows=S.trucks.filter(x=>x.status!=='ts_stopped').map(x=>`<tr><td>${esc(x.plate)}</td><td class="num">${nf((+x.insAnnual||0)/12)}</td><td class="num">${nf(x.own==='own_loan'?x.installment:0)}</td><td class="num">${nf(sum(truckDrivers(x.id),d=>(+d.salary||0)+(+d.allow||0)))}</td><td class="num"><b>${nf(truckFixed(x.id,m))}</b></td><td class="num">${int(tripsIn(m,p=>p.truckId===x.id).length)}</td></tr>`).join('');
+  return bar(t('fixed_costs'),fmonth(m))+`<main class="stack"><input type="month" class="search" style="max-width:200px" value="${m}" data-ch="month" aria-label="${esc(t('month'))}">
+  <div class="kpis"><div class="kpi hero"><div class="l">${esc(t('fixed_costs'))} · ${esc(fmonth(m))}</div><div class="v">${money(monthFixed(m))}</div></div></div>
+  ${sec(t('manual_fixed'),list.length?`<div class="list">${list.map(f=>`<button class="item" data-act="fixed-edit" data-id="${f.id}"><span class="ic">${IC.coin}</span><span class="t"><b>${esc(t(f.cat))}</b><span>${f.truckId?esc(plateOf(f.truckId)):esc(t('general'))}${f.note?' · '+esc(f.note):''}</span></span><b>${money(f.amount)}</b></button>`).join('')}</div>`:emptyBox(),`<button class="btn sec sm" data-act="fixed-new">${IC.plus}${esc(t('add'))}</button>`)}
+  ${sec(t('auto_fixed'),`<p class="muted small" style="margin:0">${esc(t('auto_fixed_note'))}</p><div class="tablewrap"><table><thead><tr><th>${esc(t('truck'))}</th><th>${esc(t('insurance'))}</th><th>${esc(t('installment'))}</th><th>${esc(t('salary'))}</th><th>${esc(t('total'))}</th><th>${esc(t('trips_count'))}</th></tr></thead><tbody>${autoRows}</tbody></table></div><p class="muted xs" style="margin:0">${esc(t('alloc_note'))}</p>`)}</main>`};
+
+V.reports=()=>{const m=ui.month,st=monthStats(m),ps=tripsIn(m),rt=ui.repTab;
+  const groups={truck:[S.trucks,x=>x.plate,(x,p)=>p.truckId===x.id],driver:[S.drivers,x=>x.name,(x,p)=>p.driverId===x.id],client:[S.clients,x=>x.name,(x,p)=>p.clientId===x.id],route:[S.routes,x=>x.from+' - '+x.to,(x,p)=>p.routeId===x.id]};
+  const [arr,name,match]=groups[rt];
+  const rows=arr.map(x=>{const q=ps.filter(p=>match(x,p));const rev=sum(q,p=>p.price),ex=sum(q,tripExp),fx=rt==='truck'?truckFixed(x.id,m):sum(q,fixedShare),km=sum(q,tripKm),lit=sum(q,p=>sum(p.expenses.filter(e=>e.type==='ex_diesel'),e=>e.liters||0));
+    return{n:name(x),trips:q.length,km,rev,ex,fx,net:rev-ex-fx,l100:km?lit/km*100:0,due:rt==='client'?clientBalance(x.id):null}}).filter(r=>r.trips||r.fx);
+  ui._rep=rows;
+  const cols=[['n',t(rt==='truck'?'truck':rt==='driver'?'driver':rt==='client'?'client':'route')],['trips',t('trips_count')],['km',t('km_total')],['rev',t('revenue')],['ex',t('var_costs')],['fx',t('fixed_costs')],['net',t('net_profit')]];
+  if(rt==='truck')cols.push(['l100',t('l100')]);if(rt==='client')cols.push(['due',t('balance')]);if(rt==='route')cols.push(['avg',t('avg_profit')]);
+  rows.forEach(r=>r.avg=r.trips?r.net/r.trips:0);ui._repCols=cols;
+  const cell=(r,k)=>k==='n'?esc(r.n):k==='trips'||k==='km'?int(r[k]):k==='l100'?(r.l100?nf(r.l100,1):'—'):`<span class="num ${k==='net'&&r.net<0?'negv':''}">${nf(r[k])}</span>`;
+  return bar(t('reports'),fmonth(m))+`<main class="stack"><div class="row noprint"><input type="month" class="search" style="max-width:200px" value="${m}" data-ch="month" aria-label="${esc(t('month'))}"><button class="btn ghost sm" data-act="print">${IC.printer}${esc(t('print'))}</button></div>
+  ${sec(t('rep_summary'),`<div class="card sum"><div class="spread"><span>${esc(t('trips_count'))}</span><b>${int(st.trips)}</b></div><div class="spread"><span>${esc(t('revenue'))}</span><span>${money(st.rev)}</span></div><div class="spread muted"><span>− ${esc(t('var_costs'))}</span><span>${money(st.vexp)}</span></div><div class="spread muted"><span>− ${esc(t('fixed_costs'))}</span><span>${money(st.fixed)}</span></div><div class="spread tot"><span>${esc(t('net_profit'))}</span><span class="${st.net<0?'negv':'pos'}">${money(st.net)}</span></div></div>`)}
+  <div class="seg noprint">${['truck','driver','client','route'].map(k=>`<button data-act="rep-tab" data-id="${k}" aria-pressed="${rt===k}">${esc(t('by_'+k))}</button>`).join('')}</div>
+  ${rows.length?`<div class="tablewrap"><table><thead><tr>${cols.map(c=>`<th>${esc(c[1])}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${cols.map(c=>`<td>${cell(r,c[0])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:emptyBox()}
+  <button class="btn ghost noprint" data-act="csv-rep">${IC.save}${esc(t('export_csv'))}</button></main>`};
+
+V.alerts=()=>{const al=alerts();return bar(t('alerts'),String(al.length))+`<main class="stack"><div class="card">${al.length?al.map(a=>`<div class="alert ${a.lvl}" role="button" tabindex="0" data-act="open" data-type="${a.go[0]}" data-id="${a.go[1]}" style="cursor:pointer">${IC.alert}<span class="grow">${esc(a.txt)}</span></div>`).join(''):`<div class="muted">${esc(t('no_alerts'))}</div>`}</div></main>`};
+V.users=()=>bar(t('users'))+`<main class="stack"><div class="list">${S.users.map(u=>`<button class="item" data-act="user-edit" data-id="${u.id}"><span class="av">${esc(u.name.trim()[0]||'?')}</span><span class="t"><b>${esc(u.name)}</b><span>${esc(t('role_'+u.role))}</span></span></button>`).join('')}</div><button class="btn sec" data-act="user-new">${IC.plus}${esc(t('new_user'))}</button></main>`;
+V.activity=()=>bar(t('activity'))+`<main class="stack"><div class="list">${S.log.slice(0,150).map(l=>`<div class="item" style="cursor:default"><span class="t"><b style="white-space:normal">${esc(l.msg)}</b><span>${fdt(l.at)} · ${esc(l.by||'')}</span></span></div>`).join('')}</div></main>`;
+V.settings=()=>bar(t('settings'))+`<main class="stack">
+  ${sec(t('language'),`<div class="seg">${LANGS.map(l=>`<button data-act="lang" data-id="${l[0]}" aria-pressed="${LANG===l[0]}">${l[1]}</button>`).join('')}</div>`)}
+  ${sec(t('theme'),`<div class="seg">${['auto','light','dark'].map(k=>`<button data-act="theme" data-id="${k}" aria-pressed="${PREFS.theme===k}">${esc(t('th_'+k))}</button>`).join('')}</div>`)}
+  ${can('*')?sec(t('company'),`<div class="card"><dl class="kv"><dt>${esc(t('company_name'))}</dt><dd>${esc(S.settings.company)}</dd><dt>${esc(t('vat_no'))}</dt><dd class="num">${esc(S.settings.vatNo||'—')}</dd><dt>${esc(t('vat_pct'))}</dt><dd class="num">${S.settings.vat}%</dd><dt>${esc(t('diesel_price'))}</dt><dd>${money(S.settings.dieselPrice)}</dd><dt>${esc(t('alert_days'))}</dt><dd class="num">${S.settings.alertDays}</dd></dl></div>`,`<button class="btn sec sm" data-act="settings-edit">${esc(t('edit'))}</button>`):''}
+  ${can('*')?sec(t('backup'),`<div class="row"><button class="btn sec" data-act="backup">${IC.save}${esc(t('export_backup'))}</button><label class="btn ghost">${IC.upload}${esc(t('import_backup'))}<input type="file" accept="application/json,.json" data-restore hidden></label></div><button class="btn ghost sm" data-act="reset" style="color:var(--bad)">${esc(t('reset_demo'))}</button>`):''}
+  <p class="note small">${esc(t('demo_note'))}</p></main>`;
+
+/* ---------- render ---------- */
+const NAV=[['home','home',IC.home],['trips','trips',IC.route],['fleet','fleet',IC.truck],['clients','clients',IC.users],['more','more',IC.grid]];
+function applyLang(){const l=LANGS.find(x=>x[0]===LANG)||LANGS[0];document.documentElement.lang=l[0];document.documentElement.dir=l[2];document.title=t('appName');
+  if(PREFS.theme==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',PREFS.theme)}
+function render(){applyLang();const app=$('#app');
+  if(!SES){app.innerHTML=V.login();return}
+  const s=cur();let html;
+  if(s)html=V[s.type](s.id);else html=V[ui.tab]();
+  const al=alerts().filter(a=>a.lvl==='bad').length;
+  html+=`<nav class="tabbar" aria-label="nav"><div class="in">${NAV.map(([k,l,ic])=>`<button data-act="go" data-id="${k}" aria-current="${ui.tab===k?'page':'false'}">${ic}<span>${esc(t(l))}</span>${k==='home'&&al?`<span class="dot num">${al}</span>`:''}</button>`).join('')}</div></nav>`;
+  if(ui.confirm)html+=`<div class="scrim" style="z-index:60" data-act="confirm-no"><div class="sheet" role="alertdialog" aria-modal="true"><div class="body"><p style="margin:0;font-weight:600">${esc(ui.confirm.msg)}</p>${ui.confirm.sub?`<p class="muted small" style="margin:0">${esc(ui.confirm.sub)}</p>`:''}</div><footer><button class="btn ghost" data-act="confirm-no">${esc(t('cancel'))}</button><button class="btn ${ui.confirm.kind||'bad'}" data-act="confirm-yes">${esc(ui.confirm.ok)}</button></footer></div></div>`;
+  app.innerHTML=html;hydratePhotos(app)}
+
+/* ---------- csv ---------- */
+function downloadText(name,text,type){const b=new Blob([text],{type});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+const csvCell=v=>{const s=String(v??'');return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s};
+function csv(name,head,rows){downloadText(name,'﻿'+[head,...rows].map(r=>r.map(csvCell).join(',')).join('\r\n'),'text/csv;charset=utf-8')}
+
+/* ---------- actions ---------- */
+const ACT={
+ 'go':id=>go(id),'pop':()=>pop(),'push':(id,el)=>push(el.dataset.type,el.dataset.id),
+ 'open':(id,el)=>{if(el.dataset.type==='client'&&ui.tab!=='clients'&&!ui.stack.length)ui.tab='clients';push(el.dataset.type,id)},
+ 'lang':id=>{LANG=id;PREFS.lang=id;savePrefs();render();if(ui.sheet)renderSheet()},
+ 'theme':id=>{PREFS.theme=id;savePrefs();render()},
+ 'login-pick':id=>{ui.loginUser=id;render();setTimeout(()=>{const p=$('#pin');if(p)p.focus()},30)},
+ 'login':()=>{const u=byId('users',ui.loginUser),p=$('#pin');if(!u||!p)return;if(p.value!==u.pin){toast(t('wrong_pin'),'bad');p.value='';p.focus();return}
+   SES={id:u.id,name:u.name,role:u.role};try{localStorage.setItem(SES_KEY,JSON.stringify(SES))}catch(e){}ui.tab='home';ui.stack=[];render()},
+ 'logout':()=>{SES=null;try{localStorage.removeItem(SES_KEY)}catch(e){}ui.loginUser=null;ui.stack=[];render()},
+ 'trips-filter':id=>{ui.filter=id;ui.tab='trips';ui.stack=[];render()},
+ 'trip-new':()=>tripForm(null),
+ 'trip-edit':()=>tripForm(byId('trips',cur().id)),
+ 'trip-do':id=>tripAction(byId('trips',cur().id),id),
+ 'exp-new':()=>expenseForm(byId('trips',cur().id)),
+ 'exp-edit':id=>{const p=byId('trips',cur().id);if(p.confirmed||!can('expenses'))return;expenseForm(p,p.expenses.find(e=>e.id===id))},
+ 'pay-new':()=>paymentForm(byId('trips',cur().id)),
+ 'pay-edit':id=>{const p=byId('trips',cur().id);if(p.confirmed||!can('pay'))return;paymentForm(p,p.payments.find(y=>y.id===id))},
+ 'trip-confirm':()=>{if(!guard('*'))return;const p=byId('trips',cur().id);if(payState(p)!=='pay_paid')return toast(t('confirm_need_paid'),'bad');
+   ui.confirm={msg:t('act_confirm')+' · #'+p.no,sub:t('confirm_q'),ok:t('act_confirm'),kind:'good',fn:()=>{p.confirmed={by:SES.name,at:nowISO()};log(`${t('act_confirm')} · ${t('trip')} ${p.no}`)}};render()},
+ 'trip-unlock':()=>{if(!guard('*'))return;const p=byId('trips',cur().id);ui.confirm={msg:t('act_unlock')+' · #'+p.no,ok:t('act_unlock'),fn:()=>{p.confirmed=null;log(`${t('act_unlock')} · ${t('trip')} ${p.no}`)}};render()},
+ 'invoice':()=>push('invoice',cur().id),
+ 'print':()=>window.print(),
+ 'fleet-tab':id=>{ui.fleetTab=id;render()},'client-tab':id=>{ui.clientTab=id;render()},'rep-tab':id=>{ui.repTab=id;render()},
+ 'truck-new':()=>truckForm(null),'truck-edit':()=>truckForm(byId('trucks',cur().id)),
+ 'truck-service':()=>{if(!guard('fleet'))return;const x=byId('trucks',cur().id);ui.confirm={msg:t('record_service')+' · '+x.plate,sub:t('odometer')+': '+nf(x.odo,0),ok:t('save'),kind:'',fn:()=>{x.lastService=+x.odo;log(`${t('record_service')} ${x.plate}`)}};render()},
+ 'driver-new':()=>driverForm(null),'driver-edit':()=>driverForm(byId('drivers',cur().id)),
+ 'custody-new':()=>custodyForm(byId('drivers',cur().id)),
+ 'tyre-new':id=>tyreForm(null,id||(cur()&&cur().type==='truck'?cur().id:'')),'tyre-edit':id=>{if(!can('fleet'))return;tyreForm(byId('tyres',id))},
+ 'client-new':()=>clientForm(null),'client-edit':()=>clientForm(byId('clients',cur().id)),
+ 'route-new':()=>routeForm(null),'route-edit':id=>{if(!can('routes'))return;routeForm(byId('routes',id))},
+ 'fixed-new':()=>fixedForm(null),'fixed-edit':id=>fixedForm(S.fixed.find(f=>f.id===id)),
+ 'user-new':()=>userForm(null),'user-edit':id=>userForm(byId('users',id)),
+ 'settings-edit':()=>settingsForm(),
+ 'sheet-close':()=>closeSheet(),'sheet-bg':(id,el,e)=>{if(e.target===el)closeSheet()},'sheet-ok':()=>sheetOK(),
+ 'sheet-del':()=>{const o=ui.sheet;ui.confirm={msg:t('confirm_delete'),ok:t('yes_delete'),fn:()=>{const r=o.onDel&&o.onDel();if(typeof r==='string'){toast(r,'bad');return false}closeSheet();toast(t('deleted'))}};render()},
+ 'confirm-no':(id,el,e)=>{if(e.target!==el&&el.classList.contains('scrim'))return;ui.confirm=null;render()},
+ 'confirm-yes':()=>{const c=ui.confirm;ui.confirm=null;const r=c.fn();if(r!==false){save();}render()},
+ 'csv-rep':()=>{const cols=ui._repCols,rows=ui._rep||[];csv(`report-${ui.repTab}-${ui.month}.csv`,cols.map(c=>c[1]),rows.map(r=>cols.map(c=>c[0]==='n'?r.n:c[0]==='l100'?(r.l100?r.l100.toFixed(1):''):typeof r[c[0]]==='number'?r2(r[c[0]]):r[c[0]])))},
+ 'csv-client':()=>{const c=byId('clients',cur().id),ps=S.trips.filter(p=>p.clientId===c.id&&p.status==='delivered');csv(`statement-${c.name}.csv`,[t('trip_no'),t('date'),t('from'),t('to'),t('price'),t('vat'),t('total_vat'),t('paid'),t('remaining'),t('due_date')],ps.map(p=>[p.no,p.loadDate,p.from,p.to,p.price,tripVat(p),tripTotal(p),tripPaid(p),Math.max(0,tripDue(p)),dueDateOf(p)]))},
+ 'backup':async()=>{const photos={};if(idb){const ids=[];JSON.stringify(S).replace(/"(ph_[a-z0-9]+)"/g,(m,id)=>ids.push(id));for(const id of ids)photos[id]=await photoGet(id)}
+   downloadText(`backup-${today()}.json`,JSON.stringify({app:'naql',S,photos}),'application/json');toast(t('backup_done'))},
+ 'reset':()=>{ui.confirm={msg:t('reset_demo'),sub:t('reset_confirm'),ok:t('reset_demo'),fn:()=>{localStorage.removeItem(KEY);seed();ui.stack=[];ui.tab='home'}};render()},
+ 'photo-view':()=>{},
+};
+
+/* ---------- events ---------- */
+document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(!el)return;const f=ACT[el.dataset.act];if(!f)return;
+  if(el.tagName==='A')e.preventDefault();f(el.dataset.id,el,e)});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='pin')ACT.login();
+  if(e.key==='Escape'){if(ui.confirm){ui.confirm=null;render()}else if(ui.sheet)closeSheet()}
+  if((e.key==='Enter'||e.key===' ')&&e.target.matches('div[data-act]')){e.preventDefault();e.target.click()}});
+document.addEventListener('input',e=>{const el=e.target;
+  if(el.dataset.fk){ui.form[el.dataset.fk]=el.value;if(el.closest('.fld'))el.closest('.fld').classList.remove('err');return}
+  if(el.dataset.ch==='q'){ui.q=el.value;const pos=el.selectionStart;render();const n=$('.search[data-ch="q"]');if(n){n.focus();try{n.setSelectionRange(pos,pos)}catch(x){}}}});
+document.addEventListener('change',async e=>{const el=e.target;
+  if(el.dataset.fk&&ui.sheet){ui.form[el.dataset.fk]=el.value;const f=ui.sheet.fields.find(x=>x.k===el.dataset.fk);
+    if(f&&f.onch)f.onch(ui.form);if(el.tagName==='SELECT')renderSheet();else if(f&&f.onch){for(const i of document.querySelectorAll('#sheet [data-fk]'))if(i!==el&&i.tagName==='INPUT'&&ui.form[i.dataset.fk]!==undefined)i.value=ui.form[i.dataset.fk]}return}
+  if(el.dataset.ch==='month'){if(el.value){ui.month=el.value;render()}return}
+  if(el.dataset.photo){const file=el.files&&el.files[0];if(!file)return;const data=await shrink(file);if(!data)return;const id='ph_'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+    if(!idb)await idbOpen();await photoPut(id,data);photoCache[id]=data;ui.form[el.dataset.photo]=id;renderSheet();return}
+  if(el.hasAttribute('data-restore')){const file=el.files&&el.files[0];if(!file)return;try{const j=JSON.parse(await file.text());if(j.app!=='naql'||!j.S||!j.S.trips)throw 0;
+    S=j.S;save();if(j.photos)for(const id in j.photos)if(j.photos[id])await photoPut(id,j.photos[id]);toast(t('import_done'));render()}catch(x){toast(t('import_bad'),'bad')}}});
+
+/* ---------- boot ---------- */
+load();idbOpen().then(()=>render());render();
+if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script></body></html>
