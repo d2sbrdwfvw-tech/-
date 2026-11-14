@@ -508,7 +508,7 @@ phone_invalid|رقم الجوال لازم يكون 10 أرقام ويبدأ ب�
 phone_saved|تم حفظ رقم الجوال|Mobile number saved|موبائل نمبر محفوظ ہو گیا|मोबाइल नंबर सहेजा गया|মোবাইল নম্বর সংরক্ষিত
 continue|متابعة|Continue|جاری رکھیں|जारी रखें|চালিয়ে যান
 role_driver|السائق|Driver|ڈرائیور|ड्राइवर|চালক
-users_note|كل مستخدم يدخل برقم هويته أو إقامته ورمز الدخول. السائقين تضيفهم من الأسطول ← السائقين.|Each user signs in with their ID or Iqama number and PIN. Add drivers under Fleet → Drivers.|ہر صارف اپنے شناختی یا اقامہ نمبر اور پن سے داخل ہوتا ہے۔ ڈرائیور بیڑا ← ڈرائیور سے شامل کریں۔|हर उपयोगकर्ता अपने आईडी या इकामा नंबर और पिन से लॉग इन करता है। ड्राइवर बेड़ा → ड्राइवर से जोड़ें।|প্রত্যেকে আইডি বা ইকামা নম্বর ও পিন দিয়ে ঢোকে। চালক যোগ করুন বহর → চালক থেকে।
+users_note|كل مستخدم يدخل برقم هويته أو إقامته ورقم جواله، ويوصله رمز تحقق. السائقين تضيفهم من الأسطول ← السائقين.|Each user signs in with their ID or Iqama number and mobile, then gets a verification code. Add drivers under Fleet → Drivers.|ہر صارف شناختی یا اقامہ نمبر اور موبائل سے داخل ہوتا ہے اور تصدیقی کوڈ آتا ہے۔ ڈرائیور بیڑا ← ڈرائیور سے شامل کریں۔|हर उपयोगकर्ता आईडी या इकामा नंबर और मोबाइल से लॉग इन करता है, फिर सत्यापन कोड आता है। ड्राइवर बेड़ा → ड्राइवर से जोड़ें।|প্রত্যেকে আইডি বা ইকামা নম্বর ও মোবাইল দিয়ে ঢোকে, তারপর যাচাই কোড আসে। চালক যোগ করুন বহর → চালক থেকে।
 st_sent|أُرسلت للسائق|Sent to driver|ڈرائیور کو بھیجا|ड्राइवर को भेजा|চালককে পাঠানো
 st_accepted|قبلها السائق|Accepted|ڈرائیور نے قبول کیا|ड्राइवर ने स्वीकार किया|চালক গ্রহণ করেছে
 act_send|إرسال للسائق|Send to driver|ڈرائیور کو بھیجیں|ड्राइवर को भेजें|চালককে পাঠান
@@ -545,6 +545,29 @@ set_status|تغيير الحالة|Change status|حالت بدلیں|स्थ�
 delete_trip|حذف الرحلة|Delete trip|سفر حذف کریں|ट्रिप हटाएं|ট্রিপ মুছুন
 waiting_accept|بانتظار القبول|Awaiting driver|ڈرائیور کا انتظار|ड्राइवर की प्रतीक्षा|চালকের অপেক্ষায়
 available_drivers|سائقين متاحين|Free drivers|فارغ ڈرائیور|खाली ड्राइवर|ফ্রি চালক
+mobile_login|رقم الجوال المسجّل|Registered mobile number|درج شدہ موبائل نمبر|पंजीकृत मोबाइल नंबर|নিবন্ধিত মোবাইল নম্বর
+send_code|إرسال رمز التحقق|Send verification code|تصدیقی کوڈ بھیجیں|सत्यापन कोड भेजें|যাচাই কোড পাঠান
+code|رمز التحقق|Verification code|تصدیقی کوڈ|सत्यापन कोड|যাচাই কোড
+code_sent|أرسلنا رمز التحقق إلى {p}|We sent a code to {p}|{p} پر کوڈ بھیج دیا|{p} पर कोड भेजा गया|{p} নম্বরে কোড পাঠানো হয়েছে
+demo_code|نسخة تجريبية: الرمز هو {c}. في النسخة الرسمية يوصلك برسالة SMS.|Demo: the code is {c}. In the live version it arrives by SMS.|ڈیمو: کوڈ {c} ہے۔ اصل ورژن میں SMS سے آئے گا۔|डेमो: कोड {c} है। असली संस्करण में यह SMS से आएगा।|ডেমো: কোড {c}। আসল সংস্করণে এটি SMS-এ আসবে।
+code_bad|الرمز غير صحيح|Wrong code|غلط کوڈ|गलत कोड|ভুল কোড
+code_expired|انتهت صلاحية الرمز، اطلب رمز جديد|The code expired — request a new one|کوڈ کی میعاد ختم، نیا کوڈ منگوائیں|कोड की अवधि खत्म, नया कोड मंगाएं|কোডের মেয়াদ শেষ, নতুন কোড নিন
+resend|إرسال رمز جديد|Send a new code|نیا کوڈ بھیجیں|नया कोड भेजें|নতুন কোড পাঠান
+change_number|تغيير الرقم|Change number|نمبر بدلیں|नंबर बदलें|নম্বর বদলান
+login_nomatch|رقم الهوية ورقم الجوال ما يتطابقون مع أي حساب. تواصل مع المدير.|The ID and mobile don't match any account. Contact the manager.|شناختی نمبر اور موبائل کسی اکاؤنٹ سے نہیں ملتے۔ مینیجر سے رابطہ کریں۔|आईडी और मोबाइल किसी खाते से मेल नहीं खाते। मैनेजर से संपर्क करें।|আইডি ও মোবাইল কোনো অ্যাকাউন্টের সাথে মেলে না। ম্যানেজারের সাথে যোগাযোগ করুন।
+setup_title|إعداد التطبيق|Set up the app|ایپ سیٹ اپ|ऐप सेटअप|অ্যাপ সেটআপ
+setup_note|سجّل بياناتك كمدير للمؤسسة. بعدها تضيف الموظفين والسائقين من داخل التطبيق.|Enter your details as the company manager. Then add staff and drivers from inside the app.|کمپنی کے مینیجر کے طور پر اپنی تفصیلات درج کریں۔ پھر ایپ سے عملہ اور ڈرائیور شامل کریں۔|कंपनी मैनेजर के रूप में अपना विवरण दर्ज करें। फिर ऐप से स्टाफ और ड्राइवर जोड़ें।|প্রতিষ্ঠানের ম্যানেজার হিসেবে আপনার তথ্য দিন। তারপর অ্যাপ থেকে কর্মী ও চালক যোগ করুন।
+manager_name|اسم المدير|Manager name|مینیجر کا نام|मैनेजर का नाम|ম্যানেজারের নাম
+start|ابدأ|Start|شروع کریں|शुरू करें|শুরু করুন
+get_started|ابدأ بإضافة بياناتك|Start adding your data|اپنا ڈیٹا شامل کرنا شروع کریں|अपना डेटा जोड़ना शुरू करें|আপনার তথ্য যোগ করা শুরু করুন
+add_trucks|أضف الشاحنات|Add trucks|ٹرک شامل کریں|ट्रक जोड़ें|ট্রাক যোগ করুন
+add_drivers|أضف السائقين|Add drivers|ڈرائیور شامل کریں|ड्राइवर जोड़ें|চালক যোগ করুন
+add_clients|أضف العملاء|Add clients|کلائنٹس شامل کریں|ग्राहक जोड़ें|ক্লায়েন্ট যোগ করুন
+add_routes|أضف المسارات والأسعار|Add routes and prices|راستے اور قیمتیں شامل کریں|रूट और कीमतें जोड़ें|রুট ও দাম যোগ করুন
+need_client|أضف عميل أول قبل ما تسجّل الحمولة|Add a client before creating a load|لوڈ سے پہلے کلائنٹ شامل کریں|लोड से पहले ग्राहक जोड़ें|লোডের আগে ক্লায়েন্ট যোগ করুন
+no_drivers_hint|ما فيه سائقين، أضفهم من الأسطول ← السائقين|No drivers yet — add them under Fleet → Drivers|ابھی کوئی ڈرائیور نہیں — بیڑا ← ڈرائیور سے شامل کریں|अभी कोई ड्राइवर नहीं — बेड़ा → ड्राइवर से जोड़ें|এখনও চালক নেই — বহর → চালক থেকে যোগ করুন
+wipe_data|مسح بيانات التشغيل|Erase operating data|آپریشنل ڈیٹا مٹائیں|परिचालन डेटा मिटाएं|পরিচালনার ডেটা মুছুন
+wipe_confirm|بتنمسح كل الرحلات والشاحنات والسائقين والعملاء والتكاليف. حسابات الموظفين وبيانات المؤسسة تبقى. متأكد؟|All trips, trucks, drivers, clients and costs will be erased. Staff accounts and company details stay. Sure?|تمام سفر، ٹرک، ڈرائیور، کلائنٹس اور اخراجات مٹ جائیں گے۔ عملے کے اکاؤنٹس باقی رہیں گے۔ یقین ہے؟|सभी ट्रिप, ट्रक, ड्राइवर, ग्राहक और खर्च मिट जाएंगे। स्टाफ खाते बने रहेंगे। निश्चित हैं?|সব ট্রিপ, ট্রাক, চালক, ক্লায়েন্ট ও খরচ মুছে যাবে। কর্মীদের অ্যাকাউন্ট থাকবে। নিশ্চিত?
 `;
 const T={};
 for(const line of DICT.trim().split('\n')){const p=line.split('|');T[p[0]]=p.slice(1)}
@@ -630,67 +653,6 @@ function savePrefs(){try{localStorage.setItem(PREF_KEY,JSON.stringify(PREFS))}ca
 function log(msg){S.log.unshift({at:nowISO(),by:SES?SES.name:'',msg});S.log.length=Math.min(S.log.length,300)}
 const byId=(arr,id)=>(S[arr]||[]).find(x=>x.id===id);
 
-function seed(){
-  const rnd=(()=>{let s=7;return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}})();
-  const T0=today(),M=curMonth();
-  S={v:1,seq:1000,
-   settings:{company:'مؤسسة بن جليل للنقليات',cr:'',vatNo:'',address:'',phone:'',vat:15,alertDays:30,dieselPrice:1.66},
-   users:[{id:'u1',name:'عبدالله بن جليل',role:'manager',idNo:'1012345678',pin:'1234',phone:''},{id:'u2',name:'أحمد المحاسب',role:'accountant',idNo:'1023456789',pin:'1234',phone:''},{id:'u3',name:'إمران مشرف الحركة',role:'dispatcher',idNo:'2034567890',pin:'1234',phone:''}],
-   trucks:[],drivers:[],driverTx:[],tyres:[],clients:[],routes:[],trips:[],fixed:[],log:[]};
-  const tr=[['ر ط ب 4521','Mercedes','Actros',2021,'tr_curtain',25,412300,9600,'own_cash',0],['أ ص ن 7810','Volvo','FH',2022,'tr_flat',26,288900,10400,'own_loan',6500],['ح ق د 3302','Isuzu','Giga',2019,'tr_tipper',22,596100,8200,'own_cash',0],['س ع م 1187','MAN','TGX',2023,'tr_reefer',24,154700,11200,'own_loan',7200],['ك ل ر 9064','Hino','700',2020,'tr_flat',25,503800,8800,'own_cash',0]];
-  tr.forEach((x,i)=>S.trucks.push({id:'t'+(i+1),plate:x[0],make:x[1],model:x[2],year:x[3],vin:'',trailer:x[4],cap:x[5],odo:x[6],status:'available',
-    docs:{istimara:addDays(T0,[200,18,320,140,-4][i]),insurance:addDays(T0,[90,250,25,300,160][i]),inspection:addDays(T0,[60,110,12,190,75][i]),opcard:addDays(T0,[400,220,170,35,260][i])},
-    insAnnual:x[7],own:x[8],installment:x[9],serviceEvery:10000,lastService:x[6]-[3200,9700,6100,1800,4500][i]}));
-  const dr=[['محمد أصغر','0551234501','2'+'412345601',2900,'t1'],['راجيش كومار','0551234502','2'+'412345602',2700,'t2'],['عبدالرحمن حسين','0551234503','2'+'412345603',3100,'t3'],['شفيق الإسلام','0551234504','2'+'412345604',2600,'t4'],['سليم خان','0551234505','2'+'412345605',2800,'t5']];
-  dr.forEach((x,i)=>S.drivers.push({id:'d'+(i+1),name:x[0],phone:x[1],idNo:x[2],idExp:addDays(T0,[120,22,300,210,80][i]),licExp:addDays(T0,[400,180,15,500,260][i]),salary:x[3],allow:500,mode:'em_trip',rate:150,truckId:x[4],status:'ds_active',pin:'1234'}));
-  S.clients=[{id:'c1',name:'شركة الخليج للمقاولات',cr:'2050012345',vatNo:'300012345600003',contact:'م. فهد',phone:'0138000001',address:'الدمام',terms:'t_credit',days:30,limit:60000},
-   {id:'c2',name:'مصنع الشرق للأسمنت',cr:'2055012346',vatNo:'300012345700003',contact:'أ. خالد',phone:'0138000002',address:'الجبيل',terms:'t_credit',days:45,limit:80000},
-   {id:'c3',name:'مؤسسة الريان للتجارة',cr:'1010012347',vatNo:'300012345800003',contact:'أ. سعد',phone:'0118000003',address:'الرياض',terms:'t_cash',days:0,limit:0},
-   {id:'c4',name:'شركة النخبة اللوجستية',cr:'4030012348',vatNo:'300012345900003',contact:'أ. ماجد',phone:'0128000004',address:'جدة',terms:'t_credit',days:30,limit:50000}];
-  S.routes=[{id:'r1',from:'الدمام',to:'الرياض',km:410,price:2200,diesel:250,driver:150},{id:'r2',from:'الجبيل',to:'الرياض',km:480,price:2500,diesel:290,driver:150},
-   {id:'r3',from:'الدمام',to:'جدة',km:1340,price:6200,diesel:800,driver:450},{id:'r4',from:'الرياض',to:'القصيم',km:360,price:1900,diesel:220,driver:120},{id:'r5',from:'الدمام',to:'الأحساء',km:160,price:1000,diesel:100,driver:80}];
-  const cargos=['حديد تسليح','أسمنت','مواد بناء','مواد غذائية','أنابيب','بلاستيك خام'];
-  const routeFor={c1:['r1','r5','r3'],c2:['r2','r1'],c3:['r4','r1'],c4:['r3','r1']};
-  // six months of history
-  for(let k=5;k>=0;k--){const m=prevMonth(M,k);const dim=k===0?Math.max(1,+T0.slice(8)):28;
-    S.trucks.forEach((trk,ti)=>{const n=k===0?Math.max(2,Math.round(6.5*dim/28)):5+Math.floor(rnd()*3);
-      for(let j=0;j<n;j++){const cid=['c1','c2','c3','c4'][Math.floor(rnd()*4)],rid=routeFor[cid][Math.floor(rnd()*routeFor[cid].length)],rt=byId('routes',rid);
-        const day=Math.min(dim,1+Math.floor((j+rnd())*dim/n));const ld=m+'-'+pad(day);if(ld>T0)continue;
-        const price=r2(rt.price*(0.95+rnd()*0.15)),no=++S.seq,dkm=Math.round(rt.km*(1.0+rnd()*0.08));
-        const tp={id:'p'+no,no,clientId:cid,routeId:rid,from:rt.from,to:rt.to,cargo:cargos[Math.floor(rnd()*cargos.length)],weight:Math.round(15+rnd()*10),loadDate:ld,price,vat:15,
-          truckId:trk.id,driverId:'d'+(ti+1),status:'delivered',depart:ld+'T06:00',arrive:(addDays(ld,rt.km>900?2:1)>T0?T0:addDays(ld,rt.km>900?2:1))+'T15:00',odoStart:0,odoEnd:dkm,bayan:'',notes:'',expenses:[],payments:[],confirmed:null,created:ld};
-        const lit=Math.round(rt.diesel*(0.92+rnd()*0.22)/1.66);
-        tp.expenses.push({id:uid('e'),type:'ex_diesel',amount:r2(lit*1.66),liters:lit,ppl:1.66,station:'ساسكو',date:ld});
-        tp.expenses.push({id:uid('e'),type:'ex_driver',amount:rt.driver,date:ld});
-        if(rnd()<.12)tp.expenses.push({id:uid('e'),type:'ex_maint',amount:r2(180+rnd()*900),desc:['تغيير سير','إصلاح كهرباء','تسريب هواء','تغيير لمبات'][Math.floor(rnd()*4)],workshop:'ورشة الطريق',date:ld});
-        if(rnd()<.08)tp.expenses.push({id:uid('e'),type:'ex_tyre',amount:r2(rnd()<.5?120:1350),action:rnd()<.5?'repair':'replace',desc:'',date:ld});
-        if(rnd()<.15)tp.expenses.push({id:uid('e'),type:'ex_other',amount:r2(40+rnd()*160),desc:'موازين ومواقف',date:ld});
-        const tot=r2(price*1.15),age=daysBetween(ld,T0);
-        if(age>40||(age>12&&rnd()<.7)){tp.payments.push({id:uid('y'),amount:tot,method:rnd()<.7?'m_transfer':'m_cash',ref:String(Math.floor(rnd()*9e8)),bank:'الراجحي',date:addDays(ld,Math.min(age,5+Math.floor(rnd()*25))),by:'المحاسب'});
-          if(age>20||rnd()<.5)tp.confirmed={by:'المدير',at:addDays(ld,Math.min(age,8+Math.floor(rnd()*25)))+'T12:00'}}
-        else if(age>6&&rnd()<.3)tp.payments.push({id:uid('y'),amount:r2(tot/2),method:'m_cash',ref:'',bank:'',date:addDays(ld,3),by:'المحاسب'});
-        S.trips.push(tp)}});
-    S.fixed.push({id:uid('f'),month:m,cat:'fc_salaries',truckId:'',amount:9000,note:''},{id:uid('f'),month:m,cat:'fc_rent',truckId:'',amount:3000,note:''},{id:uid('f'),month:m,cat:'fc_telecom',truckId:'',amount:650,note:''});
-  }
-  // live trips today
-  const live=[['t1','d1','c1','r1','onroad'],['t2','d2','c3','r4','accepted'],['t3','d3','c2','r2','sent'],['t4','d4','c4','r3','new']];
-  live.forEach(x=>{const rt=byId('routes',x[3]),no=++S.seq,trk=byId('trucks',x[0]),dn=byId('drivers',x[1]).name,ev=[{type:'created',at:T0+'T04:10',by:'إمران مشرف الحركة'}];
-    if(x[4]!=='new')ev.push({type:'sent',at:T0+'T04:15',by:'إمران مشرف الحركة',n:dn});
-    if(x[4]==='accepted'||x[4]==='onroad')ev.push({type:'accepted',at:T0+'T04:40',by:dn});
-    if(x[4]==='onroad')ev.push({type:'loaded',at:T0+'T05:30',by:dn});
-    S.trips.push({id:'p'+no,no,clientId:x[2],routeId:x[3],from:rt.from,to:rt.to,cargo:'مواد بناء',weight:22,loadDate:T0,price:rt.price,vat:15,
-    truckId:x[4]==='new'?'':x[0],driverId:x[4]==='new'?'':x[1],status:x[4],depart:x[4]==='onroad'?T0+'T05:30':'',arrive:'',odoStart:x[4]==='onroad'?trk.odo:'',odoEnd:'',bayan:'',notes:'',events:ev,loadDocs:[],cargoPhotos:[],unloadDocs:[],
-    expenses:x[4]==='onroad'?[{id:uid('e'),type:'ex_diesel',amount:r2(200*1.66),liters:200,ppl:1.66,station:'نفط',date:T0}]:[],payments:[],confirmed:null,created:T0});if(x[4]==='onroad')trk.status='ts_trip'});
-  S.trucks.forEach(x=>{if(x.status==='available')x.status='ts_available'});
-  // fix odometers for delivered trips: chain them per truck
-  S.trucks.forEach(trk=>{let odo=trk.odo-sum(S.trips.filter(p=>p.truckId===trk.id&&p.status==='delivered'),p=>p.odoEnd);
-    S.trips.filter(p=>p.truckId===trk.id&&p.status==='delivered').sort((a,b)=>a.loadDate<b.loadDate?-1:1).forEach(p=>{const d=p.odoEnd;p.odoStart=odo;p.odoEnd=odo+d;odo+=d})});
-  const pos=['أمامي يمين','أمامي يسار','خلفي 1 يمين','خلفي 1 يسار','خلفي 2 يمين','خلفي 2 يسار'];
-  S.trucks.forEach(trk=>pos.forEach((p,i)=>S.tyres.push({id:uid('y'),truckId:trk.id,pos:p,brand:['Bridgestone','Michelin','Hankook'][i%3],size:'315/80R22.5',price:1350,date:addDays(T0,-200-i*20),odo:trk.odo-30000-i*4000,status:'ty_ok'})));
-  S.driverTx.push({id:uid('x'),driverId:'d1',date:addDays(T0,-10),type:'advance',amount:1000,note:'عهدة طريق'},{id:uid('x'),driverId:'d1',date:addDays(T0,-3),type:'settle',amount:600,note:'فواتير ديزل'},{id:uid('x'),driverId:'d3',date:addDays(T0,-6),type:'advance',amount:500,note:''});
-  S.log.push({at:nowISO(),by:'',msg:'demo'});
-  save();
-}
 // bring data saved by older versions up to date
 function migrate(){let ch=false;const ids={u1:'1012345678',u2:'1023456789',u3:'2034567890'};
   for(const u of S.users){if(!u.idNo){u.idNo=ids[u.id]||'';ch=true}if(u.phone===undefined){u.phone='';ch=true}}
@@ -701,7 +663,14 @@ function migrate(){let ch=false;const ids={u1:'1012345678',u2:'1023456789',u3:'2
 function accountOf(ses){if(!ses)return null;return ses.role==='driver'?S.drivers.find(d=>d.id===ses.id):S.users.find(u=>u.id===ses.id)}
 const idKind=n=>/^1\d{9}$/.test(n)?'national_id':/^2\d{9}$/.test(n)?'iqama':null;
 function idTaken(n,exceptId){return S.users.some(u=>u.idNo===n&&u.id!==exceptId)||S.drivers.some(d=>d.idNo===n&&d.id!==exceptId)}
-function load(){try{const r=localStorage.getItem(KEY);if(r)S=JSON.parse(r)}catch(e){S=null}if(!S)seed();
+const SETTINGS0={company:'مؤسسة بن جليل للنقليات',cr:'',vatNo:'',address:'',phone:'',vat:15,alertDays:30,dieselPrice:1.66};
+function emptyState(settings,users){return{v:2,clean2:true,seq:1000,settings:Object.assign({},SETTINGS0,settings||{}),users:users||[],trucks:[],drivers:[],driverTx:[],tyres:[],clients:[],routes:[],trips:[],fixed:[],log:[]}}
+function clearPhotos(){try{if(idb)idb.transaction('p','readwrite').objectStore('p').clear();else indexedDB.deleteDatabase('naql-photos')}catch(e){}}
+const normPhone=v=>{let n=String(v||'').replace(/[^\d]/g,'');if(n.startsWith('00966'))n='0'+n.slice(5);else if(n.startsWith('966'))n='0'+n.slice(3);else if(/^5\d{8}$/.test(n))n='0'+n;return n};
+function load(){try{const r=localStorage.getItem(KEY);if(r)S=JSON.parse(r)}catch(e){S=null}
+  // first run, or a device still holding the demo data: start clean
+  if(!S||!S.clean2){const keep=S&&S.settings?{company:S.settings.company,cr:S.settings.cr,vatNo:S.settings.vatNo,address:S.settings.address,phone:S.settings.phone,vat:S.settings.vat,alertDays:S.settings.alertDays,dieselPrice:S.settings.dieselPrice}:{};
+    S=emptyState(keep);clearPhotos();try{localStorage.removeItem(SES_KEY)}catch(e){}save()}
   try{PREFS=Object.assign(PREFS,JSON.parse(localStorage.getItem(PREF_KEY)||'{}'))}catch(e){}
   try{SES=JSON.parse(localStorage.getItem(SES_KEY)||'null')}catch(e){SES=null}
   migrate();
@@ -820,7 +789,7 @@ const truckOpts=()=>opt(S.trucks.filter(x=>x.status!=='ts_stopped'),x=>x.plate+'
 const driverOpts=()=>opt(S.drivers.filter(x=>x.status==='ds_active'),x=>x.name);
 const keyOpts=keys=>keys.map(k=>[k,t(k)]);
 
-function tripForm(p){if(!guard('trips'))return;const isNew=!p;const prevDriver=p&&p.driverId;
+function tripForm(p){if(!guard('trips'))return;const isNew=!p;if(isNew&&!S.clients.length){toast(t('need_client'),'bad');return clientForm(null)}const prevDriver=p&&p.driverId;
   openForm({title:t(isNew?'new_trip':'edit_trip'),values:p?{...p}:{loadDate:today(),vat:S.settings.vat},
    intro:isNew?t('send_hint'):'',
    fields:[
@@ -829,7 +798,7 @@ function tripForm(p){if(!guard('trips'))return;const isNew=!p;const prevDriver=p
     {k:'from',l:t('from'),req:true},{k:'to',l:t('to'),req:true},
     {k:'cargo',l:t('cargo')},{k:'weight',l:t('weight'),type:'number',min:0},
     {k:'loadDate',l:t('load_date'),type:'date',req:true},{k:'price',l:t('price'),type:'number',req:true,min:0},
-    {k:'driverId',l:t('driver'),type:'select',opts:driverOpts(),onch:f=>{const d=byId('drivers',f.driverId);if(d&&d.truckId)f.truckId=d.truckId}},
+    {k:'driverId',l:t('driver'),type:'select',opts:driverOpts(),hint:S.drivers.length?'':t('no_drivers_hint'),onch:f=>{const d=byId('drivers',f.driverId);if(d&&d.truckId)f.truckId=d.truckId}},
     {k:'truckId',l:t('truck'),type:'select',opts:truckOpts()},
     {k:'bayan',l:t('bayan'),full:true},{k:'notes',l:t('notes'),type:'textarea'}],
    onSave:v=>{if(v.driverId&&!v.truckId)return t('need_truck_driver');
@@ -883,12 +852,12 @@ function truckForm(x){if(!guard('fleet'))return;const isNew=!x;
 
 function driverForm(x){if(!guard('fleet'))return;const isNew=!x;
   openForm({title:isNew?t('new_driver'):x.name,values:x?{...x}:{mode:'em_trip',status:'ds_active'},del:!isNew&&can('*'),
-   fields:[{k:'name',l:t('name'),req:true,full:true},{k:'idNo',l:t('id_or_iqama'),req:true,type:'tel'},{k:'pin',l:t('pin_code'),type:'pin',req:true},{k:'phone',l:t('phone'),type:'tel'},{k:'idExp',l:t('id_exp'),type:'date'},{k:'licExp',l:t('lic_exp'),type:'date'},
+   fields:[{k:'name',l:t('name'),req:true,full:true},{k:'idNo',l:t('id_or_iqama'),req:true,type:'tel'},{k:'phone',l:t('phone'),type:'tel',req:true},{k:'idExp',l:t('id_exp'),type:'date'},{k:'licExp',l:t('lic_exp'),type:'date'},
     {k:'salary',l:t('salary'),type:'number',min:0},{k:'allow',l:t('allowances'),type:'number',min:0},
     {k:'mode',l:t('exp_mode'),type:'select',opts:keyOpts(['em_trip','em_day','em_km']),empty:false},{k:'rate',l:t('exp_rate'),type:'number',min:0},
     {k:'truckId',l:t('assigned_truck'),type:'select',opts:opt(S.trucks,x=>x.plate)},{k:'status',l:t('status'),type:'select',opts:keyOpts(['ds_active','ds_leave','ds_left']),empty:false}],
    onDel:()=>{if(S.trips.some(p=>p.driverId===x.id))return t('not_allowed');S.drivers=S.drivers.filter(y=>y.id!==x.id);ui.stack=[]},
-   onSave:v=>{if(!idKind(v.idNo))return t('id_invalid');if(idTaken(v.idNo,x&&x.id))return t('id_taken');if(isNew){S.drivers.push({id:uid('d'),...v});log(`+ ${t('driver')} ${v.name}`)}else Object.assign(x,v)}})}
+   onSave:v=>{v.idNo=String(v.idNo).replace(/\D/g,'');v.phone=normPhone(v.phone);if(!idKind(v.idNo))return t('id_invalid');if(idTaken(v.idNo,x&&x.id))return t('id_taken');if(!/^05\d{8}$/.test(v.phone))return t('phone_invalid');if(isNew){S.drivers.push({id:uid('d'),...v});log(`+ ${t('driver')} ${v.name}`)}else Object.assign(x,v)}})}
 
 function tyreForm(x,truckId){if(!guard('fleet'))return;
   openForm({title:x?t('tyre'):t('new_tyre'),values:x?{...x}:{truckId:truckId||'',date:today(),status:'ty_ok',odo:truckId?byId('trucks',truckId).odo:''},del:!!x,
@@ -927,9 +896,9 @@ function userForm(x){if(!guard('*'))return;
   openForm({title:x?x.name:t('new_user'),values:x?{...x}:{role:'dispatcher'},del:!!x,
    intro:t('users_note'),
    fields:[{k:'name',l:t('name'),req:true,full:true},{k:'role',l:t('role'),type:'select',opts:[['manager',t('role_manager')],['accountant',t('role_accountant')],['dispatcher',t('role_dispatcher')]],empty:false},
-    {k:'idNo',l:t('id_or_iqama'),type:'tel',req:true},{k:'pin',l:t('pin_code'),type:'pin',req:true},{k:'phone',l:t('phone'),type:'tel',full:true}],
+    {k:'idNo',l:t('id_or_iqama'),type:'tel',req:true},{k:'phone',l:t('phone'),type:'tel',req:true}],
    onDel:()=>{if(x.id===SES.id)return t('cant_delete_self');S.users=S.users.filter(y=>y.id!==x.id)},
-   onSave:v=>{if(!idKind(v.idNo))return t('id_invalid');if(idTaken(v.idNo,x&&x.id))return t('id_taken');if(x)Object.assign(x,v);else S.users.push({id:uid('u'),...v});log(`${t('users')}: ${v.name}`)}})}
+   onSave:v=>{v.idNo=String(v.idNo).replace(/\D/g,'');v.phone=normPhone(v.phone);if(!idKind(v.idNo))return t('id_invalid');if(idTaken(v.idNo,x&&x.id))return t('id_taken');if(!/^05\d{8}$/.test(v.phone))return t('phone_invalid');if(x&&x.id===SES.id&&v.role!=='manager')return t('not_allowed');if(x)Object.assign(x,v);else S.users.push({id:uid('u'),...v});log(`${t('users')}: ${v.name}`)}})}
 
 function settingsForm(){if(!guard('*'))return;
   openForm({title:t('company'),values:{...S.settings},
@@ -971,15 +940,27 @@ function bar(title,sub,right){return`<header class="appbar">${ui.stack.length?ba
 const sec=(title,body,act)=>`<section class="stack"><div class="spread"><h2>${esc(title)}</h2>${act||''}</div>${body}</section>`;
 const emptyBox=()=>`<div class="empty">${esc(t('no_data'))}</div>`;
 
-V.login=()=>{const n=(ui.loginId||'').replace(/\D/g,''),k=idKind(n);
-  const demo=[...S.users.map(u=>[u.idNo,u.name,t('role_'+u.role)]),...S.drivers.filter(d=>d.status!=='ds_left').slice(0,2).map(d=>[d.idNo,d.name,t('role_driver')])];
-  return`<div class="login"><div class="brand"><div class="logo">${IC.truck}</div><div><h1>${esc(S.settings.company)}</h1><div class="muted small">${esc(t('appName'))}</div></div></div>
+V.setup=()=>`<div class="login"><div class="brand"><div class="logo">${IC.truck}</div><div><h1>${esc(t('setup_title'))}</h1><div class="muted small">${esc(t('appName'))}</div></div></div>
   <div class="seg" role="group" aria-label="${esc(t('language'))}">${LANGS.map(l=>`<button data-act="lang" data-id="${l[0]}" aria-pressed="${LANG===l[0]}">${l[1]}</button>`).join('')}</div>
-  <div class="card stack"><h2>${esc(t('login_title'))}</h2>
+  <div class="card stack"><p class="muted small" style="margin:0">${esc(t('setup_note'))}</p>
+   <label class="fld" for="su-co"><span>${esc(t('company_name'))}</span><input id="su-co" value="${esc(S.settings.company)}"></label>
+   <label class="fld" for="su-name"><span>${esc(t('manager_name'))}</span><input id="su-name" autocomplete="name"></label>
+   <label class="fld" for="su-id"><span>${esc(t('id_or_iqama'))}</span><input id="su-id" inputmode="numeric" maxlength="10" dir="ltr" placeholder="1XXXXXXXXX"></label>
+   <label class="fld" for="su-mob"><span>${esc(t('phone'))}</span><input id="su-mob" type="tel" inputmode="tel" maxlength="13" dir="ltr" placeholder="05XXXXXXXX"></label>
+   <button class="btn block" data-act="setup-save">${esc(t('start'))}</button></div></div>`;
+
+V.login=()=>{const o=ui.otp,n=(ui.loginId||'').replace(/\D/g,''),k=idKind(n);
+  const head=`<div class="brand"><div class="logo">${IC.truck}</div><div><h1>${esc(S.settings.company)}</h1><div class="muted small">${esc(t('appName'))}</div></div></div>
+  <div class="seg" role="group" aria-label="${esc(t('language'))}">${LANGS.map(l=>`<button data-act="lang" data-id="${l[0]}" aria-pressed="${LANG===l[0]}">${l[1]}</button>`).join('')}</div>`;
+  if(o)return`<div class="login">${head}<div class="card stack"><h2>${esc(t('code'))}</h2><p class="muted small" style="margin:0">${esc(t('code_sent',{p:o.phone}))}</p>
+   <div class="note warn small">${esc(t('demo_code',{c:o.code}))}</div>
+   <label class="fld" for="otp"><span>${esc(t('code'))}</span><input id="otp" class="pin" type="text" inputmode="numeric" maxlength="4" autocomplete="one-time-code" dir="ltr"></label>
+   <button class="btn block" data-act="login-verify">${esc(t('enter'))}</button>
+   <div class="spread"><button class="link" data-act="login-back">${esc(t('change_number'))}</button><button class="link" data-act="login-send">${esc(t('resend'))}</button></div></div></div>`;
+  return`<div class="login">${head}<div class="card stack"><h2>${esc(t('login_title'))}</h2>
    <label class="fld" for="lid"><span>${esc(t('id_or_iqama'))}</span><input id="lid" type="text" inputmode="numeric" maxlength="10" autocomplete="username" dir="ltr" value="${esc(n)}" data-ch="loginId" placeholder="1XXXXXXXXX / 2XXXXXXXXX"><span class="hint" id="lid-kind">${k?esc(t(k)):n.length===10?`<span class="negv">${esc(t('id_invalid'))}</span>`:''}</span></label>
-   <label class="fld" for="pin"><span>${esc(t('pin'))}</span><input id="pin" class="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="current-password" dir="ltr"></label>
-   <button class="btn block" data-act="login">${esc(t('enter'))}</button></div>
-  <div class="card stack"><h3>${esc(t('demo_accounts'))}</h3><div class="users">${demo.map(([id,nm,r])=>`<button data-act="login-fill" data-id="${esc(id)}"><span class="av">${esc(nm.trim()[0]||'?')}</span><span class="grow"><b>${esc(nm)}</b><br><span class="muted small">${esc(r)} · <span class="num">${esc(id)}</span></span></span></button>`).join('')}</div><p class="muted xs" style="margin:0">${esc(t('demo_pins'))}</p></div></div>`};
+   <label class="fld" for="lmob"><span>${esc(t('mobile_login'))}</span><input id="lmob" type="tel" inputmode="tel" maxlength="13" autocomplete="tel" dir="ltr" value="${esc(ui.loginPhone||'')}" placeholder="05XXXXXXXX"></label>
+   <button class="btn block" data-act="login-send">${esc(t('send_code'))}</button></div></div>`};
 
 V.phone=()=>{const a=accountOf(SES);return`<div class="login"><div class="brand"><div class="logo">${IC.person}</div><div><h1>${esc(t('phone_title'))}</h1><div class="muted small">${esc(a.name)} · ${esc(t('role_'+SES.role))}</div></div></div>
   <div class="card stack"><p class="muted small" style="margin:0">${esc(t('phone_note'))}</p>
@@ -989,10 +970,13 @@ V.phone=()=>{const a=accountOf(SES);return`<div class="login"><div class="brand"
 
 /* home: one per role */
 V.home=()=>isDriver()?V.driverHome():SES.role==='dispatcher'?V.dispHome():V.finHome();
+function startCard(){if(!isMgr())return'';const steps=[['add_trucks',S.trucks.length,'truck-new',IC.truck],['add_drivers',S.drivers.length,'driver-new',IC.person],['add_clients',S.clients.length,'client-new',IC.users],['add_routes',S.routes.length,'route-new',IC.pin]];
+  if(steps.every(x=>x[1]))return'';
+  return sec(t('get_started'),`<div class="list">${steps.map(([l,n,a,ic])=>`<button class="item" data-act="${a}"><span class="ic" style="${n?'background:var(--good-soft);color:var(--good)':''}">${n?IC.check:ic}</span><span class="t"><b>${esc(t(l))}</b><span>${n?int(n):''}</span></span>${IC.plus.replace('<svg','<svg class="chev"')}</button>`).join('')}</div>`)}
 V.finHome=()=>{const m=curMonth(),st=monthStats(m),al=alerts(),act=S.trips.filter(p=>ACTIVE.includes(p.status));
   const recv=sum(S.trips.filter(p=>p.status==='delivered'),tripDue),unc=S.trips.filter(p=>payState(p)==='pay_paid').length;
   const ms=[5,4,3,2,1,0].map(k=>prevMonth(m,k)),vals=ms.map(x=>monthStats(x).net),mx=Math.max(1,...vals.map(Math.abs));
-  return bar(S.settings.company,t('role_'+SES.role)+' · '+SES.name)+`<main class="stack">
+  return bar(S.settings.company,t('role_'+SES.role)+' · '+SES.name)+`<main class="stack">${startCard()}
   <div class="kpis"><div class="kpi hero"><div class="l">${esc(t('net_profit'))} · ${esc(fmonth(m))}</div><div class="v">${money(st.net)}</div></div>
    <div class="kpi"><div class="l">${esc(t('revenue'))}</div><div class="v">${int(st.rev)} <small>${t('sar')}</small></div></div>
    <div class="kpi"><div class="l">${esc(t('costs'))}</div><div class="v">${int(st.vexp+st.fixed)} <small>${t('sar')}</small></div></div>
@@ -1152,8 +1136,8 @@ V.client=id=>{const c=byId('clients',id);if(!c)return gone();const ps=S.trips.fi
    <tfoot><tr><td colspan="2">${esc(t('total'))}</td><td class="num">${nf(sum(ps,tripTotal))}</td><td class="num">${nf(sum(ps,tripPaid))}</td><td class="num">${nf(b)}</td><td></td></tr></tfoot></table></div>`:emptyBox(),
    ps.length?`<button class="btn ghost sm" data-act="csv-client">${IC.save}${esc(t('export_csv'))}</button>`:'')}</main>`};
 
-V.more=()=>{const items=[['fixed','fixed_costs',IC.coin,'fixed'],['reports','reports',IC.chart,'reports'],['alerts','alerts',IC.alert,'viewAll'],['users','users',IC.users,'*'],['activity','activity',IC.clipboard,'*'],['settings','settings',IC.grid,null]];
-  return bar(t('more'),SES.name+' · '+t('role_'+SES.role))+`<main class="stack"><div class="list">${items.filter(i=>!i[3]||can(i[3])).map(([k,l,ic])=>`<button class="item" data-act="push" data-type="${k}"><span class="ic">${ic}</span><span class="t"><b>${esc(t(l))}</b></span>${IC.chev.replace('<svg','<svg class="chev"')}</button>`).join('')}
+V.more=()=>{const items=[['drivers-add','new_driver',IC.person,'fleet'],['fixed','fixed_costs',IC.coin,'fixed'],['reports','reports',IC.chart,'reports'],['alerts','alerts',IC.alert,'viewAll'],['users','users',IC.users,'*'],['activity','activity',IC.clipboard,'*'],['settings','settings',IC.grid,null]];
+  return bar(t('more'),SES.name+' · '+t('role_'+SES.role))+`<main class="stack"><div class="list">${items.filter(i=>!i[3]||can(i[3])).map(([k,l,ic])=>`<button class="item" data-act="${k==='drivers-add'?'drivers-add':'push'}" data-type="${k}"><span class="ic">${ic}</span><span class="t"><b>${esc(t(l))}</b></span>${IC.chev.replace('<svg','<svg class="chev"')}</button>`).join('')}
    <button class="item" data-act="logout"><span class="ic" style="background:var(--bad-soft);color:var(--bad)">${IC.out}</span><span class="t"><b>${esc(t('logout'))}</b></span></button></div>
    <p class="note small">${esc(t('demo_note'))}</p><p class="muted xs">${esc(t('install_hint'))}</p></main>`};
 
@@ -1187,7 +1171,7 @@ V.settings=()=>bar(t('settings'))+`<main class="stack">
   ${sec(t('language'),`<div class="seg">${LANGS.map(l=>`<button data-act="lang" data-id="${l[0]}" aria-pressed="${LANG===l[0]}">${l[1]}</button>`).join('')}</div>`)}
   ${sec(t('theme'),`<div class="seg">${['auto','light','dark'].map(k=>`<button data-act="theme" data-id="${k}" aria-pressed="${PREFS.theme===k}">${esc(t('th_'+k))}</button>`).join('')}</div>`)}
   ${can('*')?sec(t('company'),`<div class="card"><dl class="kv"><dt>${esc(t('company_name'))}</dt><dd>${esc(S.settings.company)}</dd><dt>${esc(t('vat_no'))}</dt><dd class="num">${esc(S.settings.vatNo||'—')}</dd><dt>${esc(t('vat_pct'))}</dt><dd class="num">${S.settings.vat}%</dd><dt>${esc(t('diesel_price'))}</dt><dd>${money(S.settings.dieselPrice)}</dd><dt>${esc(t('alert_days'))}</dt><dd class="num">${S.settings.alertDays}</dd></dl></div>`,`<button class="btn sec sm" data-act="settings-edit">${esc(t('edit'))}</button>`):''}
-  ${can('*')?sec(t('backup'),`<div class="row"><button class="btn sec" data-act="backup">${IC.save}${esc(t('export_backup'))}</button><label class="btn ghost">${IC.upload}${esc(t('import_backup'))}<input type="file" accept="application/json,.json" data-restore hidden></label></div><button class="btn ghost sm" data-act="reset" style="color:var(--bad)">${esc(t('reset_demo'))}</button>`):''}
+  ${can('*')?sec(t('backup'),`<div class="row"><button class="btn sec" data-act="backup">${IC.save}${esc(t('export_backup'))}</button><label class="btn ghost">${IC.upload}${esc(t('import_backup'))}<input type="file" accept="application/json,.json" data-restore hidden></label></div><button class="btn ghost sm" data-act="reset" style="color:var(--bad)">${esc(t('wipe_data'))}</button>`):''}
   <p class="note small">${esc(t('demo_note'))}</p></main>`;
 
 /* ---------- render ---------- */
@@ -1198,6 +1182,7 @@ const NAVS={manager:[['home','home',IC.home],['trips','trips',IC.route],['fleet'
 function applyLang(){const l=LANGS.find(x=>x[0]===LANG)||LANGS[0];document.documentElement.lang=l[0];document.documentElement.dir=l[2];document.title=t('appName');
   if(PREFS.theme==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',PREFS.theme)}
 function render(){applyLang();const app=$('#app');
+  if(!S.users.length){app.innerHTML=V.setup();return}
   if(!SES){app.innerHTML=V.login();return}
   const acc=accountOf(SES);if(!acc){SES=null;app.innerHTML=V.login();return}
   if(!acc.phone){app.innerHTML=V.phone();return}
@@ -1221,12 +1206,22 @@ const ACT={
  'open':(id,el)=>{if(el.dataset.type==='client'&&ui.tab!=='clients'&&!ui.stack.length)ui.tab='clients';push(el.dataset.type,id)},
  'lang':id=>{LANG=id;PREFS.lang=id;savePrefs();render();if(ui.sheet)renderSheet()},
  'theme':id=>{PREFS.theme=id;savePrefs();render()},
- 'login-fill':id=>{ui.loginId=id;render();setTimeout(()=>{const p=$('#pin');if(p)p.focus()},30)},
- 'login':()=>{const n=($('#lid')||{}).value?$('#lid').value.replace(/\D/g,''):'',pin=($('#pin')||{}).value||'';ui.loginId=n;
-   if(!idKind(n)){toast(t('id_invalid'),'bad');return}
+ 'setup-save':()=>{const v=k=>(($('#'+k)||{}).value||'').trim(),co=v('su-co'),nm=v('su-name'),id=v('su-id').replace(/\D/g,''),mob=normPhone(v('su-mob'));
+   if(!nm)return toast(t('required'),'bad');if(!idKind(id))return toast(t('id_invalid'),'bad');if(!/^05\d{8}$/.test(mob))return toast(t('phone_invalid'),'bad');
+   if(co)S.settings.company=co;S.users.push({id:uid('u'),name:nm,role:'manager',idNo:id,phone:mob});log(`${t('setup_title')}: ${nm}`);save();ui.loginId=id;ui.loginPhone=mob;render()},
+ 'login-send':()=>{const n=ui.otp?ui.otp.idNo:(($('#lid')||{}).value||'').replace(/\D/g,''),mob=ui.otp?ui.otp.phone:normPhone(($('#lmob')||{}).value);ui.loginId=n;ui.loginPhone=mob;
+   if(!idKind(n))return toast(t('id_invalid'),'bad');if(!/^05\d{8}$/.test(mob))return toast(t('phone_invalid'),'bad');
    const u=S.users.find(x=>x.idNo===n),d=!u&&S.drivers.find(x=>x.idNo===n&&x.status!=='ds_left'),a=u||d;
-   if(!a||a.pin!==pin){toast(t('login_bad'),'bad');const p=$('#pin');if(p){p.value='';p.focus()}return}
-   SES={id:a.id,name:a.name,role:u?u.role:'driver'};try{localStorage.setItem(SES_KEY,JSON.stringify(SES))}catch(e){}ui.tab='home';ui.stack=[];ui.filter='active';render()},
+   // an account with no mobile yet takes the one entered now; otherwise they must match
+   if(!a||(a.phone&&normPhone(a.phone)!==mob))return toast(t('login_nomatch'),'bad');
+   ui.otp={idNo:n,phone:mob,accId:a.id,role:u?u.role:'driver',code:String(Math.floor(1000+Math.random()*9000)),exp:Date.now()+5*60e3,tries:0};
+   render();setTimeout(()=>{const o=$('#otp');if(o)o.focus()},40)},
+ 'login-back':()=>{ui.otp=null;render()},
+ 'login-verify':()=>{const o=ui.otp;if(!o)return;const c=(($('#otp')||{}).value||'').replace(/\D/g,'');
+   if(Date.now()>o.exp){toast(t('code_expired'),'bad');return}
+   if(c!==o.code){o.tries++;if(o.tries>=5){ui.otp=null;render();return toast(t('code_expired'),'bad')}toast(t('code_bad'),'bad');const el=$('#otp');if(el){el.value='';el.focus()}return}
+   const a=o.role==='driver'?byId('drivers',o.accId):byId('users',o.accId);if(!a)return;if(!a.phone){a.phone=o.phone;save()}
+   SES={id:a.id,name:a.name,role:o.role};ui.otp=null;$('#toast').hidden=true;try{localStorage.setItem(SES_KEY,JSON.stringify(SES))}catch(e){}log(`${t('login_title')}: ${a.name}`);save();ui.tab='home';ui.stack=[];ui.filter='active';render()},
  'phone-save':()=>{const v=(($('#mob')||{}).value||'').replace(/\s/g,'');if(!/^05\d{8}$/.test(v)){toast(t('phone_invalid'),'bad');return}
    const a=accountOf(SES);a.phone=v;log(`${t('phone')}: ${a.name}`);save();toast(t('phone_saved'));render()},
  'drv-do':(id,el)=>{const p=byId('trips',id);if(p)driverAction(p,el.dataset.type)},
@@ -1250,7 +1245,8 @@ const ACT={
  'fleet-tab':id=>{ui.fleetTab=id;render()},'client-tab':id=>{ui.clientTab=id;render()},'rep-tab':id=>{ui.repTab=id;render()},
  'truck-new':()=>truckForm(null),'truck-edit':()=>truckForm(byId('trucks',cur().id)),
  'truck-service':()=>{if(!guard('fleet'))return;const x=byId('trucks',cur().id);ui.confirm={msg:t('record_service')+' · '+x.plate,sub:t('odometer')+': '+nf(x.odo,0),ok:t('save'),kind:'',fn:()=>{x.lastService=+x.odo;log(`${t('record_service')} ${x.plate}`)}};render()},
- 'driver-new':()=>driverForm(null),'driver-edit':()=>driverForm(byId('drivers',cur().id)),
+ 'driver-new':()=>driverForm(null),
+ 'drivers-add':()=>{ui.tab='fleet';ui.fleetTab='drivers';ui.stack=[];render();driverForm(null)},'driver-edit':()=>driverForm(byId('drivers',cur().id)),
  'custody-new':()=>custodyForm(byId('drivers',cur().id)),
  'tyre-new':id=>tyreForm(null,id||(cur()&&cur().type==='truck'?cur().id:'')),'tyre-edit':id=>{if(!can('fleet'))return;tyreForm(byId('tyres',id))},
  'client-new':()=>clientForm(null),'client-edit':()=>clientForm(byId('clients',cur().id)),
@@ -1266,14 +1262,14 @@ const ACT={
  'csv-client':()=>{const c=byId('clients',cur().id),ps=S.trips.filter(p=>p.clientId===c.id&&p.status==='delivered');csv(`statement-${c.name}.csv`,[t('trip_no'),t('date'),t('from'),t('to'),t('price'),t('vat'),t('total_vat'),t('paid'),t('remaining'),t('due_date')],ps.map(p=>[p.no,p.loadDate,p.from,p.to,p.price,tripVat(p),tripTotal(p),tripPaid(p),Math.max(0,tripDue(p)),dueDateOf(p)]))},
  'backup':async()=>{const photos={};if(idb){const ids=[];JSON.stringify(S).replace(/"(ph_[a-z0-9]+)"/g,(m,id)=>ids.push(id));for(const id of ids)photos[id]=await photoGet(id)}
    downloadText(`backup-${today()}.json`,JSON.stringify({app:'naql',S,photos}),'application/json');toast(t('backup_done'))},
- 'reset':()=>{ui.confirm={msg:t('reset_demo'),sub:t('reset_confirm'),ok:t('reset_demo'),fn:()=>{localStorage.removeItem(KEY);seed();ui.stack=[];ui.tab='home'}};render()},
+ 'reset':()=>{if(!guard('*'))return;ui.confirm={msg:t('wipe_data'),sub:t('wipe_confirm'),ok:t('wipe_data'),fn:()=>{S=emptyState(S.settings,S.users);clearPhotos();log(t('wipe_data'));ui.stack=[];ui.tab='home'}};render()},
  'photo-view':id=>{if(ui.sheet)return;ui.lightbox=id;render()},
 };
 
 /* ---------- events ---------- */
 document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(!el)return;const f=ACT[el.dataset.act];if(!f)return;
   if(el.tagName==='A')e.preventDefault();f(el.dataset.id,el,e)});
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='pin')ACT.login();
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='otp')ACT['login-verify']();if(e.key==='Enter'&&e.target.id==='lmob')ACT['login-send']();
   if(e.key==='Escape'){if(ui.confirm){ui.confirm=null;render()}else if(ui.sheet)closeSheet()}
   if((e.key==='Enter'||e.key===' ')&&e.target.matches('div[data-act]')){e.preventDefault();e.target.click()}});
 document.addEventListener('input',e=>{const el=e.target;
