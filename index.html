@@ -746,8 +746,8 @@ function payState(p){if(p.status!=='delivered')return null;if(p.confirmed)return
 const truckDrivers=id=>S.drivers.filter(d=>d.truckId===id&&d.status!=='ds_left');
 const activeTrucks=()=>S.trucks.filter(x=>x.status!=='ts_stopped');
 function truckAutoFixed(trk){return r2((+trk.insAnnual||0)/12+(trk.own==='own_loan'?(+trk.installment||0):0)+sum(truckDrivers(trk.id),d=>(+d.salary||0)+(+d.allow||0)))}
-// the current month is charged only for the days elapsed so far, so mid-month profit isn't distorted
-const monthFactor=m=>{if(m!==curMonth())return 1;const d=new Date();const dim=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();return d.getDate()/dim};
+// fixed costs are charged as the full monthly amount (owner's choice)
+const monthFactor=m=>1;
 function truckFixed(id,m){const trk=byId('trucks',id);if(!trk)return 0;const n=Math.max(1,activeTrucks().length);
   return r2(monthFactor(m)*(truckAutoFixed(trk)+sum(S.fixed.filter(f=>f.month===m&&f.truckId===id),f=>f.amount)+sum(S.fixed.filter(f=>f.month===m&&!f.truckId),f=>f.amount)/n))}
 function monthFixed(m){return r2(sum(S.trucks.filter(x=>x.status!=='ts_stopped'||S.fixed.some(f=>f.truckId===x.id&&f.month===m)),x=>truckFixed(x.id,m)))}
