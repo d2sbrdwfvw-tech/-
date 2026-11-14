@@ -187,6 +187,10 @@ tfoot td{font-weight:700;background:var(--sunk)}
 .lb img{max-width:96vw;max-height:86vh;border-radius:10px}
 .lb .xbtn{position:absolute;top:calc(14px + env(safe-area-inset-top));inset-inline-end:14px}
 img[data-act="photo-view"]{cursor:zoom-in}
+
+.actcode{font-size:2.2rem;font-weight:700;letter-spacing:.3em;text-align:center;padding:14px;border-radius:14px;background:var(--accent-soft);color:var(--accent)}
+a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.actcode{direction:ltr}
 </style></head><body><div id="app"></div><div id="sheet"></div><div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
 <script>// Languages: code, native name, direction
 const LANGS=[['ar','العربية','rtl'],['en','English','ltr'],['ur','اردو','rtl'],['hi','हिन्दी','ltr'],['bn','বাংলা','ltr']];
@@ -568,6 +572,35 @@ need_client|أضف عميل أول قبل ما تسجّل الحمولة|Add a c
 no_drivers_hint|ما فيه سائقين، أضفهم من الأسطول ← السائقين|No drivers yet — add them under Fleet → Drivers|ابھی کوئی ڈرائیور نہیں — بیڑا ← ڈرائیور سے شامل کریں|अभी कोई ड्राइवर नहीं — बेड़ा → ड्राइवर से जोड़ें|এখনও চালক নেই — বহর → চালক থেকে যোগ করুন
 wipe_data|مسح بيانات التشغيل|Erase operating data|آپریشنل ڈیٹا مٹائیں|परिचालन डेटा मिटाएं|পরিচালনার ডেটা মুছুন
 wipe_confirm|بتنمسح كل الرحلات والشاحنات والسائقين والعملاء والتكاليف. حسابات الموظفين وبيانات المؤسسة تبقى. متأكد؟|All trips, trucks, drivers, clients and costs will be erased. Staff accounts and company details stay. Sure?|تمام سفر، ٹرک، ڈرائیور، کلائنٹس اور اخراجات مٹ جائیں گے۔ عملے کے اکاؤنٹس باقی رہیں گے۔ یقین ہے؟|सभी ट्रिप, ट्रक, ड्राइवर, ग्राहक और खर्च मिट जाएंगे। स्टाफ खाते बने रहेंगे। निश्चित हैं?|সব ট্রিপ, ট্রাক, চালক, ক্লায়েন্ট ও খরচ মুছে যাবে। কর্মীদের অ্যাকাউন্ট থাকবে। নিশ্চিত?
+password|كلمة المرور|Password|پاس ورڈ|पासवर्ड|পাসওয়ার্ড
+password2|تأكيد كلمة المرور|Confirm password|پاس ورڈ کی تصدیق|पासवर्ड की पुष्टि|পাসওয়ার্ড নিশ্চিত করুন
+pw_rule|6 أحرف أو أرقام على الأقل|At least 6 characters|کم از کم 6 حروف|कम से कम 6 अक्षर|কমপক্ষে ৬টি অক্ষর
+pw_mismatch|كلمتا المرور غير متطابقتين|Passwords do not match|پاس ورڈ مماثل نہیں|पासवर्ड मेल नहीं खाते|পাসওয়ার্ড মিলছে না
+set_pw_title|إنشاء كلمة المرور|Create password|پاس ورڈ بنائیں|पासवर्ड बनाएं|পাসওয়ার্ড তৈরি করুন
+set_pw_note|أهلاً {n}، اختر كلمة مرور خاصة بك تدخل بها كل مرة.|Welcome {n}, choose your own password for future logins.|خوش آمدید {n}، اپنا ذاتی پاس ورڈ منتخب کریں۔|स्वागत है {n}, अपना निजी पासवर्ड चुनें।|স্বাগতম {n}, আপনার নিজের পাসওয়ার্ড বেছে নিন।
+back_login|رجوع لتسجيل الدخول|Back to login|لاگ ان پر واپس|लॉगिन पर वापस|লগইনে ফিরে যান
+first_login|أول دخول|First login|پہلا لاگ ان|पहला लॉगिन|প্রথম লগইন
+act_note|أدخل رقم الهوية/الإقامة ورمز التفعيل الذي أرسله لك المدير.|Enter your ID/Iqama and the activation code the manager sent you.|اپنا شناختی/اقامہ نمبر اور مینیجر کا بھیجا ہوا ایکٹیویشن کوڈ درج کریں۔|अपना आईडी/इकामा और मैनेजर द्वारा भेजा गया सक्रियण कोड दर्ज करें।|আপনার আইডি/ইকামা এবং ম্যানেজারের পাঠানো অ্যাক্টিভেশন কোড লিখুন।
+act_code|رمز التفعيل|Activation code|ایکٹیویشن کوڈ|सक्रियण कोड|অ্যাক্টিভেশন কোড
+act_hint_legacy|الحسابات القديمة بدون رمز: اكتب رقم الجوال المسجل|Older accounts without a code: type the registered mobile|پرانے اکاؤنٹس: رجسٹرڈ موبائل نمبر لکھیں|पुराने खाते: पंजीकृत मोबाइल नंबर लिखें|পুরনো অ্যাকাউন্ট: নিবন্ধিত মোবাইল নম্বর লিখুন
+have_code|عندي رمز تفعيل (أول دخول)|I have an activation code (first login)|میرے پاس ایکٹیویشن کوڈ ہے|मेरे पास सक्रियण कोड है|আমার অ্যাক্টিভেশন কোড আছে
+forgot_pw|نسيت كلمة المرور؟ اطلب من المدير إعادة التعيين.|Forgot your password? Ask the manager to reset it.|پاس ورڈ بھول گئے؟ مینیجر سے ری سیٹ کروائیں۔|पासवर्ड भूल गए? मैनेजर से रीसेट कराएं।|পাসওয়ার্ড ভুলে গেছেন? ম্যানেজারকে রিসেট করতে বলুন।
+locked|محاولات كثيرة، حاول بعد {m} دقيقة|Too many attempts, try again in {m} min|بہت زیادہ کوششیں، {m} منٹ بعد کوشش کریں|बहुत प्रयास, {m} मिनट बाद कोशिश करें|অনেক চেষ্টা, {m} মিনিট পরে চেষ্টা করুন
+need_activation|الحساب غير مفعّل، استخدم رمز التفعيل أولاً|Account not activated, use your activation code first|اکاؤنٹ فعال نہیں، پہلے ایکٹیویشن کوڈ استعمال کریں|खाता सक्रिय नहीं, पहले सक्रियण कोड का उपयोग करें|অ্যাকাউন্ট সক্রিয় নয়, আগে অ্যাক্টিভেশন কোড ব্যবহার করুন
+login_bad2|رقم الهوية أو كلمة المرور غير صحيحة|Wrong ID or password|غلط شناختی نمبر یا پاس ورڈ|गलत आईडी या पासवर्ड|ভুল আইডি বা পাসওয়ার্ড
+act_bad|رمز التفعيل غير صحيح|Wrong activation code|غلط ایکٹیویشن کوڈ|गलत सक्रियण कोड|ভুল অ্যাক্টিভেশন কোড
+reset_login|إعادة تعيين كلمة المرور|Reset password|پاس ورڈ ری سیٹ کریں|पासवर्ड रीसेट करें|পাসওয়ার্ড রিসেট করুন
+reset_login_note|تُلغى كلمة المرور الحالية ويظهر رمز تفعيل جديد ترسله له.|The current password is cleared and a new activation code is shown to send.|موجودہ پاس ورڈ ختم ہو جائے گا اور نیا کوڈ دکھایا جائے گا۔|वर्तमान पासवर्ड हट जाएगा और नया कोड दिखेगा।|বর্তমান পাসওয়ার্ড মুছে নতুন কোড দেখানো হবে।
+copied|تم النسخ|Copied|کاپی ہو گیا|कॉपी किया गया|কপি হয়েছে
+login_state|حالة الدخول|Login status|لاگ ان کی حالت|लॉगिन स्थिति|লগইন অবস্থা
+acc_active|مفعّل|Active|فعال|सक्रिय|সক্রিয়
+acc_pending|بانتظار التفعيل|Awaiting activation|فعال ہونے کا انتظار|सक्रियण लंबित|সক্রিয়করণের অপেক্ষায়
+wa_msg|مرحباً {n}، رمز تفعيل حسابك في {c}: {code}. ادخل برقم هويتك/إقامتك ثم اختر كلمة مرورك.{u}|Hello {n}, your activation code for {c}: {code}. Log in with your ID/Iqama then choose your password.{u}|ہیلو {n}، {c} میں آپ کا ایکٹیویشن کوڈ: {code}۔ شناختی/اقامہ نمبر سے داخل ہو کر پاس ورڈ بنائیں۔{u}|नमस्ते {n}, {c} के लिए आपका सक्रियण कोड: {code}. आईडी/इकामा से लॉगिन कर पासवर्ड चुनें।{u}|হ্যালো {n}, {c}-এ আপনার অ্যাক্টিভেশন কোড: {code}। আইডি/ইকামা দিয়ে লগইন করে পাসওয়ার্ড বেছে নিন।{u}
+act_show_title|رمز التفعيل|Activation code|ایکٹیویشن کوڈ|सक्रियण कोड|অ্যাক্টিভেশন কোড
+act_show_note|أرسل هذا الرمز إلى {n} ليدخل أول مرة ويختار كلمة مروره.|Send this code to {n} to log in the first time and choose a password.|یہ کوڈ {n} کو بھیجیں تاکہ وہ پہلی بار داخل ہو کر پاس ورڈ بنائے۔|यह कोड {n} को भेजें ताकि वह पहली बार लॉगिन कर पासवर्ड चुने।|এই কোডটি {n}-কে পাঠান যাতে প্রথমবার লগইন করে পাসওয়ার্ড বেছে নেয়।
+send_whatsapp|إرسال واتساب|Send via WhatsApp|واٹس ایپ پر بھیجیں|व्हाट्सऐप भेजें|হোয়াটসঅ্যাপে পাঠান
+copy|نسخ|Copy|کاپی|कॉपी|কপি
+act_show_hint|الرمز يُستخدم مرة واحدة. تقدر تعيد التعيين من ملفه في أي وقت.|One-time code. You can reset it from their file any time.|ایک بار کا کوڈ۔ کسی بھی وقت فائل سے ری سیٹ کر سکتے ہیں۔|एक बार का कोड। कभी भी फ़ाइल से रीसेट कर सकते हैं।|একবারের কোড। যেকোনো সময় ফাইল থেকে রিসেট করতে পারেন।
 `;
 const T={};
 for(const line of DICT.trim().split('\n')){const p=line.split('|');T[p[0]]=p.slice(1)}
@@ -666,6 +699,18 @@ function idTaken(n,exceptId){return S.users.some(u=>u.idNo===n&&u.id!==exceptId)
 const SETTINGS0={company:'مؤسسة بن جليل للنقليات',cr:'',vatNo:'',address:'',phone:'',vat:15,alertDays:30,dieselPrice:1.66};
 function emptyState(settings,users){return{v:2,clean2:true,seq:1000,settings:Object.assign({},SETTINGS0,settings||{}),users:users||[],trucks:[],drivers:[],driverTx:[],tyres:[],clients:[],routes:[],trips:[],fixed:[],log:[]}}
 function clearPhotos(){try{if(idb)idb.transaction('p','readwrite').objectStore('p').clear();else indexedDB.deleteDatabase('naql-photos')}catch(e){}}
+async function hashPw(pw,salt){const enc=new TextEncoder();
+  if(!(window.crypto&&crypto.subtle)){let h=0;for(const c of salt+pw)h=(h*31+c.charCodeAt(0))|0;return 'w'+h}
+  const k=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveBits']);
+  const b=await crypto.subtle.deriveBits({name:'PBKDF2',salt:enc.encode(salt),iterations:120000,hash:'SHA-256'},k,256);
+  return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function setPw(a,pw){a.pwSalt=uid('s')+Math.random().toString(36).slice(2);a.pwHash=await hashPw(pw,a.pwSalt);delete a.actCode;a.fail=0;a.lockUntil=0}
+const newActCode=()=>String(Math.floor(100000+Math.random()*900000));
+const findAcc=n=>{const u=S.users.find(x=>x.idNo===n);if(u)return{a:u,role:u.role};const d=S.drivers.find(x=>x.idNo===n&&x.status!=='ds_left');return d?{a:d,role:'driver'}:null};
+const accState=a=>a.pwHash?'acc_active':'acc_pending';
+function showAct(a){a.actCode=newActCode();delete a.pwHash;delete a.pwSalt;ui.actShow={name:a.name,phone:a.phone,code:a.actCode}}
+function waLinkTo(phone,text){const n=normPhone(phone).replace(/^0/,'966');return`https://wa.me/${n}?text=${encodeURIComponent(text)}`}
+const appUrl=()=>location.protocol.startsWith('http')&&!/claude\.ai|claudeusercontent/.test(location.host)?location.origin+location.pathname:'';
 const normPhone=v=>{let n=String(v||'').replace(/[^\d]/g,'');if(n.startsWith('00966'))n='0'+n.slice(5);else if(n.startsWith('966'))n='0'+n.slice(3);else if(/^5\d{8}$/.test(n))n='0'+n;return n};
 function load(){try{const r=localStorage.getItem(KEY);if(r)S=JSON.parse(r)}catch(e){S=null}
   // first run, or a device still holding the demo data: start clean
@@ -850,14 +895,15 @@ function truckForm(x){if(!guard('fleet'))return;const isNew=!x;
    onSave:v=>{const docs={};for(const k of['istimara','insurance','inspection','opcard']){docs[k]=v['doc_'+k]||'';delete v['doc_'+k]}
      if(isNew){const n={id:uid('t'),...v,docs};if(n.lastService==='')n.lastService=n.odo;S.trucks.push(n);log(`+ ${t('truck')} ${n.plate}`)}else{Object.assign(x,v,{docs});log(`${t('edit')} ${t('truck')} ${x.plate}`)}}})}
 
+function accBox(a,type){return`<div class="note spread"><span>${esc(t('login_state'))}: ${pill(accState(a),a.pwHash?'good':'warn')}</span><button class="btn ghost sm" data-act="acc-reset" data-type="${type}" data-id="${a.id}">${esc(t('reset_login'))}</button></div>`}
 function driverForm(x){if(!guard('fleet'))return;const isNew=!x;
-  openForm({title:isNew?t('new_driver'):x.name,values:x?{...x}:{mode:'em_trip',status:'ds_active'},del:!isNew&&can('*'),
+  openForm({title:isNew?t('new_driver'):x.name,extra:x?()=>accBox(x,'drivers'):null,values:x?{...x}:{mode:'em_trip',status:'ds_active'},del:!isNew&&can('*'),
    fields:[{k:'name',l:t('name'),req:true,full:true},{k:'idNo',l:t('id_or_iqama'),req:true,type:'tel'},{k:'phone',l:t('phone'),type:'tel',req:true},{k:'idExp',l:t('id_exp'),type:'date'},{k:'licExp',l:t('lic_exp'),type:'date'},
     {k:'salary',l:t('salary'),type:'number',min:0},{k:'allow',l:t('allowances'),type:'number',min:0},
     {k:'mode',l:t('exp_mode'),type:'select',opts:keyOpts(['em_trip','em_day','em_km']),empty:false},{k:'rate',l:t('exp_rate'),type:'number',min:0},
     {k:'truckId',l:t('assigned_truck'),type:'select',opts:opt(S.trucks,x=>x.plate)},{k:'status',l:t('status'),type:'select',opts:keyOpts(['ds_active','ds_leave','ds_left']),empty:false}],
    onDel:()=>{if(S.trips.some(p=>p.driverId===x.id))return t('not_allowed');S.drivers=S.drivers.filter(y=>y.id!==x.id);ui.stack=[]},
-   onSave:v=>{v.idNo=String(v.idNo).replace(/\D/g,'');v.phone=normPhone(v.phone);if(!idKind(v.idNo))return t('id_invalid');if(idTaken(v.idNo,x&&x.id))return t('id_taken');if(!/^05\d{8}$/.test(v.phone))return t('phone_invalid');if(isNew){S.drivers.push({id:uid('d'),...v});log(`+ ${t('driver')} ${v.name}`)}else Object.assign(x,v)}})}
+   onSave:v=>{v.idNo=String(v.idNo).replace(/\D/g,'');v.phone=normPhone(v.phone);if(!idKind(v.idNo))return t('id_invalid');if(idTaken(v.idNo,x&&x.id))return t('id_taken');if(!/^05\d{8}$/.test(v.phone))return t('phone_invalid');if(isNew){const d={id:uid('d'),...v};S.drivers.push(d);showAct(d);log(`+ ${t('driver')} ${v.name}`)}else Object.assign(x,v)}})}
 
 function tyreForm(x,truckId){if(!guard('fleet'))return;
   openForm({title:x?t('tyre'):t('new_tyre'),values:x?{...x}:{truckId:truckId||'',date:today(),status:'ty_ok',odo:truckId?byId('trucks',truckId).odo:''},del:!!x,
@@ -893,12 +939,12 @@ function custodyForm(d){if(!can('pay')&&!can('fleet'))return toast(t('not_allowe
    onSave:v=>{S.driverTx.push({id:uid('x'),driverId:d.id,...v});log(`${t(v.type==='advance'?'advance':'settle')} ${d.name} ${moneyT(v.amount)}`)}})}
 
 function userForm(x){if(!guard('*'))return;
-  openForm({title:x?x.name:t('new_user'),values:x?{...x}:{role:'dispatcher'},del:!!x,
+  openForm({title:x?x.name:t('new_user'),values:x?{...x}:{role:'dispatcher'},del:!!x,extra:x&&x.id!==SES.id?()=>accBox(x,'users'):null,
    intro:t('users_note'),
    fields:[{k:'name',l:t('name'),req:true,full:true},{k:'role',l:t('role'),type:'select',opts:[['manager',t('role_manager')],['accountant',t('role_accountant')],['dispatcher',t('role_dispatcher')]],empty:false},
     {k:'idNo',l:t('id_or_iqama'),type:'tel',req:true},{k:'phone',l:t('phone'),type:'tel',req:true}],
    onDel:()=>{if(x.id===SES.id)return t('cant_delete_self');S.users=S.users.filter(y=>y.id!==x.id)},
-   onSave:v=>{v.idNo=String(v.idNo).replace(/\D/g,'');v.phone=normPhone(v.phone);if(!idKind(v.idNo))return t('id_invalid');if(idTaken(v.idNo,x&&x.id))return t('id_taken');if(!/^05\d{8}$/.test(v.phone))return t('phone_invalid');if(x&&x.id===SES.id&&v.role!=='manager')return t('not_allowed');if(x)Object.assign(x,v);else S.users.push({id:uid('u'),...v});log(`${t('users')}: ${v.name}`)}})}
+   onSave:v=>{v.idNo=String(v.idNo).replace(/\D/g,'');v.phone=normPhone(v.phone);if(!idKind(v.idNo))return t('id_invalid');if(idTaken(v.idNo,x&&x.id))return t('id_taken');if(!/^05\d{8}$/.test(v.phone))return t('phone_invalid');if(x&&x.id===SES.id&&v.role!=='manager')return t('not_allowed');if(x)Object.assign(x,v);else{const u={id:uid('u'),...v};S.users.push(u);showAct(u)}log(`${t('users')}: ${v.name}`)}})}
 
 function settingsForm(){if(!guard('*'))return;
   openForm({title:t('company'),values:{...S.settings},
@@ -947,20 +993,26 @@ V.setup=()=>`<div class="login"><div class="brand"><div class="logo">${IC.truck}
    <label class="fld" for="su-name"><span>${esc(t('manager_name'))}</span><input id="su-name" autocomplete="name"></label>
    <label class="fld" for="su-id"><span>${esc(t('id_or_iqama'))}</span><input id="su-id" inputmode="numeric" maxlength="10" dir="ltr" placeholder="1XXXXXXXXX"></label>
    <label class="fld" for="su-mob"><span>${esc(t('phone'))}</span><input id="su-mob" type="tel" inputmode="tel" maxlength="13" dir="ltr" placeholder="05XXXXXXXX"></label>
+   <label class="fld" for="su-pw"><span>${esc(t('password'))}</span><input id="su-pw" type="password" autocomplete="new-password" dir="ltr"><span class="hint">${esc(t('pw_rule'))}</span></label>
+   <label class="fld" for="su-pw2"><span>${esc(t('password2'))}</span><input id="su-pw2" type="password" autocomplete="new-password" dir="ltr"></label>
    <button class="btn block" data-act="setup-save">${esc(t('start'))}</button></div></div>`;
 
-V.login=()=>{const o=ui.otp,n=(ui.loginId||'').replace(/\D/g,''),k=idKind(n);
+V.login=()=>{const m=ui.lmode||'login',n=(ui.loginId||'').replace(/\D/g,''),k=idKind(n);
   const head=`<div class="brand"><div class="logo">${IC.truck}</div><div><h1>${esc(S.settings.company)}</h1><div class="muted small">${esc(t('appName'))}</div></div></div>
   <div class="seg" role="group" aria-label="${esc(t('language'))}">${LANGS.map(l=>`<button data-act="lang" data-id="${l[0]}" aria-pressed="${LANG===l[0]}">${l[1]}</button>`).join('')}</div>`;
-  if(o)return`<div class="login">${head}<div class="card stack"><h2>${esc(t('code'))}</h2><p class="muted small" style="margin:0">${esc(t('code_sent',{p:o.phone}))}</p>
-   <div class="note warn small">${esc(t('demo_code',{c:o.code}))}</div>
-   <label class="fld" for="otp"><span>${esc(t('code'))}</span><input id="otp" class="pin" type="text" inputmode="numeric" maxlength="4" autocomplete="one-time-code" dir="ltr"></label>
-   <button class="btn block" data-act="login-verify">${esc(t('enter'))}</button>
-   <div class="spread"><button class="link" data-act="login-back">${esc(t('change_number'))}</button><button class="link" data-act="login-send">${esc(t('resend'))}</button></div></div></div>`;
-  return`<div class="login">${head}<div class="card stack"><h2>${esc(t('login_title'))}</h2>
-   <label class="fld" for="lid"><span>${esc(t('id_or_iqama'))}</span><input id="lid" type="text" inputmode="numeric" maxlength="10" autocomplete="username" dir="ltr" value="${esc(n)}" data-ch="loginId" placeholder="1XXXXXXXXX / 2XXXXXXXXX"><span class="hint" id="lid-kind">${k?esc(t(k)):n.length===10?`<span class="negv">${esc(t('id_invalid'))}</span>`:''}</span></label>
-   <label class="fld" for="lmob"><span>${esc(t('mobile_login'))}</span><input id="lmob" type="tel" inputmode="tel" maxlength="13" autocomplete="tel" dir="ltr" value="${esc(ui.loginPhone||'')}" placeholder="05XXXXXXXX"></label>
-   <button class="btn block" data-act="login-send">${esc(t('send_code'))}</button></div></div>`};
+  const idField=`<label class="fld" for="lid"><span>${esc(t('id_or_iqama'))}</span><input id="lid" type="text" inputmode="numeric" maxlength="10" autocomplete="username" dir="ltr" value="${esc(n)}" data-ch="loginId" placeholder="1XXXXXXXXX / 2XXXXXXXXX"><span class="hint" id="lid-kind">${k?esc(t(k)):n.length===10?`<span class="negv">${esc(t('id_invalid'))}</span>`:''}</span></label>`;
+  if(m==='setpw')return`<div class="login">${head}<div class="card stack"><h2>${esc(t('set_pw_title'))}</h2><p class="muted small" style="margin:0">${esc(t('set_pw_note',{n:ui.pend?ui.pend.name:''}))}</p>
+   <label class="fld" for="npw"><span>${esc(t('password'))}</span><input id="npw" type="password" autocomplete="new-password" dir="ltr"><span class="hint">${esc(t('pw_rule'))}</span></label>
+   <label class="fld" for="npw2"><span>${esc(t('password2'))}</span><input id="npw2" type="password" autocomplete="new-password" dir="ltr"></label>
+   <button class="btn block" data-act="pw-save">${esc(t('save'))}</button><button class="link" data-act="lmode" data-id="login">${esc(t('back_login'))}</button></div></div>`;
+  if(m==='activate')return`<div class="login">${head}<div class="card stack"><h2>${esc(t('first_login'))}</h2><p class="muted small" style="margin:0">${esc(t('act_note'))}</p>${idField}
+   <label class="fld" for="acode"><span>${esc(t('act_code'))}</span><input id="acode" type="text" inputmode="numeric" maxlength="10" autocomplete="one-time-code" dir="ltr" class="pin"><span class="hint">${esc(t('act_hint_legacy'))}</span></label>
+   <button class="btn block" data-act="act-check">${esc(t('continue'))}</button><button class="link" data-act="lmode" data-id="login">${esc(t('back_login'))}</button></div></div>`;
+  return`<div class="login">${head}<div class="card stack"><h2>${esc(t('login_title'))}</h2>${idField}
+   <label class="fld" for="lpw"><span>${esc(t('password'))}</span><input id="lpw" type="password" autocomplete="current-password" dir="ltr"></label>
+   <button class="btn block" data-act="login">${esc(t('enter'))}</button>
+   <button class="btn sec block" data-act="lmode" data-id="activate">${esc(t('have_code'))}</button>
+   <p class="muted xs" style="margin:0">${esc(t('forgot_pw'))}</p></div></div>`};
 
 V.phone=()=>{const a=accountOf(SES);return`<div class="login"><div class="brand"><div class="logo">${IC.person}</div><div><h1>${esc(t('phone_title'))}</h1><div class="muted small">${esc(a.name)} · ${esc(t('role_'+SES.role))}</div></div></div>
   <div class="card stack"><p class="muted small" style="margin:0">${esc(t('phone_note'))}</p>
@@ -1192,6 +1244,11 @@ function render(){applyLang();const app=$('#app');
   const al=isDriver()?S.trips.filter(p=>p.driverId===SES.id&&p.status==='sent').length:alerts().filter(a=>a.lvl==='bad').length;
   html+=`<nav class="tabbar" aria-label="nav"><div class="in">${NAV.map(([k,l,ic])=>`<button data-act="go" data-id="${k}" aria-current="${ui.tab===k?'page':'false'}">${ic}<span>${esc(t(l))}</span>${k==='home'&&al?`<span class="dot num">${al}</span>`:''}</button>`).join('')}</div></nav>`;
   if(ui.confirm)html+=`<div class="scrim" style="z-index:60" data-act="confirm-no"><div class="sheet" role="alertdialog" aria-modal="true"><div class="body"><p style="margin:0;font-weight:600">${esc(ui.confirm.msg)}</p>${ui.confirm.sub?`<p class="muted small" style="margin:0">${esc(ui.confirm.sub)}</p>`:''}</div><footer><button class="btn ghost" data-act="confirm-no">${esc(t('cancel'))}</button><button class="btn ${ui.confirm.kind||'bad'}" data-act="confirm-yes">${esc(ui.confirm.ok)}</button></footer></div></div>`;
+  if(ui.actShow){const a=ui.actShow,url=appUrl(),msg=t('wa_msg',{n:a.name,c:S.settings.company,code:a.code,u:url?' '+url:''});
+    html+=`<div class="scrim" style="z-index:65"><div class="sheet" role="dialog" aria-modal="true"><header><h2>${esc(t('act_show_title'))}</h2></header><div class="body">
+     <p style="margin:0">${esc(t('act_show_note',{n:a.name}))}</p><div class="actcode num">${esc(a.code)}</div>
+     <div class="row"><a class="btn good" href="${esc(waLinkTo(a.phone,msg))}" target="_blank" rel="noopener">${esc(t('send_whatsapp'))}</a><button class="btn ghost" data-act="act-copy">${esc(t('copy'))}</button></div>
+     <p class="muted xs" style="margin:0">${esc(t('act_show_hint'))}</p></div><footer><button class="btn" data-act="act-close">${esc(t('close'))}</button></footer></div></div>`}
   if(ui.lightbox)html+=`<div class="scrim lb" style="z-index:70" data-act="lb-close"><img data-ph="${esc(ui.lightbox)}" alt=""><button class="xbtn" data-act="lb-close" aria-label="${esc(t('close'))}">${IC.x}</button></div>`;
   app.innerHTML=html;hydratePhotos(app)}
 
@@ -1206,22 +1263,33 @@ const ACT={
  'open':(id,el)=>{if(el.dataset.type==='client'&&ui.tab!=='clients'&&!ui.stack.length)ui.tab='clients';push(el.dataset.type,id)},
  'lang':id=>{LANG=id;PREFS.lang=id;savePrefs();render();if(ui.sheet)renderSheet()},
  'theme':id=>{PREFS.theme=id;savePrefs();render()},
- 'setup-save':()=>{const v=k=>(($('#'+k)||{}).value||'').trim(),co=v('su-co'),nm=v('su-name'),id=v('su-id').replace(/\D/g,''),mob=normPhone(v('su-mob'));
+ 'setup-save':async()=>{const v=k=>(($('#'+k)||{}).value||'').trim(),co=v('su-co'),nm=v('su-name'),id=v('su-id').replace(/\D/g,''),mob=normPhone(v('su-mob')),pw=($('#su-pw')||{}).value||'',pw2=($('#su-pw2')||{}).value||'';
    if(!nm)return toast(t('required'),'bad');if(!idKind(id))return toast(t('id_invalid'),'bad');if(!/^05\d{8}$/.test(mob))return toast(t('phone_invalid'),'bad');
-   if(co)S.settings.company=co;S.users.push({id:uid('u'),name:nm,role:'manager',idNo:id,phone:mob});log(`${t('setup_title')}: ${nm}`);save();ui.loginId=id;ui.loginPhone=mob;render()},
- 'login-send':()=>{const n=ui.otp?ui.otp.idNo:(($('#lid')||{}).value||'').replace(/\D/g,''),mob=ui.otp?ui.otp.phone:normPhone(($('#lmob')||{}).value);ui.loginId=n;ui.loginPhone=mob;
-   if(!idKind(n))return toast(t('id_invalid'),'bad');if(!/^05\d{8}$/.test(mob))return toast(t('phone_invalid'),'bad');
-   const u=S.users.find(x=>x.idNo===n),d=!u&&S.drivers.find(x=>x.idNo===n&&x.status!=='ds_left'),a=u||d;
-   // an account with no mobile yet takes the one entered now; otherwise they must match
-   if(!a||(a.phone&&normPhone(a.phone)!==mob))return toast(t('login_nomatch'),'bad');
-   ui.otp={idNo:n,phone:mob,accId:a.id,role:u?u.role:'driver',code:String(Math.floor(1000+Math.random()*9000)),exp:Date.now()+5*60e3,tries:0};
-   render();setTimeout(()=>{const o=$('#otp');if(o)o.focus()},40)},
- 'login-back':()=>{ui.otp=null;render()},
- 'login-verify':()=>{const o=ui.otp;if(!o)return;const c=(($('#otp')||{}).value||'').replace(/\D/g,'');
-   if(Date.now()>o.exp){toast(t('code_expired'),'bad');return}
-   if(c!==o.code){o.tries++;if(o.tries>=5){ui.otp=null;render();return toast(t('code_expired'),'bad')}toast(t('code_bad'),'bad');const el=$('#otp');if(el){el.value='';el.focus()}return}
-   const a=o.role==='driver'?byId('drivers',o.accId):byId('users',o.accId);if(!a)return;if(!a.phone){a.phone=o.phone;save()}
-   SES={id:a.id,name:a.name,role:o.role};ui.otp=null;$('#toast').hidden=true;try{localStorage.setItem(SES_KEY,JSON.stringify(SES))}catch(e){}log(`${t('login_title')}: ${a.name}`);save();ui.tab='home';ui.stack=[];ui.filter='active';render()},
+   if(pw.length<6)return toast(t('pw_rule'),'bad');if(pw!==pw2)return toast(t('pw_mismatch'),'bad');
+   if(co)S.settings.company=co;const u={id:uid('u'),name:nm,role:'manager',idNo:id,phone:mob};await setPw(u,pw);S.users.push(u);log(`${t('setup_title')}: ${nm}`);
+   SES={id:u.id,name:u.name,role:'manager'};try{localStorage.setItem(SES_KEY,JSON.stringify(SES))}catch(e){}save();ui.tab='home';ui.stack=[];render()},
+ 'lmode':id=>{const el=$('#lid');if(el)ui.loginId=el.value.replace(/\D/g,'');ui.lmode=id;render()},
+ 'login':async()=>{const n=(($('#lid')||{}).value||'').replace(/\D/g,''),pw=($('#lpw')||{}).value||'';ui.loginId=n;
+   if(!idKind(n))return toast(t('id_invalid'),'bad');const f=findAcc(n);
+   if(f&&f.a.lockUntil>Date.now())return toast(t('locked',{m:Math.ceil((f.a.lockUntil-Date.now())/60e3)}),'bad');
+   if(f&&!f.a.pwHash)return toast(t('need_activation'),'bad');
+   const ok=f&&f.a.pwHash===await hashPw(pw,f.a.pwSalt||'');
+   if(!ok){if(f){f.a.fail=(f.a.fail||0)+1;if(f.a.fail>=5){f.a.lockUntil=Date.now()+10*60e3;f.a.fail=0}save()}toast(t('login_bad2'),'bad');const p=$('#lpw');if(p){p.value='';p.focus()}return}
+   f.a.fail=0;f.a.lockUntil=0;SES={id:f.a.id,name:f.a.name,role:f.role};$('#toast').hidden=true;try{localStorage.setItem(SES_KEY,JSON.stringify(SES))}catch(e){}log(`${t('login_title')}: ${f.a.name}`);save();ui.tab='home';ui.stack=[];ui.filter='active';render()},
+ 'act-check':()=>{const n=(($('#lid')||{}).value||'').replace(/\D/g,''),c=(($('#acode')||{}).value||'').replace(/\D/g,'');ui.loginId=n;
+   if(!idKind(n))return toast(t('id_invalid'),'bad');const f=findAcc(n);
+   if(f&&f.a.lockUntil>Date.now())return toast(t('locked',{m:Math.ceil((f.a.lockUntil-Date.now())/60e3)}),'bad');
+   // accounts made before passwords existed can confirm with their registered mobile instead of a code
+   const ok=f&&((f.a.actCode&&c===f.a.actCode)||(!f.a.actCode&&!f.a.pwHash&&f.a.phone&&c===normPhone(f.a.phone).replace(/\D/g,'')));
+   if(!ok){if(f){f.a.fail=(f.a.fail||0)+1;if(f.a.fail>=5){f.a.lockUntil=Date.now()+10*60e3;f.a.fail=0}save()}return toast(t('act_bad'),'bad')}
+   ui.pend={id:f.a.id,role:f.role,name:f.a.name,code:c};ui.lmode='setpw';$('#toast').hidden=true;render();setTimeout(()=>{const e=$('#npw');if(e)e.focus()},40)},
+ 'pw-save':async()=>{const pw=($('#npw')||{}).value||'',pw2=($('#npw2')||{}).value||'',pd=ui.pend;if(!pd)return;
+   if(pw.length<6)return toast(t('pw_rule'),'bad');if(pw!==pw2)return toast(t('pw_mismatch'),'bad');
+   const a=pd.role==='driver'?byId('drivers',pd.id):byId('users',pd.id);if(!a)return;await setPw(a,pw);
+   SES={id:a.id,name:a.name,role:pd.role};ui.pend=null;ui.lmode='login';$('#toast').hidden=true;try{localStorage.setItem(SES_KEY,JSON.stringify(SES))}catch(e){}log(`${t('set_pw_title')}: ${a.name}`);save();toast(t('saved'));ui.tab='home';ui.stack=[];render()},
+ 'acc-reset':(id,el)=>{if(!guard('*'))return;const a=byId(el.dataset.type,id);if(!a)return;ui.confirm={msg:t('reset_login')+' · '+a.name,sub:t('reset_login_note'),ok:t('reset_login'),kind:'',fn:()=>{showAct(a);closeSheet();log(`${t('reset_login')}: ${a.name}`)}};render()},
+ 'act-close':()=>{ui.actShow=null;render()},
+ 'act-copy':()=>{const c=ui.actShow&&ui.actShow.code;if(!c)return;try{navigator.clipboard.writeText(c).then(()=>toast(t('copied')),()=>{})}catch(e){}},
  'phone-save':()=>{const v=(($('#mob')||{}).value||'').replace(/\s/g,'');if(!/^05\d{8}$/.test(v)){toast(t('phone_invalid'),'bad');return}
    const a=accountOf(SES);a.phone=v;log(`${t('phone')}: ${a.name}`);save();toast(t('phone_saved'));render()},
  'drv-do':(id,el)=>{const p=byId('trips',id);if(p)driverAction(p,el.dataset.type)},
@@ -1269,7 +1337,7 @@ const ACT={
 /* ---------- events ---------- */
 document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(!el)return;const f=ACT[el.dataset.act];if(!f)return;
   if(el.tagName==='A')e.preventDefault();f(el.dataset.id,el,e)});
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='otp')ACT['login-verify']();if(e.key==='Enter'&&e.target.id==='lmob')ACT['login-send']();
+document.addEventListener('keydown',e=>{if(e.key==='Enter'){const id=e.target.id;if(id==='lpw')ACT.login();if(id==='acode')ACT['act-check']();if(id==='npw2')ACT['pw-save']();if(id==='su-pw2')ACT['setup-save']()}
   if(e.key==='Escape'){if(ui.confirm){ui.confirm=null;render()}else if(ui.sheet)closeSheet()}
   if((e.key==='Enter'||e.key===' ')&&e.target.matches('div[data-act]')){e.preventDefault();e.target.click()}});
 document.addEventListener('input',e=>{const el=e.target;
